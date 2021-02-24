@@ -1,44 +1,84 @@
-.inputs {
-    margin-left: 30px;
+.sideBar{   
+    height: 100%;
+    position: absolute;
+    width: 328px;
+    background: #FBFBFB
+
 }
-.category{
-    margin-left: 50px;
+
+.div_projects {
+   
+    width: 329px;
+    height: 58px;
+     top: 93px; 
+    border: none;
+    display: block;
+    
 }
+
+.icon { 
+   
+    position: absolute;
+    height: 19px;
+width: 20px;
+margin-left: -40px;
+margin-top: 2px;
+    
+    
+}
+
+.btn_projects {
+    position: absolute;
+    background: #FBFBFB;
+    border: none;
+    color: rgba(67, 63, 63, 1);
+     margin-left: 80px;
+    margin-top: 15px; 
+    
+    cursor: pointer;
+    
+}
+
+
+
+
+.log_out_icon  {
+    margin-top: 2px;
+    position: absolute;
+    width: 26px;
+    height: 26px;
+    margin-left: 100px;
+   
+}
+
 .btn_logout {
    
     position: absolute;
     height: 36px;
-width: 81px;
-margin-left: 96px;
-margin-top: 400px;
+width: 100px;
 border: none;
+font-family: Mardoto;
+font-size: 18px;
 font-style: normal;
-font-weight: normal;
-font-size: 24px;
-line-height: 36px;
-color: #433F3F;
-background: white;
-
+font-weight: 400;
+line-height: 27px;
+background: #FBFBFB
 
 }
 
-::after, ::before {
-    box-sizing: border-box;
-    color: rgba(128, 138, 138, 1);
-    margin-left: 20px;
-}
-
-.btn_projects {
-    display:block;
-    border: none;
+.logout {
+    
+    position: absolute;
+    display: inline-block;
+    color: #433F3F;
+     margin-top: 200px;
+     margin-left: 96px; 
     
 }
-
-.sideBar{
-    background: #FBFBFB;
-    width: 329px;
-    height: auto;
-
-
-
+.properties {
+    display: block;
+    padding-top: 80px;
 }
+
+
+

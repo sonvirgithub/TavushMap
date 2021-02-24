@@ -1,42 +1,51 @@
-import React from 'react'
+import React, {useState} from 'react'
 import { Route, useHistory } from 'react-router-dom';
 import './HomePage.css'
-
+import { Button,Modal } from 'react-bootstrap';
 
 function HomePage() {
 
+    const [show, setShow] = useState(false);
 
-    // const history = useHistory()
+  const handleClose = () => setShow(false);
+  const handleShow = () => setShow(true);
 
-    // async function log_out() {
+    
 
 
-    //     const headers = {}
-    //     headers["Content-Type"] = "application/json"
-    //     const res = await fetch('/logout', {
-    //         method:
-    //             "GET",
-    //         headers
-    //     })
 
-    //     if (res.status == 200) {
+    return (
+        <div>
+            <div>
+            <div className="div_add"><img src={require('./AdminIcons/add.svg').default} className="add_icon" />
+                <button variant="primary" className="btn_add" onClick={handleShow}> Ավելացնել Ծրագիր</button>
+            </div>
+            <label className="name_project">Ծրագրեր</label>
+            </div>
+           
 
-    //         history.push("/login")
-    //         // console.log(await res.json());
+      <Modal show={show} onHide={handleClose} animation={false}>
+        <Modal.Header closeButton>
+        </Modal.Header>
+        <Modal.Body>
+            <div>
+            <label>Ծրագրի անուն</label>
+            </div>
+            
+        </Modal.Body>
+        <Modal.Footer>
+          <Button variant="secondary" onClick={handleClose}>
+            Close
+          </Button>
+          <Button variant="primary" onClick={handleClose}>
+            Save Changes
+          </Button>
+        </Modal.Footer>
+      </Modal>
+           
+        </div>
 
-    //     } else {
-    //         console.log("data chka")
-
-    //     }
-    //     // window.location.reload()
-    // }
-
-     return (
-         <>
-             {/* <button className='btn_logout' onClick={log_out}>Logout</button> */}
-         </>
-
-     );
+    );
 }
 
 export default HomePage;
