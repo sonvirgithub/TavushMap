@@ -1,84 +1,71 @@
-.sideBar{   
-    height: 100%;
-    position: absolute;
-    width: 328px;
-    background: #FBFBFB
-
+.sideBar {
+  height: 100%;
+  position: absolute;
+  width: 328px;
+  background: #fbfbfb;
 }
 
 .div_projects {
-   
-    width: 329px;
-    height: 58px;
-     top: 93px; 
-    border: none;
-    display: block;
-    
+  width: 329px;
+  height: 58px;
+  top: 93px;
+  border: none;
+  display: block;
 }
 
-.icon { 
-   
-    position: absolute;
-    height: 19px;
-width: 20px;
-margin-left: -40px;
-margin-top: 2px;
-    
-    
+.icon {
+  position: absolute;
+  height: 19px;
+  width: 20px;
+  margin-left: -40px;
+  margin-top: 2px;
 }
 
 .btn_projects {
-    position: absolute;
-    background: #FBFBFB;
-    border: none;
-    color: rgba(67, 63, 63, 1);
-     margin-left: 80px;
-    margin-top: 15px; 
-    
-    cursor: pointer;
-    
+  position: absolute;
+  background: #fbfbfb;
+  border: none;
+  color: rgba(67, 63, 63, 1);
+  margin-left: 80px;
+  margin-top: 15px;
+
+  cursor: pointer;
 }
 
-
-
-
-.log_out_icon  {
-    margin-top: 2px;
-    position: absolute;
-    width: 26px;
-    height: 26px;
-    margin-left: 100px;
-   
+.log_out_icon {
+  margin-top: 2px;
+  position: absolute;
+  width: 26px;
+  height: 26px;
+  margin-left: 100px;
 }
 
 .btn_logout {
-   
-    position: absolute;
-    height: 36px;
-width: 100px;
-border: none;
-font-family: Mardoto;
-font-size: 18px;
-font-style: normal;
-font-weight: 400;
-line-height: 27px;
-background: #FBFBFB
-
+  position: absolute;
+  height: 36px;
+  width: 100px;
+  border: none;
+  font-family: Mardoto;
+  font-size: 18px;
+  font-style: normal;
+  font-weight: 400;
+  line-height: 27px;
+  background: #fbfbfb;
 }
 
 .logout {
-    
-    position: absolute;
-    display: inline-block;
-    color: #433F3F;
-     margin-top: 200px;
-     margin-left: 96px; 
-    
+  position: absolute;
+  display: inline-block;
+  color: #433f3f;
+  margin-top: 200px;
+  margin-left: 96px;
 }
 .properties {
-    display: block;
-    padding-top: 80px;
+  display: block;
+  padding-top: 80px;
 }
 
-
-
+.nav-link {
+  display: contents;
+  padding: 0;
+}
