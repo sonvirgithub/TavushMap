@@ -6,32 +6,32 @@ export const CategoryContext = React.createContext();
 function CategoriesPage() {
   const [categories, setCategories] = useState("");
 
-  // const addOrganization = (org) => {
-  //   organizations.push(org);
-  //   setOrganizations([...organizations]);
-  // };
+  const addCategory = (cat) => {
+    categories.push(cat);
+    setCategories([...categories]);
+  };
 
-  // const editOrganization = (org) => {
-  //   organizations.map((organization) => {
-  //     if (organization.id == org.id) {
-  //       organization.name_eng = org.name_eng;
-  //       organization.name_arm = org.name_arm;
+  const editCategory = (cat) => {
+    categories.map((category) => {
+      if (category.id == cat.id) {
+        category.name_eng = cat.name_eng;
+        category.name_arm = cat.name_arm;
 
-  //       setOrganizations([...organizations]);
-  //     }
-  //   });
-  // };
+        setCategories([...categories]);
+      }
+    });
+  };
 
-  // const deleteOrganization = (id) => {
-  //   organizations.map((organization) => {
-  //     if (organization.id == id) {
-  //       const index = organizations.indexOf(organization);
-  //       organizations.splice(index, 1);
+  const deleteCategory = (id) => {
+    categories.map((cat) => {
+      if (cat.id == id) {
+        const index = categories.indexOf(cat);
+        categories.splice(index, 1);
 
-  //       setOrganizations([...organizations]);
-  //     }
-  //   });
-  // };
+        setCategories([...categories]);
+      }
+    });
+  };
 
   //   console.log("object");
   useEffect(() => {
@@ -47,18 +47,17 @@ function CategoriesPage() {
   // console.log(organizations, "organizationsorganizations");
   return (
     <div>
-      {/* <CategoryContext.Provider
+      <CategoryContext.Provider
         value={{
-          organizations,
-          setOrganizations,
-          addOrganization,
-          deleteOrganization,
-          editOrganization,
+          categories,
+          setCategories,
+          addCategory,
+          deleteCategory,
+          editCategory,
         }}
       >
-        <Categories organizations={organizations} />
-      </CategoryContext.Provider> */}
-      <Categories categories={categories} />
+        <Categories categories={categories} />
+      </CategoryContext.Provider>
     </div>
   );
 }
