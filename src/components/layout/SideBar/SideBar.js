@@ -64,33 +64,33 @@ function Sidebar() {
         }
         // window.location.reload()
     }
-     
+
     return (
         <div className='sideBar'>
             <div className='properties'>
                 <div className='div_projects'>
-                    <button className="btn_projects"><img src={require('./AdminIcons/programm.svg').default} className="icon_program"/> Ծրագրեր</button>
-                    </div>
-            <div className="div_projects">
-                    <button className="btn_projects" ><img src={require('./AdminIcons/orggray.svg').default} className="icon"/>Կազմակերպություններ</button>
-                    </div>  
-            <div className="div_projects">
-                    <button className="btn_projects"><img src={require('./AdminIcons/phere.svg').default} className="icon_category"/>Ոլորտներ</button>
-                    </div>  
-            <div className="div_projects">
-                    <button className="btn_projects"><img src={require('./AdminIcons/support.svg').default} className="icon"/>Աջակցության տեսակներ</button>
-                    </div> 
-            <div className="div_projects">
-                    <button className="btn_projects"><img src={require('./AdminIcons/settings.svg').default} className="icon_settings"/>Կարգավորումներ</button>
-                    </div>   
+                    <button className="btn_projects"><img src={require('./AdminIcons/programm.svg').default} className="icon_program" /> Ծրագրեր</button>
                 </div>
-                
+                <div className="div_projects">
+                    <button className="btn_projects" ><img src={require('./AdminIcons/orggray.svg').default} className="icon" />Կազմակերպություններ</button>
+                </div>
+                <div className="div_projects">
+                    <button className="btn_projects"><img src={require('./AdminIcons/phere.svg').default} className="icon_category" />Ոլորտներ</button>
+                </div>
+                <div className="div_projects">
+                    <button className="btn_projects"><img src={require('./AdminIcons/support.svg').default} className="icon" />Աջակցության տեսակներ</button>
+                </div>
+                <div className="div_projects">
+                    <button className="btn_projects"><img src={require('./AdminIcons/settings.svg').default} className="icon_settings" />Կարգավորումներ</button>
+                </div>
+            </div>
+
 
 
             <div className='logout'>
                 <button className='btn_logout' onClick={log_out}>Դուրս գալ <img src={require('./AdminIcons/logout.svg').default} className="log_out_icon" /></button>
             </div>
-           
+
 
         </div>
 
