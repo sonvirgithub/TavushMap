@@ -3,7 +3,7 @@ import { Route, useHistory } from 'react-router-dom';
 import './ProjectPopup.css'
 import { Modal, Form, Check } from 'react-bootstrap';
 
-function HomePage() {
+function ProjectPopup() {
 
   const [show, setShow] = useState(false);
 
@@ -264,5 +264,4 @@ function HomePage() {
   );
 }
 
-export default HomePage;
-
+export default ProjectPopup;

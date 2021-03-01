@@ -5,6 +5,7 @@ import RouteWithLayout from './router/RouteWithLayout'
 import LoginLayout from './router/LoginLayout'
 import MainLayout from './router/MainLayout'
 import HomePage from './components/HomePage/HomePage'
+import OrganizationsPage from "./pages/OrganizationsPage"
 
 function Routes() {
 
@@ -25,6 +26,12 @@ function Routes() {
                     exact
                     layout={MainLayout}
                     path="/home"
+                />
+                <RouteWithLayout
+                    component={OrganizationsPage}
+                    exact
+                    layout={MainLayout}
+                    path="/organization"
                 />
                  <Redirect to='/login' /> 
 
