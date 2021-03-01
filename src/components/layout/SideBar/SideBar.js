@@ -64,7 +64,7 @@ function Sidebar() {
         }
         // window.location.reload()
     }
-
+     
     return (
         <div className='sideBar'>
             <div className='properties'>
@@ -72,7 +72,7 @@ function Sidebar() {
                     <button className="btn_projects"><img src={require('./AdminIcons/programm.svg').default} className="icon_program"/> Ծրագրեր</button>
                     </div>
             <div className="div_projects">
-                    <button className="btn_projects"><img src={require('./AdminIcons/orggray.svg').default} className="icon"/>Կազմակերպություններ</button>
+                    <button className="btn_projects" ><img src={require('./AdminIcons/orggray.svg').default} className="icon"/>Կազմակերպություններ</button>
                     </div>  
             <div className="div_projects">
                     <button className="btn_projects"><img src={require('./AdminIcons/phere.svg').default} className="icon_category"/>Ոլորտներ</button>

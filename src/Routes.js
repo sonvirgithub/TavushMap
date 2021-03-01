@@ -2,8 +2,8 @@ import React from 'react';
 import Login from './components/Login/Login';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
 import RouteWithLayout from './router/RouteWithLayout'
-import LoginLayout from './router/MainLayout'
-import MainLayout from './router/LoginLayout'
+import LoginLayout from './router/LoginLayout'
+import MainLayout from './router/MainLayout'
 import HomePage from './components/HomePage/HomePage'
 
 function Routes() {
