@@ -69,19 +69,19 @@ function Sidebar() {
         <div className='sideBar'>
             <div className='properties'>
                 <div className='div_projects'>
-                    <button className="btn_projects"><img src={require('./AdminIcons/programm.svg').default} className="icon"/> Ծրագրեր</button>
+                    <button className="btn_projects"><img src={require('./AdminIcons/programm.svg').default} className="icon_program"/> Ծրագրեր</button>
                     </div>
             <div className="div_projects">
                     <button className="btn_projects"><img src={require('./AdminIcons/orggray.svg').default} className="icon"/>Կազմակերպություններ</button>
                     </div>  
             <div className="div_projects">
-                    <button className="btn_projects"><img src={require('./AdminIcons/phere.svg').default} className="icon"/>Ոլորտներ</button>
+                    <button className="btn_projects"><img src={require('./AdminIcons/phere.svg').default} className="icon_category"/>Ոլորտներ</button>
                     </div>  
             <div className="div_projects">
                     <button className="btn_projects"><img src={require('./AdminIcons/support.svg').default} className="icon"/>Աջակցության տեսակներ</button>
                     </div> 
             <div className="div_projects">
-                    <button className="btn_projects"><img src={require('./AdminIcons/settings.svg').default} className="icon"/>Կարգավորումներ</button>
+                    <button className="btn_projects"><img src={require('./AdminIcons/settings.svg').default} className="icon_settings"/>Կարգավորումներ</button>
                     </div>   
                 </div>
                 
