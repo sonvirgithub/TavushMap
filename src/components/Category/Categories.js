@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import AddCategory from "./AddCategory";
+import DeleteCategory from "./DeleteCategory";
+import EditCategory from "./EditCategory";
 // import AddOrganization from "./AddOrganization";
 // import DeleteOrganization from "./DeleteOrganization";
 // import EditOrganization from "./EditOrganization";
@@ -41,9 +43,8 @@ function Organization({ categories }) {
                   //   style={{ display: "flex" }}
                   >
                     <div style={{ display: "flex" }}>
-                      {/* <MoreInfoOrganization org={org} /> */}
-                      {/* <EditOrganization org={org} /> */}
-                      {/* <DeleteOrganization org={org} /> */}
+                      <EditCategory cat={cat} />
+                      <DeleteCategory cat={cat} />
                     </div>
                   </td>
                 </tr>
