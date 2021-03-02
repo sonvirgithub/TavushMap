@@ -83,7 +83,7 @@ function Sidebar() {
                     <NavLink to="/category" className="btn_projects"><img src={require('./AdminIcons/phere.svg').default} className="icon_category" />Ոլորտներ</NavLink>
                 </div>
                 <div className="div_projects">
-                    <NavLink to="/support_type" className="btn_projects"><img src={require('./AdminIcons/support.svg').default} className="icon" />Աջակցության տեսակներ</NavLink>
+                    <NavLink to="/supportType" className="btn_projects"><img src={require('./AdminIcons/support.svg').default} className="icon" />Աջակցության տեսակներ</NavLink>
                 </div>
                 <div className="div_projects">
                     <NavLink to="/settings" className="btn_projects"><img src={require('./AdminIcons/settings.svg').default} className="icon_settings" />Կարգավորումներ</NavLink>

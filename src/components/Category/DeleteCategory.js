@@ -38,7 +38,7 @@ function DeleteCategory({ cat }) {
 
   return (
     <>
-      <div style={{ marginLeft: "5px" }} onClick={handleShow}>
+      <div style={{ marginRight: "15px" }} onClick={handleShow}>
         <img
           className="org_icon"
           src={require("../../img/remove.svg").default}

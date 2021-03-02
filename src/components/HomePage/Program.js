@@ -6,6 +6,7 @@ import AddProgram from './AddProgram/AddProgram'
 
 function Program() {
   return (
+    <div style={{ position: "absolute", width: "100%" }}>
     <div style={{ marginLeft: "328px" }}>
       <div className="org_title">
         <div className="org_title_txt">Ծրագրեր</div>
@@ -54,6 +55,7 @@ function Program() {
                </tr>
         </tbody>
       </Table>
+    </div>
     </div>
   );
 }
