@@ -14,13 +14,22 @@ function SupportType({ supportTypes }) {
         </div>
       </div>
 
-      <Table hover>
+      <table style={{ width: "100%" }}>
         <thead>
           <tr>
-            <th>Ոլորտ (Հայ)</th>
-            <th>Ոլորտ (Անգլ)</th>
-            <th>Աջակցության տեսակ (Հայ)</th>
-            <th>Աջակցության տեսակ (Անգլ)</th>
+            <th>
+              Ոլորտ <span style={{ fontWeight: "400" }}>(Հայ)</span>
+            </th>
+            <th>
+              Ոլորտ <span style={{ fontWeight: "400" }}>(Անգլ)</span>{" "}
+            </th>
+            <th>
+              Աջակցության տեսակ <span style={{ fontWeight: "400" }}>(Հայ)</span>
+            </th>
+            <th>
+              Աջակցության տեսակ{" "}
+              <span style={{ fontWeight: "400" }}>(Անգլ)</span>{" "}
+            </th>
             <th></th>
           </tr>
         </thead>
@@ -47,7 +56,7 @@ function SupportType({ supportTypes }) {
             </tr>
           )}
         </tbody>
-      </Table>
+      </table>
     </div>
   );
 }
