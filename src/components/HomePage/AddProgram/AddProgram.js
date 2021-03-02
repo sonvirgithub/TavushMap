@@ -1,15 +1,13 @@
 import React, { useState, useEffect } from 'react'
 import { Route, useHistory } from 'react-router-dom';
-import './ProjectPopup.css'
+import './AddProgram.css'
 import { Modal, Form, Check } from 'react-bootstrap';
 
-function ProjectPopup() {
+function AddProgram() {
 
   const [show, setShow] = useState(false);
-
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-
 
   const [communities, setCommunities] = useState([])
   const [organizations, setOrganizations] = useState([])
@@ -58,8 +56,8 @@ function ProjectPopup() {
     fetch('/api/supports')
       .then(res => res.json())
       .then(data => {
-        console.log(data.data);
-        setSupport_types(data.data)
+        console.log(data);
+        // setSupport_types(dat)
 
       }).catch(err => {
         console.log(err);
@@ -81,6 +79,14 @@ function ProjectPopup() {
 
 
   async function addProject() {
+
+    if(support_type=='Ընթացիկ') {
+      setSupport_type(1)
+    } else {
+      setSupport_type(2)
+    }
+
+    
 
     let body = {
       name_arm, name_eng, community, budge, startDate, endDate, manager_arm, manager_eng, contactPerson_arm, contactPerson_eng, organization, category, support_type,
@@ -110,8 +116,8 @@ function ProjectPopup() {
   return (
     <div>
       <div>
-        <div className="div_add"><img src={require('./AdminIcons/add.svg').default} className="add_icon" />
-          <button variant="primary" className="btn_add" onClick={handleShow}> Ավելացնել Ծրագիր</button>
+        <div className="div_add"><img src={require('../AdminIcons/add.svg').default} className="add_icon" />
+          <button variant="primary" className="btn_add" onClick={handleShow}> Ավելացնել</button>
         </div>
       </div>
 
@@ -222,8 +228,8 @@ function ProjectPopup() {
             <label className="support_type">Աջակցության տեսակ(ներ)</label>
             <Form.Control as="select" className="city_input" value={support_type} onChange={e => setSupport_type(e.target.value)}>
               {
-                support_types.map((support_type) => (
-                  <option>{support_type.name_arm}</option>
+                categores.map((category) => (
+                  <option >{category.name_arm}</option>
 
                 ))
               }
@@ -264,4 +270,4 @@ function ProjectPopup() {
   );
 }
 
-export default ProjectPopup;
+export default AddProgram;

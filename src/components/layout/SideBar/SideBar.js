@@ -1,5 +1,5 @@
 import React, { useState } from 'react'
-import { Route, useHistory } from 'react-router-dom';
+import { Route, useHistory, NavLink } from 'react-router-dom';
 import './SideBar.css';
 
 
@@ -65,23 +65,28 @@ function Sidebar() {
         // window.location.reload()
     }
 
+
+
     return (
         <div className='sideBar'>
             <div className='properties'>
                 <div className='div_projects'>
-                    <button className="btn_projects"><img src={require('./AdminIcons/programm.svg').default} className="icon_program" /> Ծրագրեր</button>
+                    
+                    <NavLink to="/program"  className="btn_projects "> Ծրագրեր</NavLink >
+                    <img src={require('./AdminIcons/programm.svg').default} className="icon_program" />
+                    
+                </div>
+                <div className="div_projects" >
+                    <NavLink to="/organization" className="btn_projects" ><img src={require('./AdminIcons/orggray.svg').default} className="icon" />Կազմակերպություններ</NavLink>
                 </div>
                 <div className="div_projects">
-                    <button className="btn_projects" ><img src={require('./AdminIcons/orggray.svg').default} className="icon" />Կազմակերպություններ</button>
+                    <NavLink to="/category" className="btn_projects"><img src={require('./AdminIcons/phere.svg').default} className="icon_category" />Ոլորտներ</NavLink>
                 </div>
                 <div className="div_projects">
-                    <button className="btn_projects"><img src={require('./AdminIcons/phere.svg').default} className="icon_category" />Ոլորտներ</button>
+                    <NavLink to="/support_type" className="btn_projects"><img src={require('./AdminIcons/support.svg').default} className="icon" />Աջակցության տեսակներ</NavLink>
                 </div>
                 <div className="div_projects">
-                    <button className="btn_projects"><img src={require('./AdminIcons/support.svg').default} className="icon" />Աջակցության տեսակներ</button>
-                </div>
-                <div className="div_projects">
-                    <button className="btn_projects"><img src={require('./AdminIcons/settings.svg').default} className="icon_settings" />Կարգավորումներ</button>
+                    <NavLink to="/settings" className="btn_projects"><img src={require('./AdminIcons/settings.svg').default} className="icon_settings" />Կարգավորումներ</NavLink>
                 </div>
             </div>
 

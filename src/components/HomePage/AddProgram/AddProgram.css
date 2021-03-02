@@ -4,20 +4,19 @@
 }
 
 .btn_add {
-    border: none;
-    background: none;
-width: 200px;
-height: 30px;
-font-style: normal;
-font-weight: normal;
-font-size: 18px;
-line-height: 30px;
-color: #05558F;
-display: inline-block;
-margin-top: 40px;
-margin-right: 50px;
+    
+        border: none;
+        background: none;
+        height: 30px;
+        font-family: Mardoto;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 18px;
+        line-height: 30px;
+        color: #05558f;
+        display: inline-block;
+        outline: none !important;
 }
-
 
 
 .project_name_label {
@@ -100,7 +99,8 @@ width: 360px;
 
 display: block;
 margin-top: 20px;
-margin-left: -310px;}
+margin-left: -310px;
+}
 
 .budge_input {
     display: block;

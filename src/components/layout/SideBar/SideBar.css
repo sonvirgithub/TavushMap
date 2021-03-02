@@ -8,12 +8,12 @@
 
 .div_projects {
    
-    width: 329px;
+     width: 329px;
     height: 58px;
      top: 93px; 
     border: none;
     display: block;
-    
+     
 }
 
 .icon { 
@@ -29,17 +29,30 @@ margin-top: 2px;
 
 .btn_projects {
     position: absolute;
-    background: #FBFBFB;
+    
     border: none;
     color: rgba(67, 63, 63, 1);
-    margin-left: 0px;
+    margin-left: 90px;
     margin-top: 15px;
     cursor: pointer;
-    width: 328px;
+    /* width: 328px; */
     height: 58px;
+    text-decoration: none;
+}
+.btn_projects:hover {
+    color: #FFFFFF;
 }
 
+.div_projects:hover {
+    background: #05558F;
+    opacity: 16%;
+   
 
+
+}
+.div_projects:focus {
+    background: #05558F;
+}
 
 
 .log_out_icon  {
@@ -81,32 +94,30 @@ background: #FBFBFB
 }
 
 
-.div_projects:focus {
-    background: rgba(196, 196, 196, 0.16);
-}
+
 
 .icon_category {
     position: absolute;
     height: 19px;
-width: 20px;
-margin-left: -95px;
-margin-top: 2px;
+    width: 20px;
+    margin-left: -40px;
+    margin-top: 2px;
     
 }
 .icon_settings {
     position: absolute;
     height: 19px;
-width: 20px;
-margin-left: -70px;
-margin-top: 2px;
+    width: 20px;
+    margin-left: -40px;
+    margin-top: 2px;
     
 }
 
 .icon_program {
     position: absolute;
     height: 19px;
-width: 20px;
-margin-left: -95px;
-margin-top: 2px;
-    
+    width: 20px;
+    margin-left: 50px;
+    margin-top: 20px;
 }
+

@@ -1,12 +1,12 @@
 import React from 'react';
-import Login from './components/Login/Login';
+import Login from '../components/Login/Login';
+import YandexMap from '../components/YandexMap/YandexMap';
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom';
-import RouteWithLayout from './router/RouteWithLayout'
-import LoginLayout from './router/LoginLayout'
-import MainLayout from './router/MainLayout'
-import Program from './components/HomePage/Program'
-import OrganizationsPage from "./pages/OrganizationsPage"
-import CategoriesPage from "./pages/CategoriesPage"
+import RouteWithLayout from './RouteWithLayout'
+import LoginLayout from './LoginLayout'
+import MainLayout from './MainLayout'
+import OrganizationsPage from "./../pages/OrganizationsPage"
+import Program from '../components/HomePage/Program';
 
 function Routes() {
 
@@ -26,7 +26,7 @@ function Routes() {
                     component={Program}
                     exact
                     layout={MainLayout}
-                    path="/program"
+                    path="/home"
                 />
                 <RouteWithLayout
                     component={OrganizationsPage}
@@ -34,14 +34,7 @@ function Routes() {
                     layout={MainLayout}
                     path="/organization"
                 />
-
-               <RouteWithLayout
-                    component={CategoriesPage}
-                    exact
-                    layout={MainLayout}
-                    path="/category"
-                />
-                 <Redirect to='/login' /> 
+                {/* <Redirect to='/login' /> */}
 
             </Switch>
         </>
