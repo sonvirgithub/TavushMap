@@ -15,11 +15,15 @@ function Organization({ categories }) {
         </div>
       </div>
 
-      <Table hover>
+      <table style={{ width: "100%" }}>
         <thead>
           <tr>
-            <th>Ոլորտ (Հայ)</th>
-            <th>Ոլորտ (Անգլ)</th>
+            <th>
+              Ոլորտ <span style={{ fontWeight: "400" }}>(Հայ)</span>
+            </th>
+            <th>
+              Ոլորտ <span style={{ fontWeight: "400" }}>(Անգլ)</span>
+            </th>
 
             <th></th>
           </tr>
@@ -48,7 +52,7 @@ function Organization({ categories }) {
             </tr>
           )}
         </tbody>
-      </Table>
+      </table>
     </div>
   );
 }

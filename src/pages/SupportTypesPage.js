@@ -48,7 +48,7 @@ function SupportTypesPage() {
   }, []);
   //   console.log(organizations, "organizationsorganizations");
   return (
-    <div>
+    <div style={{ position: "absolute", width: "100%" }}>
       {/* <OrganizationContext.Provider
         value={{
           organizations,
