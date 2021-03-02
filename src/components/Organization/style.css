@@ -2,16 +2,18 @@
   display: flex;
   justify-content: space-between;
 
-  padding: 40px;
+  padding: 42px 32px 42px 32px;
 }
 .org_title_txt {
   font-size: 26px;
-  color: #433f3f;
+  color: #858282;
 }
 .org_icon {
-  width: auto;
-  height: auto;
-  padding: 5px;
+  width: 24px;
+  height: 24px;
+  /* padding: 5px; */
+  margin-right: 5px;
+  margin-right: 12px;
   cursor: pointer;
 }
 .button_add {
@@ -64,4 +66,17 @@
   background-color: red !important;
   border-color: #05558f;
   border-radius: 4px;
+}
+table,
+th,
+td {
+  border-bottom: 1px solid #e5e5e5;
+}
+tr {
+  height: 56px;
+}
+th,
+td {
+  padding: 0px 0px 0px 32px;
+  color: #433f3f;
 }

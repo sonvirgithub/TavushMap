@@ -3,20 +3,14 @@ import { Table } from "react-bootstrap";
 import AddCategory from "./AddCategory";
 import DeleteCategory from "./DeleteCategory";
 import EditCategory from "./EditCategory";
-// import AddOrganization from "./AddOrganization";
-// import DeleteOrganization from "./DeleteOrganization";
-// import EditOrganization from "./EditOrganization";
-// import MoreInfoOrganization from "./MoreInfoOrganization";
-// import "./style.css";
 
 function Organization({ categories }) {
   console.log(categories, "categories");
   return (
     <div style={{ marginLeft: "328px" }}>
       <div className="org_title">
-        <div className="org_title_txt">Կազմակերպություններ</div>
+        <div className="org_title_txt">Ոլորտներ</div>
         <div>
-          {/* <AddOrganization /> */}
           <AddCategory />
         </div>
       </div>
@@ -39,10 +33,8 @@ function Organization({ categories }) {
                   <td>{cat.name_arm}</td>
                   <td>{cat.name_eng}</td>
 
-                  <td
-                  //   style={{ display: "flex" }}
-                  >
-                    <div style={{ display: "flex" }}>
+                  <td>
+                    <div style={{ display: "flex", marginRight: "50px" }}>
                       <EditCategory cat={cat} />
                       <DeleteCategory cat={cat} />
                     </div>

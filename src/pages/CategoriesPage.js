@@ -46,7 +46,7 @@ function CategoriesPage() {
   }, []);
   // console.log(organizations, "organizationsorganizations");
   return (
-    <div>
+    <div style={{ position: "absolute", width: "100%" }}>
       <CategoryContext.Provider
         value={{
           categories,

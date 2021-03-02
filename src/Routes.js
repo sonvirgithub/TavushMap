@@ -12,6 +12,7 @@ import MainLayout from "./router/MainLayout";
 import HomePage from "./components/HomePage/HomePage";
 import OrganizationsPage from "./pages/OrganizationsPage";
 import CategoriesPage from "./pages/CategoriesPage";
+import SupportTypesPage from "./pages/SupportTypesPage";
 
 function Routes() {
   return (
@@ -41,6 +42,12 @@ function Routes() {
           exact
           layout={MainLayout}
           path="/category"
+        />
+        <RouteWithLayout
+          component={SupportTypesPage}
+          exact
+          layout={MainLayout}
+          path="/supportType"
         />
         <Redirect to="/login" />
       </Switch>
