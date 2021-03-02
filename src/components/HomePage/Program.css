@@ -1,0 +1,10 @@
+.org_title {
+    display: flex;
+    justify-content: space-between;
+  
+    padding: 40px;
+  }
+  .org_title_txt {
+    font-size: 26px;
+    color: #433f3f;
+  }

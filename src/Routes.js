@@ -9,10 +9,11 @@ import {
 import RouteWithLayout from "./router/RouteWithLayout";
 import LoginLayout from "./router/LoginLayout";
 import MainLayout from "./router/MainLayout";
-import HomePage from "./components/HomePage/HomePage";
+import HomePage from "./components/HomePage/Program";
 import OrganizationsPage from "./pages/OrganizationsPage";
 import CategoriesPage from "./pages/CategoriesPage";
 import SupportTypesPage from "./pages/SupportTypesPage";
+import Program from "./components/HomePage/Program";
 
 function Routes() {
   return (
@@ -26,10 +27,10 @@ function Routes() {
         />
 
         <RouteWithLayout
-          component={HomePage}
+          component={Program}
           exact
           layout={MainLayout}
-          path="/home"
+          path="/program"
         />
         <RouteWithLayout
           component={OrganizationsPage}
