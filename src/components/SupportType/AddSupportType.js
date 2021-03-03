@@ -1,37 +1,49 @@
-import React, { useState, useContext } from "react";
+import React, { useState, useContext, useEffect } from "react";
 import { Modal, Button, Form, FormLabel } from "react-bootstrap";
 import axios from "axios";
-// import { CategoryContext } from "../../pages/CategoriesPage";
+import { SupportContext } from "../../pages/SupportTypesPage";
 
-function AddSupportType() {
-  //   const categoryCont = useContext(CategoryContext);
+function AddSupportType({ categoryType }) {
+  console.log(categoryType, "categoryType");
+
+  const supportCont = useContext(SupportContext);
 
   const [show, setShow] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
-  const [category_arm, setCategoryArm] = useState("");
-  const [category_eng, setCategoryEng] = useState("");
+  const [support_eng, setSupportEng] = useState("");
+  const [support_arm, setSupportArm] = useState("");
+  const [categoryid, setCategoryId] = useState("");
+  const [categoryName, setCategoryName] = useState("");
 
-  // const [person, setPerson] = useState("");
+  useEffect(() => {
+    categoryType.map((type) => {
+      if (type.id == categoryid) {
+        setCategoryName(type.name_arm);
+      }
+    });
+  });
 
   const handleSubmit = (evt) => {
     console.log("object");
-    console.log(category_eng, category_arm);
+    console.log(support_eng, support_arm, categoryid, categoryName);
     axios
-      .post(`/api/addCategory`, {
-        category_eng,
-        category_arm,
+      .post(`/api/addSupport`, {
+        support_eng,
+        support_arm,
+        categoryid,
       })
       .then((response) => {
         console.log(response);
         if (response.data.success) {
-          //   const cat = {
-          //     id: response.data.id,
-          //     name_eng: category_eng,
-          //     name_arm: category_arm,
-          //   };
-          //   categoryCont.addCategory(cat);
+          const sup = {
+            supportid: response.data.id,
+            category_arm: categoryName,
+            support_eng: support_eng,
+            support_arm: support_arm,
+          };
+          supportCont.addSupport(sup);
           handleClose();
           console.log("Կատարված է");
         } else {
@@ -57,19 +69,40 @@ function AddSupportType() {
       <Modal show={show} onHide={handleClose}>
         <Modal.Body>
           <Form.Group onSubmit={handleSubmit}>
-            <FormLabel>Ոլորտի անվանումը (Հայերեն)</FormLabel>
+            <Form.Label>Ոլորտ</Form.Label>
+            <Form.Control
+              as="select"
+              onChange={(e) => setCategoryId(e.target.value)}
+            >
+              <option hidden value="">
+                Ոլորտ
+              </option>
+              {categoryType.length > 0 ? (
+                categoryType.map((cat) => (
+                  <option key={cat.id} value={cat.id}>
+                    {cat.name_arm}
+                  </option>
+                ))
+              ) : (
+                <option disabled selected value>
+                  Տվյաներ չկան
+                </option>
+              )}
+            </Form.Control>
+
+            <FormLabel>Աջակցության տեսակ (Հայերեն)</FormLabel>
             <Form.Control
               type="text"
-              placeholder="Ոլորտի անվանումը"
-              onChange={(e) => setCategoryArm(e.target.value)}
+              placeholder="Աջակցության տեսակ "
+              onChange={(e) => setSupportArm(e.target.value)}
             />
             <br />
-            <FormLabel>Ոլորտի անվանումը (Enlglish)</FormLabel>
+            <FormLabel>Աջակցության տեսակ (Enlglish)</FormLabel>
 
             <Form.Control
               type="text"
-              placeholder="Category name "
-              onChange={(e) => setCategoryEng(e.target.value)}
+              placeholder="Support type"
+              onChange={(e) => setSupportEng(e.target.value)}
             />
           </Form.Group>
         </Modal.Body>

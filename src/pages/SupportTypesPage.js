@@ -3,45 +3,59 @@ import Organization from "../components/Organization/Organization";
 import axios from "axios";
 import SupportType from "../components/SupportType/SupportType";
 
-// export const OrganizationContext = React.createContext();
+export const SupportContext = React.createContext();
+
 function SupportTypesPage() {
   const [supportTypes, setSupportTypes] = useState("");
+  const [categoryType, setCategoryType] = useState([]);
 
-  //   const addOrganization = (org) => {
-  //     organizations.push(org);
-  //     setOrganizations([...organizations]);
-  //   };
+  const addSupport = (sup) => {
+    supportTypes.push(sup);
+    setSupportTypes([...supportTypes]);
+  };
 
-  //   const editOrganization = (org) => {
-  //     organizations.map((organization) => {
-  //       if (organization.id == org.id) {
-  //         organization.name_eng = org.name_eng;
-  //         organization.name_arm = org.name_arm;
-  //         organization.person = org.person;
+  const editSupport = (sup) => {
+    categoryType.map((catType) => {
+      if (catType.id == sup.categoryid_new) {
+        supportTypes.map((supType) => {
+          supType.category_arm = catType.name_arm;
+        });
+      }
+    });
 
-  //         setOrganizations([...organizations]);
-  //       }
-  //     });
-  //   };
+    supportTypes.map((supType) => {
+      if (supType.supportid == sup.id) {
+        supType.support_eng = sup.support_eng;
+        supType.support_arm = sup.support_arm;
+        supType.categoryid = sup.categoryid_new;
+        // supType.category_arm = sup.ca;
 
-  //   const deleteOrganization = (id) => {
-  //     organizations.map((organization) => {
-  //       if (organization.id == id) {
-  //         const index = organizations.indexOf(organization);
-  //         organizations.splice(index, 1);
+        setSupportTypes([...supportTypes]);
+      }
+    });
+  };
 
-  //         setOrganizations([...organizations]);
-  //       }
-  //     });
-  //   };
+  const deleteSupport = (id) => {
+    supportTypes.map((supType) => {
+      if (supType.supportid == id) {
+        const index = supportTypes.indexOf(supType);
+        supportTypes.splice(index, 1);
+
+        setSupportTypes([...supportTypes]);
+      }
+    });
+  };
 
   //   console.log("object");
+
   useEffect(() => {
     const fetchData = async () => {
       console.log("object1");
       const result = await axios("api/supports");
       console.log(result);
       setSupportTypes(result.data.data);
+      const catresult = await axios("/api/categories");
+      setCategoryType(catresult.data.data);
     };
 
     fetchData();
@@ -49,18 +63,17 @@ function SupportTypesPage() {
   //   console.log(organizations, "organizationsorganizations");
   return (
     <div style={{ position: "absolute", width: "100%" }}>
-      {/* <OrganizationContext.Provider
+      <SupportContext.Provider
         value={{
-          organizations,
-          setOrganizations,
-          addOrganization,
-          deleteOrganization,
-          editOrganization,
+          supportTypes,
+          setSupportTypes,
+          addSupport,
+          deleteSupport,
+          editSupport,
         }}
       >
-        <Organization organizations={organizations} />
-      </OrganizationContext.Provider> */}
-      <SupportType supportTypes={supportTypes} />
+        <SupportType supportTypes={supportTypes} categoryType={categoryType} />
+      </SupportContext.Provider>
     </div>
   );
 }

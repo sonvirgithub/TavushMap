@@ -13,7 +13,11 @@ import HomePage from "./components/HomePage/Program";
 import OrganizationsPage from "./pages/OrganizationsPage";
 import CategoriesPage from "./pages/CategoriesPage";
 import SupportTypesPage from "./pages/SupportTypesPage";
-import ProgramsPage from "./pages/ProgramsPage";
+
+import Program from "./components/HomePage/Program";
+import SettingPage from "./pages/SettingPage";
+
+
 
 function Routes({ isLoggedIn }) {
     if (!isLoggedIn) {
@@ -46,6 +50,14 @@ function Routes({ isLoggedIn }) {
           layout={MainLayout}
           path="/supportType"
         />
+        <RouteWithLayout
+          component={SettingPage}
+          exact
+          layout={MainLayout}
+          path="/settings"
+        />
+       
+
         <Redirect to="/program" />
       </Switch>
     </>

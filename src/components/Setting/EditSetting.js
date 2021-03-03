@@ -1,48 +1,46 @@
 import React, { useState, useContext, useEffect } from "react";
-import { Modal, Button, Form } from "react-bootstrap";
+import { Modal, Button, Form, FormLabel } from "react-bootstrap";
 import axios from "axios";
-import { OrganizationContext } from "../../pages/OrganizationsPage";
+import { SettingContext } from "../../pages/SettingPage";
 
-function EditOrganization({ org }) {
-  const organizationCont = useContext(OrganizationContext);
+function EditSetting({ set }) {
+  console.log(set, "set");
+  const settingCont = useContext(SettingContext);
   const [show, setShow] = useState(false);
   const [id, setId] = useState("");
-  const [nameArm, setNameArm] = useState("");
-  const [nameEng, setNameEng] = useState("");
-  const [person, setPerson] = useState("");
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
 
   const newDataFunc = () => {
-    setId(org.id);
-    setNameArm(org.name_arm);
-    setNameEng(org.name_eng);
-    setPerson(org.person);
+    setId(set.id);
+    setFirstName(set.firstname);
+    setLastName(set.lastname);
   };
 
   useEffect(() => {
-    setId(org.id);
+    setId(set.id);
   }, []);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleSubmit = (evt) => {
+    console.log(id, firstName, lastName);
     axios
-      .put(`/api/editOrganization`, {
+      .put(`/api/editUserInfo`, {
         id,
-        nameArm,
-        nameEng,
-        person,
+        firstName,
+        lastName,
       })
       .then((response) => {
         console.log(response);
         if (response.data.success) {
-          const org = {
+          const user = {
             id: id,
-            name_eng: nameEng,
-            name_arm: nameArm,
-            person: person,
+            firstname: firstName,
+            lastname: lastName,
           };
           handleClose();
-          organizationCont.editOrganization(org);
+          settingCont.editUser(user);
           console.log("Կատարված է");
         } else {
           handleClose();
@@ -68,33 +66,30 @@ function EditOrganization({ org }) {
       </div>
 
       <Modal show={show} onHide={handleClose} animation={false}>
-        {/* <Modal.Header closeButton>
-          <Modal.Title>Խմբագրել</Modal.Title>
-        </Modal.Header> */}
+        {/* <Modal.Header closeButton> */}
+        {/* <Modal.Title>Փոխել անունը</Modal.Title> */}
+        {/* </Modal.Header> */}
         <Modal.Body>
+          <div>
+            <span style={{ color: "#05558F", fontSize: "22px" }}>
+              {" "}
+              Փոխել անունը
+            </span>
+          </div>
           <Form.Group onSubmit={handleSubmit}>
-            <Form.Label> Կազմակերպության անվանումը (Հայերեն)</Form.Label>
+            <FormLabel>Անուն</FormLabel>
             <Form.Control
               type="text"
-              placeholder=""
-              value={nameArm}
-              onChange={(e) => setNameArm(e.target.value)}
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
             />
             <br />
-            <Form.Label>Կազմակերպության անվանումը (Enlglish)</Form.Label>
+            <FormLabel>Ազգանուն</FormLabel>
+
             <Form.Control
               type="text"
-              placeholder=""
-              value={nameEng}
-              onChange={(e) => setNameEng(e.target.value)}
-            />
-            <br />
-            <Form.Label>Կոնտակտ անձ</Form.Label>
-            <Form.Control
-              type="text"
-              placeholder=""
-              value={person}
-              onChange={(e) => setPerson(e.target.value)}
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
             />
           </Form.Group>
         </Modal.Body>
@@ -117,4 +112,4 @@ function EditOrganization({ org }) {
   );
 }
 
-export default EditOrganization;
+export default EditSetting;

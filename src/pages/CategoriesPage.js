@@ -33,7 +33,6 @@ function CategoriesPage() {
     });
   };
 
-  //   console.log("object");
   useEffect(() => {
     const fetchData = async () => {
       console.log("object1");
@@ -44,7 +43,6 @@ function CategoriesPage() {
 
     fetchData();
   }, []);
-  // console.log(organizations, "organizationsorganizations");
   return (
     <div style={{ position: "absolute", width: "100%" }}>
       <CategoryContext.Provider

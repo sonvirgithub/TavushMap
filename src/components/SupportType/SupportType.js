@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from "react";
 import { Table } from "react-bootstrap";
 import AddSupportType from "./AddSupportType";
+import DeleteSupportType from "./DeleteSupportType";
+import EditSupportType from "./EditSupportType";
 
-function SupportType({ supportTypes }) {
+function SupportType({ supportTypes, categoryType }) {
   console.log(supportTypes, "supportTypes");
   return (
     <div style={{ marginLeft: "328px" }}>
       <div className="org_title">
         <div className="org_title_txt">Աջակցության տեսակներ</div>
         <div>
-          {/* <AddCategory /> */}
-          <AddSupportType />
+          <AddSupportType categoryType={categoryType} />
         </div>
       </div>
 
@@ -18,11 +19,12 @@ function SupportType({ supportTypes }) {
         <thead>
           <tr>
             <th>
-              Ոլորտ <span style={{ fontWeight: "400" }}>(Հայ)</span>
+              Ոլորտ
+              {/* <span style={{ fontWeight: "400" }}>(Հայ)</span> */}
             </th>
-            <th>
+            {/* <th>
               Ոլորտ <span style={{ fontWeight: "400" }}>(Անգլ)</span>{" "}
-            </th>
+            </th> */}
             <th>
               Աջակցության տեսակ <span style={{ fontWeight: "400" }}>(Հայ)</span>
             </th>
@@ -40,12 +42,19 @@ function SupportType({ supportTypes }) {
               return (
                 <tr key={supType.id}>
                   <td>{supType.category_arm}</td>
-                  <td>{supType.category_eng}</td>
+                  {/* <td>{supType.category_eng}</td> */}
                   <td>{supType.support_arm}</td>
                   <td>{supType.support_eng}</td>
 
                   <td>
-                    <div style={{ display: "flex" }}></div>
+                    <div style={{ display: "flex" }}>
+                      <EditSupportType
+                        supType={supType}
+                        categoryType={categoryType}
+                      />
+
+                      <DeleteSupportType supType={supType} />
+                    </div>
                   </td>
                 </tr>
               );

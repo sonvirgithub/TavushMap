@@ -2,11 +2,10 @@ import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Modal, Button } from "react-bootstrap";
 
-import { SupportContext } from "../../pages/SupportTypesPage";
+import { SettingContext } from "../../pages/SettingPage";
 
-function DeleteSupportType({ supType }) {
-  //   console.log(supType, "supType");
-  const supportCont = useContext(SupportContext);
+function DeleteSetting({ set }) {
+  const settingCont = useContext(SettingContext);
 
   const [show, setShow] = useState(false);
   const [id, setId] = useState("");
@@ -15,30 +14,30 @@ function DeleteSupportType({ supType }) {
   const handleShow = () => setShow(true);
 
   useEffect(() => {
-    setId(supType.supportid);
+    setId(set.id);
   }, []);
 
   const handleSubmit = (evt) => {
     console.log(id);
     axios
-      .delete(`api/deleteSupport/${id}`)
+      .delete(`api/deleteUser/${id}`)
       .then((response) => {
         console.log(response);
         if (response.data.success) {
-          supportCont.deleteSupport(id);
-          console.log("Կատարված է");
+          settingCont.deleteUser(id);
+          //   toast.success("Կատարված է");
         } else {
-          console.log(response.data.errorMessage);
+          //   toast.error(response.data.errorMessage);
         }
       })
       .catch((e) => {
-        console.log("Կատարված չէ");
+        // toast.error("Կատարված չէ");
       });
   };
 
   return (
     <>
-      <div style={{ marginLeft: "5px" }} onClick={handleShow}>
+      <div style={{ marginRight: "15px" }} onClick={handleShow}>
         <img
           className="org_icon"
           src={require("../../img/remove.svg").default}
@@ -50,8 +49,8 @@ function DeleteSupportType({ supType }) {
           <Modal.Title>Համոզվա՞ծ եք</Modal.Title>
         </Modal.Header> */}
         <Modal.Body>
-          Դուք ցանկանում եք հեռացնել{" "}
-          <span style={{ fontWeight: "600" }}>{supType.support_arm}</span>{" "}
+          Դուք ցանկանում եք հեռացնել
+          {/* {cat.name_arm} */}
           կազմակերպությունը
         </Modal.Body>
         <Modal.Footer>
@@ -73,4 +72,4 @@ function DeleteSupportType({ supType }) {
   );
 }
 
-export default DeleteSupportType;
+export default DeleteSetting;
