@@ -14,6 +14,7 @@ import OrganizationsPage from "./pages/OrganizationsPage";
 import CategoriesPage from "./pages/CategoriesPage";
 import SupportTypesPage from "./pages/SupportTypesPage";
 import Program from "./components/HomePage/Program";
+import SettingPage from "./pages/SettingPage";
 
 function Routes() {
   return (
@@ -49,6 +50,12 @@ function Routes() {
           exact
           layout={MainLayout}
           path="/supportType"
+        />
+        <RouteWithLayout
+          component={SettingPage}
+          exact
+          layout={MainLayout}
+          path="/settings"
         />
         <Redirect to="/login" />
       </Switch>
