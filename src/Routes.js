@@ -14,9 +14,8 @@ import OrganizationsPage from "./pages/OrganizationsPage";
 import CategoriesPage from "./pages/CategoriesPage";
 import SupportTypesPage from "./pages/SupportTypesPage";
 
-import Program from "./components/HomePage/Program";
+import ProgramsPage from "./pages/ProgramsPage";
 import SettingPage from "./pages/SettingPage";
-
 
 
 function Routes({ isLoggedIn }) {
