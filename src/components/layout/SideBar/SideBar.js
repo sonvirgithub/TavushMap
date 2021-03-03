@@ -56,6 +56,7 @@ function Sidebar() {
         if (res.status == 200) {
 
             history.push("/login")
+            window.location.reload()
             // console.log(await res.json());
 
         } else {

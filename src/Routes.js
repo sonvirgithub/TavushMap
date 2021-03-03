@@ -13,21 +13,17 @@ import HomePage from "./components/HomePage/Program";
 import OrganizationsPage from "./pages/OrganizationsPage";
 import CategoriesPage from "./pages/CategoriesPage";
 import SupportTypesPage from "./pages/SupportTypesPage";
-import Program from "./components/HomePage/Program";
+import ProgramsPage from "./pages/ProgramsPage";
 
-function Routes() {
+function Routes({ isLoggedIn }) {
+    if (!isLoggedIn) {
+      console.log(isLoggedIn);
   return (
     <>
       <Switch>
-        <RouteWithLayout
-          component={Login}
-          exact
-          layout={LoginLayout}
-          path="/login"
-        />
 
         <RouteWithLayout
-          component={Program}
+          component={ProgramsPage}
           exact
           layout={MainLayout}
           path="/program"
@@ -50,10 +46,24 @@ function Routes() {
           layout={MainLayout}
           path="/supportType"
         />
-        <Redirect to="/login" />
+        <Redirect to="/program" />
       </Switch>
     </>
   );
-}
+}  else {
 
+    return (
+      <Switch>
+        <RouteWithLayout
+          component={Login}
+          exact
+          layout={LoginLayout}
+          path="/login"
+        />
+       
+        <Redirect to="/login" />
+      </Switch>
+    );
+  }
+}
 export default Routes;
