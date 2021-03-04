@@ -47,7 +47,9 @@ function SupportType({ supportTypes, categoryType }) {
                   <td>{supType.support_eng}</td>
 
                   <td>
-                    <div style={{ display: "flex" }}>
+                    <div
+                      style={{ display: "flex", justifyContent: "flex-end" }}
+                    >
                       <EditSupportType
                         supType={supType}
                         categoryType={categoryType}

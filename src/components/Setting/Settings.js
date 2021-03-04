@@ -35,7 +35,9 @@ function Settings({ settings }) {
                   <td>{set.email}</td>
 
                   <td>
-                    <div style={{ display: "flex", marginRight: "50px" }}>
+                    <div
+                      style={{ display: "flex", justifyContent: "flex-end" }}
+                    >
                       <EditSetting set={set} />
                       <DeleteSetting set={set} />
                     </div>

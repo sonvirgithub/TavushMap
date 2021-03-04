@@ -38,7 +38,9 @@ function Organization({ categories }) {
                   <td>{cat.name_eng}</td>
 
                   <td>
-                    <div style={{ display: "flex", marginRight: "50px" }}>
+                    <div
+                      style={{ display: "flex", justifyContent: "flex-end" }}
+                    >
                       <EditCategory cat={cat} />
                       <DeleteCategory cat={cat} />
                     </div>

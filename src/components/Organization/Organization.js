@@ -47,7 +47,9 @@ function Organization({ organizations }) {
                   <td
                   //   style={{ display: "flex" }}
                   >
-                    <div style={{ display: "flex", marginRight: "32px" }}>
+                    <div
+                      style={{ display: "flex", justifyContent: "flex-end" }}
+                    >
                       {/* <MoreInfoOrganization org={org} /> */}
                       <EditOrganization org={org} />
                       <DeleteOrganization org={org} />
