@@ -1,6 +1,8 @@
-import React, { useState, useEffect, createContext, useContext } from 'react'
+import React, { useState, useEffect } from 'react'
 import './Login.css'
 import { Route, useHistory } from 'react-router-dom';
+import { toast } from "react-toastify";
+
 
 
 function Login() {
@@ -10,12 +12,15 @@ function Login() {
     const [changeColorEmailLabel, setChangeColorEmailLabel] = useState('black_email_address_label')
     const [changeColorEmailInput, setChangeColorEmailInput] = useState('black_email_address_input')
     const [eyeVisible, setEyeVisible] = useState('password')
+    const [isDisabled, setDisable] = useState(true);
 
-
-    const history = useHistory()
-
-
+    const history = useHistory() 
+     
     async function log_in() {
+
+        if (email == "" && password == "") {
+            setDisable(true);
+          }
 
         let body = { email, password }
         setEmail('')
@@ -31,18 +36,14 @@ function Login() {
 
         console.log(res.status);
         if (res.status == 200) {
-
             // console.log(res.json());
+            //let data = await res.json()
 
-            let data = await res.json()
+           // console.log(data);
+           console.log("aaaaaaa");
 
-            console.log(data);
-
-
-            history.push('/home')
-
-
-
+            //history.push('/program')
+            window.location.reload()
         } else {
 
             setIncorrect(false)
@@ -115,5 +116,10 @@ function Login() {
         </div>
     )
 }
+const mapStateToProps = (state) => {
+    return {
+      isLoggedIn: state.isLoggedIn,
+    };
+  };
 
 export default Login

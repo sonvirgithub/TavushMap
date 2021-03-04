@@ -50,23 +50,25 @@ function Sidebar() {
       let data = await res.json();
       console.log(data);
     }
-  }
 
-  const history = useHistory();
+    const history = useHistory();
 
-  async function log_out() {
-    const headers = {};
-    headers["Content-Type"] = "application/json";
-    const res = await fetch("/logout", {
-      method: "GET",
-      headers,
-    });
+    async function log_out() {
+      const headers = {};
+      headers["Content-Type"] = "application/json";
+      const res = await fetch("/logout", {
+        method: "GET",
+        headers,
+      });
 
-    if (res.status == 200) {
-      history.push("/login");
-      // console.log(await res.json());
-    } else {
-      console.log("data chka");
+      if (res.status == 200) {
+        history.push("/login");
+        window.location.reload();
+        // console.log(await res.json());
+      } else {
+        console.log("data chka");
+      }
+      // window.location.reload()
     }
     // window.location.reload()
   }
