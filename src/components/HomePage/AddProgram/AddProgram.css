@@ -120,29 +120,51 @@ margin-left: -310px;
     }
 
     .end_date_label {
-        display: inline;
-        margin-top: -30px;
-        margin-bottom: 5px;
-        width: 50px;
-        margin-right: 225px;
-        float: right;
+           /* display: inline; */
+    margin-top: 20px;
+    margin-bottom: -50px;
+    width: 50px;
+    margin-right: 155px;
+    float: right;
     }
 
 .start_date_label {
-        display: inline-block;
-        margin-top: 20px;
-        margin-bottom: 5px;
-        width: 50px;
-        float: left;
-        margin-top: -30px;
-        margin-left: 105px;
+       /* display: flex; */
+       margin-top: 20px;
+       margin-bottom: -50px;
+       width: 50px;
+       float: left;
+       margin-top: 20px;
+       margin-left: 55px
+}
+.dateEnd {
+        display: flex;
+        width: 150px;
+        border: 1px solid #C4C4C4;
+        box-sizing: border-box;
+        border-radius: 4px;
+        padding: 15px;
+
+    
+}
+
+.dateStart {
+    width: 150px;
+    margin-left: 50px;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 4px;
+    padding: 15px;
+
 }
 
 .end_date_input {
-    width: 170px;
-    /* display: block; */
-    margin-left: 296px;
-        margin-top: -46px;
+       display: flex;
+    margin-top: 20px;
+    /* margin-bottom: -80px; */
+    width: 50px;
+    margin-left: 25px;
+    
 }
 
 .start_date_input {
@@ -157,13 +179,6 @@ margin-left: -310px;
     margin-top: 20px;
 }
 
-
-
-.volort_arm {
-    margin-top: 20px;
-    margin-bottom: 5px;
-    margin-left: -260px;
-}
 
 .support_type {
     margin-top: 20px;
@@ -214,28 +229,14 @@ background: #C4C4C4;
 border: none;
 }
 
-.multiselect {
-    width: 361px;
-    margin-left: 105px;
-  }
-  
-  .selectBox {
-    position: relative;
-  }
-  
-  .selectBox select {
-    width: 100%;
-  
-  }
-  
-  .overSelect {
-    position: absolute;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-  }
-  
+.checkbox {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    margin-top: 20px;
+    display: flex;
+}
+
   .checkboxesNone {
     display: none;
     border: 1px #dadada solid;
@@ -257,37 +258,28 @@ border: none;
     display: block;
   }
 
-  .support_placholder {
- 
-    font-size: 16px;
-    font-style: normal;
-    font-weight: 500;
-    line-height: 24px;
-    letter-spacing: 0em;
-    text-align: left;
-    color: rgba(196, 196, 196, 1);
-    
-  }
-  .selectBox select {
-    width: 360px;
-    
-}
+  
 
-.map {
-    width: 100%;
-    margin-top: 30px;
-    height: 500px;
-    position: relative;
-    }
-    
     .NestedSelect {
-    position: absolute;
-    z-index: 1;
-    height: 358px;
-    overflow-y: scroll;
-    height: auto;
+        z-index: 1;
+        height: 140px;
+        overflow-y: scroll;
+        width: 360px;
+        margin-left: 105px;
+        background: #FAFAFA;
+        box-shadow: 0px 18px 20px -10px rgba(196, 196, 196, 0.82);
+border-radius: 4px;
     }
-    
+
+    .select_status{
+        z-index: 1;
+        height: 100px;
+        width: 10px;
+        margin-left: 105px;
+        background: #FAFAFA;
+        box-shadow: 0px 18px 20px -10px rgba(196, 196, 196, 0.82);
+        border-radius: 4px;
+    }
     .btnSupport {
         width: 360px;
     height: 50px;
@@ -298,192 +290,298 @@ border: none;
     margin-top: 50px;
     }
     
-    .btnSupport:active,
-    .btnSupport:focus {
-    border: 1px solid #2a8cd3 !important;
-    color: #05558f !important;
-    }
-    
-    .support {
-    width: 200px;
-    margin-top: 70px;
-    font-family: Mardoto;
-    font-style: normal;
-    font-weight: 500;
-    font-size: 18px;
-    line-height: 30px;
-    margin-right: 115px;
-    }
     
     .li {
-    width: 170px;
-    cursor: pointer;
-    padding: 5px;
-    margin-left: 25px;
+        width: 308px;
+        cursor: pointer;
+        padding-left: 50px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+        display: flex;
     }
     
-    .ul {
-    padding-top: 25px;
-    padding-bottom: 25px;
-    padding-left: 20px;
-    padding-right: 30px;
+
+    /* .li:hover {
+        background: #A4C2D8;;
+    } */
+   .select_li {
+    background: #A4C2D8;;
     cursor: pointer;
+        margin-left: 50px;
+        display: flex;
+   }
+    
+    .ul {
+        padding-bottom: 10px;
+        padding-left: 20px;
+        padding-right: 30px;
+        height: 150px;
+      
     }
     
     .list {
-    width: 270px;
-    margin-top: -16px;
+        margin-top: -16px;
     margin-left: -2px;
     box-shadow: 0px 18px 20px -10px rgb(196 196 196 / 82%);
     border-radius: 4px;
     background-color: #fafafa;
     }
     
-    .checkbox {
-    cursor: pointer;
+    dl, ol, ul {
+        margin-bottom: 0rem;
     }
-    
-    .icon {
-    cursor: pointer;
-    }
-    /*
-    #select {
-    display: none;
-    }
-    
-    #btnSelect:focus ~ #select {
-    display: block;
-    } */
-    
-    .arrow {
-    margin-right: -15px;
-    margin-left: 8px;
-    }
-    
-    .filters {
-    display: flex;
-    justify-content: space-between;
-    padding-top: 50px;
-    padding-left: 345px;
-    }
-    
-    .lng {
-    width: 57px !important;
-    }
-    
-    .community,
-    .supports,
-    .status {
-    padding-left: 20px;
-    padding-right: 20px;
-    }
-    
-    .language {
-    padding-left: 20px;
-    padding-right: 70px;
-    }
-    
-    .stat {
-    width: 188px !important;
-    }
-    
-    .st {
-    width: 192px;
-    margin-top: -16px;
-    margin-left: -2px;
-    box-shadow: 0px 18px 20px -10px rgb(196 196 196 / 82%);
-    border-radius: 4px;
-    background-color: #fafafa;
-    }
-    
-    .lis {
-    width: 170px;
-    cursor: pointer;
-    padding: 5px;
-    display: block;
-    margin-left: 15px;
-    }
-    
-    .uls {
-    padding-left: 0px;
-    cursor: pointer;
-    }
-    
-    /* #selects {
-    display: none;
-    }
-    
-    #btnSt:focus ~ #selects {
-    display: block;
-    } */
-    
-    .filter_map {
-    position: relative;
-    }
-    
-    .balloon {
-    width: 300px;
-    height: 92%;
-    z-index: 1;
-    position: absolute;
-    background-color: white;
-    padding: 20px;
-    }
-    
-    .balloon_header {
-    font-family: Mardoto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 28px;
-    line-height: 42px;
-    color: #433f3f;
-    }
-    
-    .balloon_content {
-    margin-top: 40px;
-    }
-    
-    .text {
-    margin-left: 20px;
-    font-family: Mardoto;
-    font-style: normal;
-    font-weight: normal;
-    font-size: 18px;
-    color: #433f3f;
-    }
-    
-    .img {
-    height: 20px;
-    width: 20px;
-    }
-    
-    .row {
-    display: flex;
-    padding-top: 12px;
-    }
-    
-    .header {
-    display: flex;
-    }
-    
+   
+
     .li1 {
-    width: 215px;
-    cursor: pointer;
-    padding: 15px;
-    display: block;
+        cursor: pointer;
+        /* padding: 15px; */
+        display: flex;
+        /* width: 345px; */
+        padding-top: 15px;
+        padding-bottom: 5px;
+        /* padding-right: 250px; */
+        padding-left: 20px;
+        font-style: normal;
+        font-weight: 500;
+        
+        line-height: 27px;
+        color: #433F3F;
     }
     
     .city {
-    margin-top: 0px !important;
-    width: 245px !important;
+        width: 345px;
+        /* display: flex; */
+        margin-top: 0px !important;
     }
     
-    .statusSelect {
-    position: absolute;
-    z-index: 1;
-    }
+    
     
     .arrowSelect {
     float: right;
-    margin-top: 10px;
+    margin-top: -13px;
+    cursor: pointer;
     }
+
+
+    .cities {
+        margin-top: 20px;
+        margin-left: -290px;
+        margin-bottom: 5px;
+    }
+
+    .btnSities {
+        display: flex;
+        margin-left: 20px;
+        width: 360px;
+        height: 50px;
+        margin-left: 105px;
+        border: 1px solid #C4C4C4;
+        box-sizing: border-box;
+        border-radius: 4px;
+        background: #FFFFFF;
+        font-style: normal;
+        font-weight: normal;
+        font-size: 16px;
+        line-height: 24px;
+        cursor: pointer;
+        color: #433F3F;
+    }
+
+    
+    .arrow_icon {
+        float: right;
+    margin-top: -30px;
+    margin-right: 120px;
+    cursor: pointer;
+    }
+
+    .li1:hover {
+        background: #A4C2D8;
+    }
+
+.label_city {
+       
+        border: none;
+        padding-top: 10px;
+        padding: 10px;
+        }
+
+ .nested{
+    overflow-y: scroll;
+    height: 250px;
+    width: 360px;
+    margin-left: 105px;
+    border-radius: 4px;
+    box-shadow: 0px 18px 20px -10px rgba(196, 196, 196, 0.82);
+
+        }
+        .btnSities:focus {
+            border: 2px solid #A4C2D8 ;
+            outline: 2px !important;
+        }
+        
+        
+.supportList{
+   display: flex;
+}
+
+.support_types {
+    background: #FAFAFA;
+}
+
+.category_name{
+    margin-top: -38px;
+    display: flex;
+    margin-left: 30px;
+    font-weight: 500;
+}
+
+.react-datepicker__input-container {
+   
+    width: 150px;
+    height: 48px;
+    margin-top: 50px;
+    /* padding-top: 50px; */
+    margin-left: -95px
+}
+
+.react-datepicker__day--selected, .react-datepicker__day--in-selecting-range, .react-datepicker__day--in-range, .react-datepicker__month-text--selected, .react-datepicker__month-text--in-selecting-range, .react-datepicker__month-text--in-range, .react-datepicker__quarter-text--selected, .react-datepicker__quarter-text--in-selecting-range, .react-datepicker__quarter-text--in-range, .react-datepicker__year-text--selected, .react-datepicker__year-text--in-selecting-range, .react-datepicker__year-text--in-range {
+    border-radius: 0.9rem  !important;
+    background-color:   #05558F  !important;
+    color: #fff;
+}
+.react-datepicker {
+   
+    color: #000;
+    border: 1px solid #aeaeae;
+    display: inline-block;
+    background: #FFFFFF;
+    font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
+    font-size: 0.8rem;
+    background-color: #fff;
+    color: #000;
+    border: 1px solid #aeaeae;
+    border-radius: 0.3rem;
+    display: inline-block;
+    position: relative;
+    margin-left: 0px;
+    margin-top: -8px;
+    
+}
+
+
+.react-datepicker-ignore-onclickoutside {
+    font-family: inherit;
+    font-size: inherit;
+    line-height: inherit;
+    height: 50px;
+    border: 1px solid #C4C4C4;
+    box-sizing: border-box;
+    border-radius: 4px;
+    width: 150px;
+}
+
+input {
+    height: 50px;
+}
+
+
+.display_flex {
+    display: flex;
+    
+}
+
+
+.react-datepicker__current-month, .react-datepicker-time__header, .react-datepicker-year-header {
+    margin-top: 0;
+    font-weight: bold;
+    font-size: 0.944rem;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 28px;
+    color: #05558F;
+    justify-content: left;
+    padding-top: 15px;
+    padding-left: 25px;
+}
+
+.react-datepicker__header {
+    text-align: center;
+     border-bottom: none !important;
+     border-top-left-radius: none !important;
+    padding-top: 8px;
+    position: relative;
+    background: #FFFFFF !important;
+}
+
+.react-datepicker__navigation--previous {
+    margin-left: 180px;
+    border-right-color: #ccc;
+}
+
+.react-datepicker-popper[data-placement^="top"] {
+    margin-top: 100px ;
+    margin-bottom: 0px !important;
+}
+.react-datepicker__current-month {
+    margin-top: 0;
+    font-weight: bold;
+    font-size: 0.944rem;
+    /* font-family: Roboto; */
+    font-style: normal;
+    font-weight: bold;
+    font-size: 18px;
+    line-height: 28px;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #05558F !important;
+}
+.react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle, .react-datepicker-popper[data-placement^="top"] .react-datepicker__triangle, .react-datepicker__year-read-view--down-arrow, .react-datepicker__month-read-view--down-arrow, .react-datepicker__month-year-read-view--down-arrow, .react-datepicker-popper[data-placement^="bottom"] .react-datepicker__triangle::before, .react-datepicker-popper[data-placement^="top"] .react-datepicker__triangle::before, .react-datepicker__year-read-view--down-arrow::before, .react-datepicker__month-read-view--down-arrow::before, .react-datepicker__month-year-read-view--down-arrow::before {
+    box-sizing: content-box;
+    position: absolute;
+    border: none !important;
+    height: 0;
+    width: 1px;
+}
+
+
+.radio1 {
+float: left;
+margin-top: 4px;
+}
+
+.radio2 {
+    float: left;
+    margin-top: 4px;
+  
+}
+.radio {
+    display: flex;
+    padding-left: 10px;
+}
+
+.isDonor {
+    margin-left: 107px;
+    /* padding: 10px; */
+    display: flex;
+    margin-top: -10px;
+}
+
+.donor_label {
+    margin-top: 20px;
+    margin-left: -310px;
+}
+
+.donor {
+display: block;
+}
+
+.start {
+margin-left: 50px;
+}
+
+.end {
+
+}

@@ -19,7 +19,7 @@ import SettingPage from "./pages/SettingPage";
 
 
 function Routes({ isLoggedIn }) {
-    if (isLoggedIn) {
+    if (!isLoggedIn) {
       console.log(isLoggedIn);
   return (
     <>

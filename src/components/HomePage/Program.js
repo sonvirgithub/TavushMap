@@ -48,8 +48,7 @@ function Program({programs}) {
                   <td>{prog.manager_arm}</td>
                     <td>
                     <div style={{ display: "flex" }}>
-                      {/* <MoreInfoOrganization org={org} /> */}
-                      {/* <EditOrganization prog={prog} /> */}
+                       <EditProgram prog={prog} />
                       <DeleteProgram prog={prog} /> 
                      </div>
                   </td>
