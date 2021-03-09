@@ -43,6 +43,7 @@ function Program({ setProgramId, programs, showResults, setShowResults }) {
                     <td>{prog.status_arm}</td>
                     <td>{prog.manager_arm}</td>
                     <td>
+
                       <div style={{ display: "flex" }}>
                         {/* <MoreInfoOrganization org={org} /> */}
                         {/* <EditOrganization prog={prog} /> */}
@@ -67,6 +68,7 @@ function Program({ setProgramId, programs, showResults, setShowResults }) {
           </tbody>
         </table>
       </div>
+
     </div>
   );
 }

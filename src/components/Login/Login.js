@@ -74,6 +74,7 @@ function Login() {
 
 
         <div className="App">
+            <div className="log">
             <div>
                 <label className='title_login' >Մուտք</label>
             </div>
@@ -112,7 +113,7 @@ function Login() {
             <div>
                 <button className='log_in ' onClick={log_in}><strong>ՄՈՒՏՔ ԳՈՐԾԵԼ</strong></button>
             </div>
-
+            </div>
         </div>
     )
 }

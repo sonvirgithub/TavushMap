@@ -14,7 +14,7 @@ import OrganizationsPage from "./pages/OrganizationsPage";
 import CategoriesPage from "./pages/CategoriesPage";
 import SupportTypesPage from "./pages/SupportTypesPage";
 
-import Program from "./components/HomePage/Program";
+import ProgramsPage from "./pages/ProgramsPage";
 import SettingPage from "./pages/SettingPage";
 import ProgramsPage from "./pages/ProgramsPage";
 import SideBar from "./components/layout/SideBar/SideBar";
@@ -139,6 +139,8 @@ function Routes({
       </>
     );
   } else {
+
+
     return (
       <Switch>
         <Route exact path="/login" render={() => <Login />} />

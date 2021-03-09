@@ -116,14 +116,14 @@ padding: 30px
 .password {
     display: block;
     margin-top: 40px;
-    margin-left: 500px;
+    
 
 }
 
 .email {
     display: block;
     margin-top: 50px;
-    margin-left: 500px;
+    
     
 }
 
@@ -135,7 +135,7 @@ padding: 30px
     border: 1px solid  rgba(5, 85, 143, 1);
     background: rgba(5, 85, 143, 1);
     color: white;
-    margin-left: 500px;
+   
     margin-top: 30px;
 }
 
@@ -147,7 +147,6 @@ padding: 30px
     line-height: 24px;
     letter-spacing: 0em;
     text-align: left;
-    margin-left: 625px;
     margin-top: 50px;
 
 
@@ -281,6 +280,10 @@ input:focus {
 }
   
 
-   
+   .log {
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
+   }
    
    
