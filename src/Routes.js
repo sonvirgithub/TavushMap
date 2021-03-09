@@ -16,7 +16,6 @@ import SupportTypesPage from "./pages/SupportTypesPage";
 
 import ProgramsPage from "./pages/ProgramsPage";
 import SettingPage from "./pages/SettingPage";
-import ProgramsPage from "./pages/ProgramsPage";
 import SideBar from "./components/layout/SideBar/SideBar";
 import MoreInfo from "./components/HomePage/MoreInfo";
 
@@ -44,8 +43,8 @@ function Routes({
             programsList={programsList}
           />
         ) : (
-          <SideBar />
-        )}
+            <SideBar />
+          )}
         <Switch>
           {/* <RouteWithLayout
             component={ProgramsPage}
