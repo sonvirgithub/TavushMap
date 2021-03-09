@@ -3,6 +3,7 @@ import { Modal, Button, Form } from "react-bootstrap";
 import axios from "axios";
 import { ProgramContext } from "../../pages/ProgramsPage";
 
+
 function EditProgram({ prog }) {
   const programCont = useContext(ProgramContext);
   const [show, setShow] = useState(false);
@@ -46,9 +47,44 @@ function EditProgram({ prog }) {
 
   };
 
-  useEffect(() => {
-    setId(prog.id);
-  }, []);
+
+  // useEffect(() => {
+  //   setId(prog.id);
+  // }, []);
+
+
+  // const handleClose = () => setShow(false);
+  // const handleShow = () => setShow(true);
+  // const handleSubmit = (evt) => {
+  //   axios
+  //     .put(`/api/editProgram`, {
+  //       id,
+  //       nameArm,
+  //       nameEng,
+  //       person,
+  //     })
+  //     .then((response) => {
+  //       console.log(response);
+  //       if (response.data.success) {
+  //         const org = {
+  //           id: id,
+  //           name_eng: nameEng,
+  //           name_arm: nameArm,
+  //           person: person,
+  //         };
+  //         handleClose();
+  //         organizationCont.editOrganization(org);
+  //         console.log("Կատարված է");
+  //       } else {
+  //         handleClose();
+  //         console.log(response.data.errorMessage);
+  //       }
+  //     })
+  //     .catch((e) => {
+  //       handleClose();
+  //       console.log("error");
+  //     });
+  // };
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -109,9 +145,10 @@ function EditProgram({ prog }) {
       });
   };
 
+
   return (
     <>
-      <div
+      {/* <div
         variant="primary"
         onClick={() => {
           handleShow();
@@ -121,11 +158,11 @@ function EditProgram({ prog }) {
         <img className="org_icon" src={require("../../img/edit.svg").default} />
       </div>
 
-      <Modal show={show} onHide={handleClose} animation={false}>
-        {/* <Modal.Header closeButton>
+      <Modal show={show} onHide={handleClose} animation={false}> */}
+      {/* <Modal.Header closeButton>
           <Modal.Title>Խմբագրել</Modal.Title>
         </Modal.Header> */}
-        <Modal.Body>
+      {/* <Modal.Body>
           <Form.Group onSubmit={handleSubmit}>
            
           </Form.Group>
@@ -137,14 +174,15 @@ function EditProgram({ prog }) {
           <Button
             variant="primary"
             onClick={() => {
-              handleSubmit();
-              // handleClose();
-            }}
+              handleSubmit(); */}
+      {/* // handleClose(); */}
+      {/* }}
           >
             Հաստատել
           </Button>
         </Modal.Footer>
-      </Modal>
+      </Modal> */}
+      <div>lyyaa</div>
     </>
   );
 }

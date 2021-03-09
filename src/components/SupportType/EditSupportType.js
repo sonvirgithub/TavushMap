@@ -3,7 +3,12 @@ import { Modal, Button, Form } from "react-bootstrap";
 import axios from "axios";
 import { SupportContext } from "../../pages/SupportTypesPage";
 
-function EditSupportType({ supType, categoryType }) {
+function EditSupportType({
+  supType,
+  categoryType,
+  setSuccessPage,
+  setFailPage,
+}) {
   // const words = ['spray', 'limit', 'elite', 'exuberant', 'destruction', 'present'];
 
   const categoryTypesSelect = categoryType.filter(
@@ -57,9 +62,11 @@ function EditSupportType({ supType, categoryType }) {
           };
           handleClose();
           supportCont.editSupport(sup);
+          setSuccessPage(true);
           console.log("Կատարված է");
         } else {
           handleClose();
+          setFailPage(true);
           console.log(response.data.errorMessage);
         }
       })

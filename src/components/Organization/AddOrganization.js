@@ -2,11 +2,13 @@ import React, { useState, useContext } from "react";
 import { Modal, Button, Form, FormLabel } from "react-bootstrap";
 import axios from "axios";
 import { OrganizationContext } from "../../pages/OrganizationsPage";
+import SuccessPage from "../../pages/SuccessPage";
 
-function AddOrganization() {
+function AddOrganization({ successPage, setSuccessPage, setFailPage }) {
   const organizationCont = useContext(OrganizationContext);
 
   const [show, setShow] = useState(false);
+  // const [success, setSuccess] = useState(false);
 
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
@@ -34,10 +36,14 @@ function AddOrganization() {
             person: person,
           };
           organizationCont.addOrganization(org);
+          // setSuccess(true);
+          setSuccessPage(true);
+          // setSuccessPage(successPage);
           handleClose();
           console.log("Կատարված է");
         } else {
           handleClose();
+          setFailPage(true);
           console.log("Կատարված չէ");
         }
       })
@@ -47,6 +53,9 @@ function AddOrganization() {
       });
   };
 
+  // if (success) {
+  //   return <SuccessPage />;
+  // } else {
   return (
     <>
       <div
@@ -61,8 +70,8 @@ function AddOrganization() {
         </button>
       </div>
       {/* <Button variant="secondary" onClick={handleShow}>
-        Ավելացնել կազմակերպություն
-      </Button> */}
+          Ավելացնել կազմակերպություն
+        </Button> */}
 
       <Modal show={show} onHide={handleClose}>
         {/* <Modal.Header> */}
@@ -113,6 +122,7 @@ function AddOrganization() {
       </Modal>
     </>
   );
+  // }
 }
 
 export default AddOrganization;

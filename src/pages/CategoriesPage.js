@@ -3,7 +3,7 @@ import Categories from "../components/Category/Categories";
 import axios from "axios";
 
 export const CategoryContext = React.createContext();
-function CategoriesPage() {
+function CategoriesPage({ setSuccessPage, setFailPage }) {
   const [categories, setCategories] = useState("");
 
   const addCategory = (cat) => {
@@ -44,7 +44,12 @@ function CategoriesPage() {
     fetchData();
   }, []);
   return (
-    <div style={{ position: "absolute", width: "100%" }}>
+    <div
+      style={{
+        // position: "absolute",
+        width: "100%",
+      }}
+    >
       <CategoryContext.Provider
         value={{
           categories,
@@ -54,7 +59,11 @@ function CategoriesPage() {
           editCategory,
         }}
       >
-        <Categories categories={categories} />
+        <Categories
+          categories={categories}
+          setSuccessPage={setSuccessPage}
+          setFailPage={setFailPage}
+        />
       </CategoryContext.Provider>
     </div>
   );

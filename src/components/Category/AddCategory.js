@@ -3,7 +3,7 @@ import { Modal, Button, Form, FormLabel } from "react-bootstrap";
 import axios from "axios";
 import { CategoryContext } from "../../pages/CategoriesPage";
 
-function AddCategory() {
+function AddCategory({ setSuccessPage, setFailPage }) {
   const categoryCont = useContext(CategoryContext);
 
   const [show, setShow] = useState(false);
@@ -31,11 +31,13 @@ function AddCategory() {
             name_arm: category_arm,
           };
           categoryCont.addCategory(cat);
+          setSuccessPage(true);
           handleClose();
           console.log("Կատարված է");
         } else {
           handleClose();
           console.log("Կատարված չէ");
+          setFailPage(true);
         }
       })
       .catch((e) => {

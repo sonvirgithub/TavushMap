@@ -3,7 +3,7 @@ import Organization from "../components/Organization/Organization";
 import axios from "axios";
 
 export const OrganizationContext = React.createContext();
-function OrganizationsPage() {
+function OrganizationsPage({ setSuccessPage, successPage, setFailPage }) {
   const [organizations, setOrganizations] = useState("");
 
   const addOrganization = (org) => {
@@ -47,7 +47,12 @@ function OrganizationsPage() {
   }, []);
   console.log(organizations, "organizationsorganizations");
   return (
-    <div style={{ position: "absolute", width: "100%" }}>
+    <div
+      style={{
+        //  position: "absolute",
+        width: "100%",
+      }}
+    >
       <OrganizationContext.Provider
         value={{
           organizations,
@@ -57,7 +62,12 @@ function OrganizationsPage() {
           editOrganization,
         }}
       >
-        <Organization organizations={organizations} />
+        <Organization
+          organizations={organizations}
+          successPage={successPage}
+          setSuccessPage={setSuccessPage}
+          setFailPage={setFailPage}
+        />
       </OrganizationContext.Provider>
     </div>
   );

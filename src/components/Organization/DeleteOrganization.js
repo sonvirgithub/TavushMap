@@ -5,7 +5,7 @@ import { Modal, Button } from "react-bootstrap";
 // import "react-toastify/dist/ReactToastify.css";
 import { OrganizationContext } from "../../pages/OrganizationsPage";
 
-function DeleteOrganization({ org }) {
+function DeleteOrganization({ org, setSuccessPage, setFailPage }) {
   const organizationCont = useContext(OrganizationContext);
 
   const [show, setShow] = useState(false);
@@ -26,8 +26,10 @@ function DeleteOrganization({ org }) {
         console.log(response);
         if (response.data.success) {
           organizationCont.deleteOrganization(id);
+          setSuccessPage(true);
           //   toast.success("Կատարված է");
         } else {
+          setFailPage(true);
           //   toast.error(response.data.errorMessage);
         }
       })

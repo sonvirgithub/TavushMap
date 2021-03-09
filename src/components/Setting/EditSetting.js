@@ -3,7 +3,7 @@ import { Modal, Button, Form, FormLabel } from "react-bootstrap";
 import axios from "axios";
 import { SettingContext } from "../../pages/SettingPage";
 
-function EditSetting({ set }) {
+function EditSetting({ set, setSuccessPage, setFailPage }) {
   console.log(set, "set");
   const settingCont = useContext(SettingContext);
   const [show, setShow] = useState(false);
@@ -41,9 +41,11 @@ function EditSetting({ set }) {
           };
           handleClose();
           settingCont.editUser(user);
+          setSuccessPage(true);
           console.log("Կատարված է");
         } else {
           handleClose();
+          setFailPage(true);
           console.log(response.data.errorMessage);
         }
       })

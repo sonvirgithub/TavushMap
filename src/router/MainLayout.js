@@ -1,21 +1,18 @@
-import React from 'react'
-import SideBar from '../components/layout/SideBar/SideBar';
+import React from "react";
+import SideBar from "../components/layout/SideBar/SideBar";
 
-const MainLayout = props => {
-    const { children } = props;
+const MainLayout = (props) => {
+  const { children } = props;
 
-    return (
-        <div>
-  
+  return (
+    <div>
+      {/*   
             <main >
                 {children}
                 <SideBar />
-            </main>
-
-        </div>
-    );
+            </main> */}
+    </div>
+  );
 };
-
-
 
 export default MainLayout;

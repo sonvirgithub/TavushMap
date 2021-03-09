@@ -4,13 +4,16 @@ import AddSetting from "./AddSetting";
 import DeleteSetting from "./DeleteSetting";
 import EditSetting from "./EditSetting";
 
-function Settings({ settings }) {
+function Settings({ settings, setSuccessPage, setFailPage }) {
   return (
     <div style={{ marginLeft: "328px" }}>
       <div className="org_title">
         <div className="org_title_txt">Կարգավորումներ</div>
         <div>
-          <AddSetting />
+          <AddSetting
+            setSuccessPage={setSuccessPage}
+            setFailPage={setFailPage}
+          />
         </div>
       </div>
 
@@ -35,9 +38,19 @@ function Settings({ settings }) {
                   <td>{set.email}</td>
 
                   <td>
-                    <div style={{ display: "flex", marginRight: "50px" }}>
-                      <EditSetting set={set} />
-                      <DeleteSetting set={set} />
+                    <div
+                      style={{ display: "flex", justifyContent: "flex-end" }}
+                    >
+                      <EditSetting
+                        set={set}
+                        setSuccessPage={setSuccessPage}
+                        setFailPage={setFailPage}
+                      />
+                      <DeleteSetting
+                        set={set}
+                        setSuccessPage={setSuccessPage}
+                        setFailPage={setFailPage}
+                      />
                     </div>
                   </td>
                 </tr>

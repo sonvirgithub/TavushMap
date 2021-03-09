@@ -4,7 +4,7 @@ import { Modal, Button } from "react-bootstrap";
 
 import { SupportContext } from "../../pages/SupportTypesPage";
 
-function DeleteSupportType({ supType }) {
+function DeleteSupportType({ supType, setSuccessPage, setFailPage }) {
   //   console.log(supType, "supType");
   const supportCont = useContext(SupportContext);
 
@@ -26,9 +26,11 @@ function DeleteSupportType({ supType }) {
         console.log(response);
         if (response.data.success) {
           supportCont.deleteSupport(id);
+          setSuccessPage(true);
           console.log("Կատարված է");
         } else {
           console.log(response.data.errorMessage);
+          setFailPage(true);
         }
       })
       .catch((e) => {

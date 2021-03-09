@@ -3,7 +3,8 @@ import Program from "../components/HomePage/Program";
 import axios from "axios";
 
 export const ProgramContext = React.createContext();
-function ProgramsPage() {
+function ProgramsPage({ showResults, setShowResults, setProgramId }) {
+  console.log(showResults, "showResults program page");
   const [programs, setPrograms] = useState("");
 
   const addProgram = (prog) => {
@@ -36,20 +37,25 @@ function ProgramsPage() {
 
   //   console.log("object");
   useEffect(() => {
-    fetch('/api/programs')
-    .then(res => res.json())
-    .then(data => {
-      console.log(data.data);
-      setPrograms(data.data)
-
-    }).catch(err => {
-      console.log(err);
-    })
+    fetch("/api/programs")
+      .then((res) => res.json())
+      .then((data) => {
+        console.log(data.data);
+        setPrograms(data.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }, []);
 
   console.log(programs, "prrograms");
   return (
-    <div style={{ position: "absolute", width: "100%" }}>
+    <div
+      style={{
+        //  position: "absolute",
+        width: "100%",
+      }}
+    >
       <ProgramContext.Provider
         value={{
           programs,
@@ -59,7 +65,12 @@ function ProgramsPage() {
           editProgram,
         }}
       >
-        <Program programs={programs} />
+        <Program
+          setProgramId={setProgramId}
+          showResults={showResults}
+          programs={programs}
+          setShowResults={setShowResults}
+        />
       </ProgramContext.Provider>
     </div>
   );
