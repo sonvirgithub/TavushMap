@@ -4,7 +4,7 @@ import axios from "axios";
 import Settings from "../components/Setting/Settings";
 
 export const SettingContext = React.createContext();
-function SettingPage() {
+function SettingPage({ setSuccessPage, setFailPage }) {
   const [settings, setSettings] = useState("");
 
   const addUser = (user) => {
@@ -45,7 +45,12 @@ function SettingPage() {
     fetchData();
   }, []);
   return (
-    <div style={{ position: "absolute", width: "100%" }}>
+    <div
+      style={{
+        //  position: "absolute",
+        width: "100%",
+      }}
+    >
       <SettingContext.Provider
         value={{
           //   settings,
@@ -56,7 +61,11 @@ function SettingPage() {
           //   editCategory,
         }}
       >
-        <Settings settings={settings} />
+        <Settings
+          settings={settings}
+          setSuccessPage={setSuccessPage}
+          setFailPage={setFailPage}
+        />
       </SettingContext.Provider>
     </div>
   );

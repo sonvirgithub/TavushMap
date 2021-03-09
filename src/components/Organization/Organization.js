@@ -7,19 +7,33 @@ import MoreInfoOrganization from "./MoreInfoOrganization";
 import "./style.css";
 import axios from "axios";
 
-function Organization({ organizations }) {
+function Organization({
+  organizations,
+  setSuccessPage,
+  successPage,
+  setFailPage,
+}) {
   console.log(organizations, "organizations");
   return (
     <div style={{ marginLeft: "328px" }}>
       <div className="org_title">
         <div className="org_title_txt">Կազմակերպություններ</div>
         <div>
-          <AddOrganization />
+          <AddOrganization
+            successPage={successPage}
+            setSuccessPage={setSuccessPage}
+            setFailPage={setFailPage}
+          />
         </div>
       </div>
 
       <table style={{ width: "100%" }}>
-        <thead style={{ fontSize: "18px", fontWeight: "700" }}>
+        <thead
+          style={{
+            //  fontSize: "18px",
+            fontWeight: "700",
+          }}
+        >
           <tr>
             <th>
               Կազմակերպության անվանում{" "}
@@ -51,8 +65,16 @@ function Organization({ organizations }) {
                       style={{ display: "flex", justifyContent: "flex-end" }}
                     >
                       {/* <MoreInfoOrganization org={org} /> */}
-                      <EditOrganization org={org} />
-                      <DeleteOrganization org={org} />
+                      <EditOrganization
+                        setSuccessPage={setSuccessPage}
+                        org={org}
+                        setFailPage={setFailPage}
+                      />
+                      <DeleteOrganization
+                        setSuccessPage={setSuccessPage}
+                        org={org}
+                        setFailPage={setFailPage}
+                      />
                     </div>
                   </td>
                 </tr>

@@ -4,14 +4,17 @@ import AddCategory from "./AddCategory";
 import DeleteCategory from "./DeleteCategory";
 import EditCategory from "./EditCategory";
 
-function Organization({ categories }) {
+function Organization({ categories, setSuccessPage, setFailPage }) {
   console.log(categories, "categories");
   return (
     <div style={{ marginLeft: "328px" }}>
       <div className="org_title">
         <div className="org_title_txt">Ոլորտներ</div>
         <div>
-          <AddCategory />
+          <AddCategory
+            setSuccessPage={setSuccessPage}
+            setFailPage={setFailPage}
+          />
         </div>
       </div>
 
@@ -41,8 +44,16 @@ function Organization({ categories }) {
                     <div
                       style={{ display: "flex", justifyContent: "flex-end" }}
                     >
-                      <EditCategory cat={cat} />
-                      <DeleteCategory cat={cat} />
+                      <EditCategory
+                        cat={cat}
+                        setSuccessPage={setSuccessPage}
+                        setFailPage={setFailPage}
+                      />
+                      <DeleteCategory
+                        cat={cat}
+                        setSuccessPage={setSuccessPage}
+                        setFailPage={setFailPage}
+                      />
                     </div>
                   </td>
                 </tr>

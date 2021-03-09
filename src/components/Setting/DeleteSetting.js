@@ -4,7 +4,7 @@ import { Modal, Button } from "react-bootstrap";
 
 import { SettingContext } from "../../pages/SettingPage";
 
-function DeleteSetting({ set }) {
+function DeleteSetting({ set, setSuccessPage, setFailPage }) {
   const settingCont = useContext(SettingContext);
 
   const [show, setShow] = useState(false);
@@ -25,8 +25,10 @@ function DeleteSetting({ set }) {
         console.log(response);
         if (response.data.success) {
           settingCont.deleteUser(id);
+          setSuccessPage(true);
           //   toast.success("Կատարված է");
         } else {
+          setFailPage(true);
           //   toast.error(response.data.errorMessage);
         }
       })

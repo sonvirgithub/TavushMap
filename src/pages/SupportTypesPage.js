@@ -5,7 +5,7 @@ import SupportType from "../components/SupportType/SupportType";
 
 export const SupportContext = React.createContext();
 
-function SupportTypesPage() {
+function SupportTypesPage({ setSuccessPage, setFailPage }) {
   const [supportTypes, setSupportTypes] = useState("");
   const [categoryType, setCategoryType] = useState([]);
 
@@ -62,7 +62,12 @@ function SupportTypesPage() {
   }, []);
   //   console.log(organizations, "organizationsorganizations");
   return (
-    <div style={{ position: "absolute", width: "100%" }}>
+    <div
+      style={{
+        // position: "absolute",
+        width: "100%",
+      }}
+    >
       <SupportContext.Provider
         value={{
           supportTypes,
@@ -72,7 +77,12 @@ function SupportTypesPage() {
           editSupport,
         }}
       >
-        <SupportType supportTypes={supportTypes} categoryType={categoryType} />
+        <SupportType
+          supportTypes={supportTypes}
+          categoryType={categoryType}
+          setSuccessPage={setSuccessPage}
+          setFailPage={setFailPage}
+        />
       </SupportContext.Provider>
     </div>
   );

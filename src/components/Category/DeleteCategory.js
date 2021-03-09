@@ -5,7 +5,7 @@ import { Modal, Button } from "react-bootstrap";
 // import "react-toastify/dist/ReactToastify.css";
 import { CategoryContext } from "../../pages/CategoriesPage";
 
-function DeleteCategory({ cat }) {
+function DeleteCategory({ cat, setSuccessPage, setFailPage }) {
   const categoryCont = useContext(CategoryContext);
 
   const [show, setShow] = useState(false);
@@ -26,8 +26,9 @@ function DeleteCategory({ cat }) {
         console.log(response);
         if (response.data.success) {
           categoryCont.deleteCategory(id);
-          //   toast.success("Կատարված է");
+          setSuccessPage(true);
         } else {
+          setFailPage(true);
           //   toast.error(response.data.errorMessage);
         }
       })

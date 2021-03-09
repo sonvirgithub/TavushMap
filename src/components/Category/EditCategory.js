@@ -3,7 +3,7 @@ import { Modal, Button, Form, FormLabel } from "react-bootstrap";
 import axios from "axios";
 import { CategoryContext } from "../../pages/CategoriesPage";
 
-function EditCategory({ cat }) {
+function EditCategory({ cat, setSuccessPage, setFailPage }) {
   const categoryCont = useContext(CategoryContext);
   const [show, setShow] = useState(false);
   const [id, setId] = useState("");
@@ -39,9 +39,11 @@ function EditCategory({ cat }) {
           };
           handleClose();
           categoryCont.editCategory(cat);
+          setSuccessPage(true);
           console.log("Կատարված է");
         } else {
           handleClose();
+          setFailPage(true);
           console.log(response.data.errorMessage);
         }
       })

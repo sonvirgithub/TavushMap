@@ -51,7 +51,7 @@ function Sidebar() {
       console.log(data);
     }
 
-    const history = useHistory();
+    // const history = useHistory();
 
     async function log_out() {
       const headers = {};
@@ -62,7 +62,7 @@ function Sidebar() {
       });
 
       if (res.status == 200) {
-        history.push("/login");
+        // history.push("/login");
         window.location.reload();
         // console.log(await res.json());
       } else {
@@ -156,7 +156,10 @@ function Sidebar() {
       </div>
 
       <div className="logout">
-        <button className="btn_logout" onClick={log_out}>
+        <button
+          className="btn_logout"
+          //  onClick={log_out}
+        >
           Դուրս գալ{" "}
           <img
             src={require("./AdminIcons/logout.svg").default}

@@ -4,14 +4,23 @@ import AddSupportType from "./AddSupportType";
 import DeleteSupportType from "./DeleteSupportType";
 import EditSupportType from "./EditSupportType";
 
-function SupportType({ supportTypes, categoryType }) {
+function SupportType({
+  supportTypes,
+  categoryType,
+  setSuccessPage,
+  setFailPage,
+}) {
   console.log(supportTypes, "supportTypes");
   return (
     <div style={{ marginLeft: "328px" }}>
       <div className="org_title">
         <div className="org_title_txt">Աջակցության տեսակներ</div>
         <div>
-          <AddSupportType categoryType={categoryType} />
+          <AddSupportType
+            setSuccessPage={setSuccessPage}
+            categoryType={categoryType}
+            setFailPage={setFailPage}
+          />
         </div>
       </div>
 
@@ -53,9 +62,14 @@ function SupportType({ supportTypes, categoryType }) {
                       <EditSupportType
                         supType={supType}
                         categoryType={categoryType}
+                        setSuccessPage={setSuccessPage}
+                        setFailPage={setFailPage}
                       />
-
-                      <DeleteSupportType supType={supType} />
+                      <DeleteSupportType
+                        supType={supType}
+                        setSuccessPage={setSuccessPage}
+                        setFailPage={setFailPage}
+                      />
                     </div>
                   </td>
                 </tr>

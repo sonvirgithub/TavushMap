@@ -3,7 +3,7 @@ import { Modal, Button, Form, FormLabel } from "react-bootstrap";
 import axios from "axios";
 import { SettingContext } from "../../pages/SettingPage";
 
-function AddSetting() {
+function AddSetting({ setSuccessPage, setFailPage }) {
   const settingCont = useContext(SettingContext);
 
   const [show, setShow] = useState(false);
@@ -36,11 +36,13 @@ function AddSetting() {
             password,
           };
           settingCont.addUser(user);
+          setSuccessPage(true);
           handleClose();
           console.log("Կատարված է");
         } else {
           handleClose();
           console.log("Կատարված չէ");
+          setFailPage(true);
         }
       })
       .catch((e) => {

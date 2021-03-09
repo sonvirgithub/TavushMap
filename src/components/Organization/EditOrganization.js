@@ -3,7 +3,7 @@ import { Modal, Button, Form } from "react-bootstrap";
 import axios from "axios";
 import { OrganizationContext } from "../../pages/OrganizationsPage";
 
-function EditOrganization({ org }) {
+function EditOrganization({ org, setSuccessPage, setFailPage }) {
   const organizationCont = useContext(OrganizationContext);
   const [show, setShow] = useState(false);
   const [id, setId] = useState("");
@@ -43,9 +43,11 @@ function EditOrganization({ org }) {
           };
           handleClose();
           organizationCont.editOrganization(org);
+          setSuccessPage(true);
           console.log("Կատարված է");
         } else {
           handleClose();
+          setFailPage(true);
           console.log(response.data.errorMessage);
         }
       })
