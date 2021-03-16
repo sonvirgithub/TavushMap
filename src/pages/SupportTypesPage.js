@@ -50,9 +50,8 @@ function SupportTypesPage({ setSuccessPage, setFailPage }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log("object1");
       const result = await axios("api/supports");
-      console.log(result);
+     
       setSupportTypes(result.data.data);
       const catresult = await axios("/api/categories");
       setCategoryType(catresult.data.data);

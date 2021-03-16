@@ -15,8 +15,6 @@ function EditSupportType({
     (typeik) => typeik.id != supType.categoryid
   );
 
-  console.log(supType, "supType");
-  console.log(categoryType, "categoryType");
   const supportCont = useContext(SupportContext);
   const [show, setShow] = useState(false);
   const [id, setId] = useState("");
@@ -41,7 +39,6 @@ function EditSupportType({
   const handleShow = () => setShow(true);
 
   const handleSubmit = (evt) => {
-    console.log(id, support_eng, support_arm, categoryid_old, categoryid_new);
     axios
       .put(`/api/editSupport`, {
         id,
@@ -51,7 +48,6 @@ function EditSupportType({
         categoryid_new,
       })
       .then((response) => {
-        console.log(response);
         if (response.data.success) {
           const sup = {
             id,
@@ -67,7 +63,6 @@ function EditSupportType({
         } else {
           handleClose();
           setFailPage(true);
-          console.log(response.data.errorMessage);
         }
       })
       .catch((e) => {

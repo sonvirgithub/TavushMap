@@ -19,7 +19,6 @@ function DeleteSupportType({ supType, setSuccessPage, setFailPage }) {
   }, []);
 
   const handleSubmit = (evt) => {
-    console.log(id);
     axios
       .delete(`api/deleteSupport/${id}`)
       .then((response) => {

@@ -14,8 +14,8 @@ function App({ token, ready, fetchUser, loading }) {
   const [programId, setProgramId] = useState(null);
   const [successPage, setSuccessPage] = useState(false);
   const [failPage, setFailPage] = useState(false);
-  console.log(showResults, "app results");
-  console.log(programId, "programId App js");
+  // console.log(showResults, "app results");
+  // console.log(programId, "programId App js");
   useEffect(() => {
     fetchUser();
   }, []);
@@ -24,16 +24,7 @@ function App({ token, ready, fetchUser, loading }) {
   //   setSuccessPage(true);
   // }, [setSuccessPage]);
 
-  useEffect(() => {
-    const fetchData = async () => {
-      // console.log("object1");
-      const result = await axios("/api/programs");
-      // console.log(result, "result");
-      setProgramsList(result.data.data);
-    };
-
-    fetchData();
-  }, []);
+ 
 
   // if (!loading && !ready && !token) {
   //   return <p>Loading...</p>;

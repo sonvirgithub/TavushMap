@@ -36,6 +36,7 @@ border: 1px solid rgba(196, 196, 196, 1);
 padding: 10px;
 margin-top: 50px;
 width: 360px;
+padding-left: 20px;
 }
 
 .project_name {
@@ -111,12 +112,15 @@ margin-left: -310px;
   margin-top: 5px;
   padding: 10px;
   width: 250px;
+  padding-left: 20px;
   }
 
 .usd_input {
   margin-left: 366px;
-  margin-top: -46px;
+  margin-top: -50px;
   width: 100px;
+  height: 50px;
+  padding-left: 30px
   }
 
   .end_date_label {
@@ -138,7 +142,8 @@ margin-left: -310px;
      margin-left: 55px
 }
 .dateEnd {
-      display: flex;
+      /* display: flex; */
+      margin-left: 50px;
       width: 150px;
       border: 1px solid #C4C4C4;
       box-sizing: border-box;
@@ -198,26 +203,52 @@ margin-left: -310px;
 }
 
 .btn_popup {
-margin-top: 50px;
+  margin-top: 25px
 }
 
 .cancel {
   height: 45px;
 width: 130px;
-margin-right: 30px;
+float: left;
+margin-left: 100px;
 border-radius: 4px;
 border: 1px solid #DB0909;
 color: #DB0909;
 background: none;
+font-size: 14px;
+line-height: 21px;
+letter-spacing: 0.03em;
+text-transform: uppercase;
 
 }
 
 .save {
   height: 45px;
+  margin-right: 107px;
+  float: right;
+  width: 130px;
+  border-radius: 4px;
+  background: #C4C4C4;
+  border: none;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 21px;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: #FFFFFF;height: 45px;
 width: 130px;
 border-radius: 4px;
 background: #C4C4C4;
 border: none;
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 21px;
+letter-spacing: 0.03em;
+text-transform: uppercase;
+
+color: #FFFFFF;
 }
 
 .remember {
@@ -262,7 +293,7 @@ border: none;
 
   .NestedSelect {
       z-index: 1;
-      height: 140px;
+      max-height: 140px;
       overflow-y: scroll;
       width: 360px;
       margin-left: 105px;
@@ -292,18 +323,21 @@ border-radius: 4px;
   
   
   .li {
-      width: 308px;
+      width: 306px;
       cursor: pointer;
-      padding-left: 50px;
+      padding-left: 20px;
       padding-top: 5px;
       padding-bottom: 5px;
       display: flex;
+      height: 35px;
+     
   }
   
 
   /* .li:hover {
       background: #A4C2D8;;
   } */
+
  .select_li {
   background: #A4C2D8;;
   cursor: pointer;
@@ -333,23 +367,18 @@ border-radius: 4px;
 
   .li1 {
       cursor: pointer;
-      /* padding: 15px; */
       display: flex;
-      /* width: 345px; */
       padding-top: 15px;
       padding-bottom: 5px;
-      /* padding-right: 250px; */
-      padding-left: 20px;
+      padding-left: 5px;
       font-style: normal;
       font-weight: 500;
-      
       line-height: 27px;
       color: #433F3F;
   }
   
   .city {
-      width: 345px;
-      /* display: flex; */
+      width: 270px;
       margin-top: 0px !important;
   }
   
@@ -407,11 +436,14 @@ border-radius: 4px;
 
 .nested{
   overflow-y: scroll;
-  height: 250px;
-  width: 360px;
-  margin-left: 105px;
+  max-height: 208px;
+  width: 365px;
+  margin-left: 102px;
   border-radius: 4px;
-  box-shadow: 0px 18px 20px -10px rgba(196, 196, 196, 0.82);
+  background: #FAFAFA;
+  box-shadow: 0px 18px 20px -10px rgb(196 196 196 / 82%);
+  border-radius: 4px;
+  box-shadow: 0px 18px 20px -10px rgb(196 196 196 / 82%);
 
       }
       .btnSities:focus {
@@ -419,13 +451,16 @@ border-radius: 4px;
           outline: 2px !important;
       }
       
-      
+   .arrow_icon:focus{
+     height: 345px;
+   }   
 .supportList{
  display: flex;
 }
 
 .support_types {
   background: #FAFAFA;
+  margin-top: 10px;
 }
 
 .category_name{
@@ -459,12 +494,12 @@ border-radius: 4px;
   font-size: 0.8rem;
   background-color: #fff;
   color: #000;
-  border: 1px solid #aeaeae;
   border-radius: 0.3rem;
   display: inline-block;
   position: relative;
   margin-left: 0px;
   margin-top: -8px;
+  box-shadow: 0px 18px 20px -10px rgba(196, 196, 196, 0.82);
   
 }
 
@@ -515,14 +550,17 @@ input {
 }
 
 .react-datepicker__navigation--previous {
-  margin-left: 180px;
+  left: 190px !important;
   border-right-color: #ccc;
+  margin-top: 20px;
 }
 
 .react-datepicker-popper[data-placement^="top"] {
-  margin-top: 100px ;
+  margin-top: 0px !important;
   margin-bottom: 0px !important;
+  top: 19px !important;
 }
+
 .react-datepicker__current-month {
   margin-top: 0;
   font-weight: bold;
@@ -545,42 +583,92 @@ input {
   width: 1px;
 }
 
+.react-datepicker__navigation--next {
+  right: 10px;
+  border-left-color: #ccc;
+  margin-top: 20px;
+}
 
 .radio1 {
 float: left;
 margin-top: 4px;
+margin-left: 100px;
 }
 
 .radio2 {
   float: left;
   margin-top: 4px;
+  margin-left: 80px;
 
 }
+
 .radio {
-  display: flex;
-  padding-left: 10px;
+    padding-left: 10px;
+    padding-bottom: 5px;
+    padding-top: 5px;
 }
 
 .isDonor {
-  margin-left: 107px;
-  /* padding: 10px; */
-  display: flex;
-  margin-top: -10px;
-}
+  margin-left: 110px;
+    display: flex;
+  margin-top: -36px;
+  }
 
 .donor_label {
-  margin-top: 20px;
-  margin-left: -310px;
-}
+  margin-top: 30px;
+  margin-left: -130px;
+  }
 
 .donor {
-display: block;
+display: inline;
 }
 
 .start {
 margin-left: 50px;
 }
 
-.end {
+.cancel:hover {
+  background: rgba(219, 9, 9, 0.16);
+  border: 1px solid #DB0909;
+  color: rgba(219, 9, 9, 1);
+font-size: 14px;
+font-style: normal;
+font-weight: 500;
+line-height: 21px;
+letter-spacing: 0.03em;
+border-radius: 4px
 
+}
+
+.save:hover {
+  background: #05558F;border-radius: 4px;
+opacity: 16%;
+font-style: normal;
+font-weight: 500;
+font-size: 14px;
+line-height: 21px;
+letter-spacing: 0.03em;
+text-transform: uppercase;
+
+color: #FFFFFF;
+}
+
+
+::-webkit-scrollbar {
+  width: 8px;
+  
+  
+  background: #C4C4C4;
+  border-radius: 29px;
+}
+
+
+
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: none !important; 
+}
+.end {
+  margin-left: -51px;
 }

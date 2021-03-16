@@ -30,9 +30,9 @@ function Routes({
   setSuccessPage,
   setFailPage,
 }) {
-  console.log(showResults, "showResults rout");
+  // console.log(showResults, "showResults rout");
   if (!isLoggedIn) {
-    console.log(isLoggedIn);
+    // console.log(isLoggedIn);
     return (
       <>
         {/* <SideBar /> */}

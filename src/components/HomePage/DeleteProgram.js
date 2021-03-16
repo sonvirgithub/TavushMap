@@ -5,14 +5,14 @@ import { Modal, Button } from "react-bootstrap";
 // import "react-toastify/dist/ReactToastify.css";
 import { ProgramContext } from "../../pages/ProgramsPage";
 
-function DeleteProgram({ prog }) {
+function DeleteProgram({ prog, show, setShow }) {
   const programCont = useContext(ProgramContext);
 
-  const [show, setShow] = useState(false);
+ // const [show, setShow] = useState(false);
   const [id, setId] = useState("");
 
   const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  // const handleShow = () => setShow(true);
 
   useEffect(() => {
     setId(prog.id);
@@ -38,12 +38,12 @@ function DeleteProgram({ prog }) {
 
   return (
     <>
-      <div style={{ marginLeft: "5px" }} onClick={handleShow}>
+      {/* <div style={{ marginLeft: "5px" }} onClick={handleShow}>
         <img
           className="org_icon"
           src={require("../../img/remove.svg").default}
         />
-      </div>
+      </div> */}
 
       <Modal show={show} onHide={handleClose} animation={false}>
         {/* <Modal.Header closeButton>

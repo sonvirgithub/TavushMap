@@ -4,6 +4,7 @@ import './AddProgram.css'
 import { Modal, Form, } from 'react-bootstrap';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import axios from "axios";
 
 function AddProgram() {
 
@@ -17,77 +18,105 @@ function AddProgram() {
 
   const [name_arm, setName_arm] = useState("")
   const [name_eng, setName_eng] = useState("")
-  const [community, setCommunity] = useState("Համայնք")
-  const [budge, setBudge] = useState()
-  const [startDate, setStartDate] = useState(new Date())
-  const [endDate, setEndDate] = useState(new Date())
+  const [communityid, setCommunity] = useState([])
+  const [budget, setBudge] = useState()
+  const [start_date, setStartDate] = useState(new Date())
+  const [end_date, setEndDate] = useState(new Date())
   const [manager_arm, setManager_arm] = useState("")
   const [manager_eng, setManager_eng] = useState("")
   const [contactPerson_arm, setContactPerson_arm] = useState("")
   const [contactPerson_eng, setContactPerson_eng] = useState("")
-  const [organization, setOrganization] = useState("Կազմակերպություն")
-  const [categor_support, setCategor_support] = useState([])
+  const [organizationid, setOrganization] = useState([])
   const [description_arm, setDescription_arm] = useState("")
   const [description_eng, setDescription_eng] = useState("")
-  const [status, setStatus] = useState("")
+  const [statusid, setStatus] = useState("")
   const [isSelect, setIsSelect] = useState([])
-  const [isDonor, setIsDonor] = useState(false)
+  const [isdonor, setIsDonor] = useState(false)
+  const [language, setLanguage] = useState("arm")
+
 
   const [arrow_icon_city, setArrow_iconCity] = useState(false)
   const [arrow_icon_org, setArrow_iconOrg] = useState(false)
   const [arrow_icon_status, setArrow_iconStatus] = useState(false)
   const [arrow_icon_category, setArrow_iconCategory] = useState(false)
-  const [array, setArray] = useState([])
+  const [categoryid_supportid, setArrayCategores] = useState([])
   const [checkedCategory, setCheckedCategory] = useState([])
   const [openCategory, setOpenCategory] = useState([])
 
 
 
   useEffect(() => {
-
-    fetch('/api/organizations')
+    
+    fetch('/api/organizations', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ language })
+    })
+    
       .then(res => res.json())
       .then(data => {
-        console.log(data.data);
+        // console.log("organizations", data.data);
         setOrganizations(data.data)
 
       }).catch(err => {
         console.log(err);
       })
 
-    fetch('/api/communities')
+    fetch('/api/communities', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ language })
+    })
+    
       .then(res => res.json())
       .then(data => {
-        console.log(data.data);
+        // console.log("supporstList", data.data);
         setCommunities(data.data)
 
       }).catch(err => {
         console.log(err);
       })
 
-    fetch('/api/supportsList')
+    fetch('/api/supportsList', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({ language })
+    })
+      // .then(res => {
+      //   console.log("res", res);
+      // })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
-        setCategores(data)
+        // console.log("supporstList", data.data);
+        setCategores(data.data)
 
       }).catch(err => {
         console.log(err);
       })
 
-  }, [])
 
+
+
+  }, [])
 
 
   async function addProject() {
 
+
+
     let body = {
-      name_arm, name_eng, community, budge, startDate, endDate, manager_arm, manager_eng, contactPerson_arm, contactPerson_eng, organization, categor_support,
-      description_arm, description_eng, status, isDonor
+      name_arm, name_eng, communityid, budget, start_date, end_date, manager_arm, manager_eng, contactPerson_arm, contactPerson_eng, organizationid,
+      categoryid_supportid, description_arm, description_eng, statusid, isdonor,language
     }
 
-    console.log(name_arm, name_eng, community, budge, startDate, endDate, manager_arm, manager_eng, contactPerson_arm, contactPerson_eng, organization, categor_support,
-      description_arm, description_eng, status, isDonor);
+    console.log(name_arm, name_eng, communityid, budget, start_date, end_date, manager_arm, manager_eng, contactPerson_arm, contactPerson_eng, organizationid,
+      categoryid_supportid, description_arm, description_eng, statusid, isdonor);
 
     body = JSON.stringify(body)
     const headers = {}
@@ -98,38 +127,56 @@ function AddProgram() {
       headers
     });
 
-    console.log(res)
+    console.log(res);
+    if (res.status == 200) {
+      console.log(res);
+      handleClose()
+
+    } else {
+      console.log(res);
+    }
+
+    setName_arm("")
+    setName_eng("")
+    setCommunity("")
+    setBudge("")
+    setStartDate("")
+    setEndDate("")
+    setManager_arm("")
+    setManager_eng("")
+    setOrganization("")
+    setContactPerson_arm("")
+    setContactPerson_eng("")
+    setDescription_arm("")
+    setDescription_eng("")
+    setStatus("")
+    setIsDonor("")
   }
 
 
+ 
 
-
-  const onValueChange = (event) => {
-    // console.log(event.target.value);
-    setStatus(event.target.value)
-  }
-
-  const selectSupport = (e, supportId, categoryId, id) => {
+  const selectSupport = (e, supportId, categoryId) => {
 
     // console.log("Idaaaaaaa", id);
 
-    if (isSelect.some(item => item.Id === id && item.supportid === supportId)) {
+    if (isSelect.some(item => item.supportid === supportId)) {
 
 
-      let index = isSelect.findIndex(item => item.Id === id && item.supportid === supportId);
+      let index = isSelect.findIndex(item => item.supportid === supportId);
       // console.log("index", index);
       isSelect.splice(index, 1)
 
-      for (let i = 0; i < array.length; i++) {
-        if (array[i].supportid === supportId && array[i].categoryid === categoryId) {
-          array.splice(i, 1)
+      for (let i = 0; i < categoryid_supportid.length; i++) {
+        if (categoryid_supportid[i].supportid === supportId && categoryid_supportid[i].categoryid === categoryId) {
+          categoryid_supportid.splice(i, 1)
         }
       }
       // console.log("array hanec", array);
     }
     else {
-      isSelect.push({ Id: id, supportid: supportId })
-      array.push({
+      isSelect.push({ supportid: supportId })
+      categoryid_supportid.push({
         categoryid: categoryId,
         supportid: supportId
       })
@@ -137,11 +184,12 @@ function AddProgram() {
 
     }
     setIsSelect([...isSelect])
-    console.log("isSelect1", isSelect);
-    setCategor_support(array)
+    // console.log("isSelect1", isSelect);
+
   }
 
   const openCategores = (id) => {
+    console.log(id);
     if (openCategory.some(item => item === id)) {
       let index = openCategory.findIndex(item => item === id);
       openCategory.splice(index, 1)
@@ -151,9 +199,36 @@ function AddProgram() {
       openCategory.push(id)
       setOpenCategory([...openCategory])
     }
-    console.log(openCategory);
+    // console.log(openCategory);
   }
 
+  const selectCommunity = (cityid) => {
+    // console.log(id);
+    if (communityid.some(item => item === cityid)) {
+      let index = communityid.findIndex(item => item === cityid);
+      communityid.splice(index, 1)
+      setCommunity([...communityid])
+    } else {
+      communityid.push(cityid)
+      setCommunity([...communityid])
+
+    }
+    // console.log(communityid);
+  }
+
+  const selectOrganization = (orgid) => {
+    // console.log(id);
+    if (organizationid.some(item => item === orgid)) {
+      let index = organizationid.findIndex(item => item === orgid);
+      organizationid.splice(index, 1)
+      setOrganization([...organizationid])
+    } else {
+      organizationid.push(orgid)
+      setOrganization([...organizationid])
+
+    }
+    // console.log(organizationid);
+  }
 
   const checkCategory = (e, category) => {
 
@@ -172,12 +247,14 @@ function AddProgram() {
       for (let i = 0; i < category.items.length; i++) {
         if (isSelect.some(item => item.Id === category.id && item.supportid === category.items[i].supportid)) {
 
-
-
         }
         else {
           isSelect.push({
             Id: category.id,
+            supportid: category.items[i].supportid
+          })
+          categoryid_supportid.push({
+            categoryid: category.categoryid,
             supportid: category.items[i].supportid
           })
         }
@@ -188,6 +265,7 @@ function AddProgram() {
 
           let index = isSelect.findIndex(item => item.Id === category.id && item.supportid === category.items[i].supportid);
           isSelect.splice(index, 1)
+          categoryid_supportid.splice(index, 1)
 
         }
         else {
@@ -195,10 +273,12 @@ function AddProgram() {
         }
       }
     }
-    console.log("select", isSelect);
+    console.log("isselect", isSelect);
+    console.log("array", categoryid_supportid);
 
   }
 
+  // console.log("categoryid_supportid", categoryid_supportid);
   return (
     <div>
       <div >
@@ -209,6 +289,7 @@ function AddProgram() {
       </div>
 
       <Modal show={show} onHide={handleClose} animation={false}>
+
         <Modal.Body>
           <div className="project_name">
             <label className="project_name_label">Ծրագրի անուն (Հայերեն)</label>
@@ -223,7 +304,7 @@ function AddProgram() {
           <div className='project_name'>
             <label className="cities">Համայնք</label>
             <button className='btnSities' onClick={() => { setArrow_iconCity(!arrow_icon_city) }}>
-              <label className="label_city" >{community} </label>
+              <label className="label_city" >Համայնք </label>
 
             </button>
             <img className="arrow_icon" src={require("../AdminIcons/arrow.svg").default} onClick={() => { setArrow_iconCity(!arrow_icon_city) }} />
@@ -235,7 +316,10 @@ function AddProgram() {
 
                   {communities.map((city) => (
                     <div className='list city'>
-                      <li className='li1' key={city.name_arm} onClick={() => setCommunity(city.name_arm)} >{city.name_arm}</li>
+                      <li style={{
+                        backgroundColor: communityid.some(item => item === city.id) ?
+                          '#A4C2D8' : '#FAFAFA'
+                      }} className='li1'  onClick={() => selectCommunity(city.id)} >{city.name}</li>
                     </div>
                   ))}
                 </div>
@@ -246,7 +330,7 @@ function AddProgram() {
           {/* budget-i inputnery */}
           <div className="project_name">
             <label className="budge_name">Բյուջե</label>
-            <input className="budge_input" placeholder="Բյուջե հայերեն" value={budge} onChange={e => setBudge(e.target.value)} />
+            <input className="budge_input" placeholder="10 000" value={budget} onChange={e => setBudge(e.target.value)} />
             <Form.Control as="select" className="usd_input">
               <option >USD</option>
             </Form.Control>
@@ -258,11 +342,11 @@ function AddProgram() {
             <div className="start">
               <label className="start_date_label">Սկիզբ</label>
 
-              <DatePicker selected={startDate} onChange={date => setStartDate(date)} className="dateStart" />
+              <DatePicker selected={start_date} onChange={date => setStartDate(date)} className="dateStart" closeOnScroll={true} />
             </div>
             <div className="end">
               <label className="end_date_label">Ավարտ</label>
-              <DatePicker selected={endDate} onChange={date => setEndDate(date)} className="dateEnd" />
+              <DatePicker selected={end_date} onChange={date => setEndDate(date)} className="dateEnd" closeOnScroll={true} />
             </div>
 
           </div>
@@ -293,7 +377,7 @@ function AddProgram() {
           <div className='project_name'>
             <label className="kazmakerp_arm">Կազմակերպություններ</label>
             <button className='btnSities' onClick={() => { setArrow_iconOrg(!arrow_icon_org) }}>
-              <label placeholder="Համայնք" className="label_city" >{organization} </label>
+              <label className="label_city" >Կազմակերպություն </label>
             </button>
             <img className="arrow_icon" src={require("../AdminIcons/arrow.svg").default} onClick={() => { setArrow_iconOrg(!arrow_icon_org) }} />
 
@@ -303,7 +387,10 @@ function AddProgram() {
                   {organizations.map((organization) => (
                     <div className='list city'>
 
-                      <li className='li1' key={organizations.name_arm} onClick={() => setOrganization(organization.name_arm)} >{organization.name_arm}</li>
+                      <li className='li1' style={{
+                        backgroundColor: organizationid.some(item => item === organization.id) ?
+                          '#A4C2D8' : '#FAFAFA'
+                      }} onClick={() => selectOrganization(organization.id)} >{organization.name}</li>
 
                     </div>
                   ))}
@@ -330,25 +417,26 @@ function AddProgram() {
                     <div className='list' >
 
                       <ul className='ul' >
+
                         <div className='supportList'>
                           <input type="checkbox" id='check' className="checkbox" onClick={(e) => checkCategory(e, categore)}
                           />
                         </div>
-                        <label className="category_name">{categore.category_arm}</label>
 
-                        <img className='arrowSelect' src={require("../AdminIcons/arrow.svg").default} onClick={(e) => openCategores(categore.id)} />
+                        <label className="category_name">{categore.category} ({categore.items.length})</label>
+
+                        <img className='arrowSelect' src={require("../AdminIcons/arrow.svg").default} onClick={(e) => openCategores(categore.categoryid)} />
                         {
-                          openCategory.some(item => item === categore.id) ? (
+                          openCategory.some(item => item === categore.categoryid) ? (
                             <div className="support_types" >
 
 
                               {categore.items.map(support => (
                                 <li style={{
-                                  backgroundColor: isSelect.some(item => item.Id === categore.id && item.supportid === support.supportid) ? '#A4C2D8' : '#FAFAFA',
+                                  backgroundColor: isSelect.some(item => item.supportid === support.supportid) ? '#A4C2D8' : '#FAFAFA',
 
-
-                                }} className="li" onClick={(e) => selectSupport(e, support.supportid, categore.categoryid, categore.id)}>
-                                  {support.name_arm}
+                                }} className="li" onClick={(e) => selectSupport(e, support.supportid, categore.categoryid)}>
+                                  {support.name}
                                 </li>
                               ))}
 
@@ -381,7 +469,7 @@ function AddProgram() {
           <div className="project_name">
             <label className="status">Կարգավիճակ</label>
             <button className='btnSities' id='btnSelect' onClick={() => { setArrow_iconStatus(!arrow_icon_status) }}>
-              <label className="label_city">{status}</label>
+              <label className="label_city">Կարգավիճակ</label>
             </button>
             <img className="arrow_icon" src={require("../AdminIcons/arrow.svg").default} onClick={() => { setArrow_iconStatus(!setArrow_iconStatus) }} />
             {
@@ -390,14 +478,16 @@ function AddProgram() {
 
                   <div className='list city'>
                     <div className="radio">
-                      <input type="radio" id="Ընթացիկ" className="radio1" value="Ընթացիկ" checked={status === "Ընթացիկ"}
-                        onChange={(e) => onValueChange(e)} onClick={() => setStatus("Ընթացիկ")}></input>
-                      <li className='li1' >Ընթացիկ</li>
+                    <li className='li1' >Ընթացիկ</li>
+                      <input type="radio" id="Ընթացիկ" className="radio1" value="1" checked={statusid === 1}
+                        onChange={(e) => onValueChange(e)} onClick={() => setStatus(1)}></input>
+                      
                     </div>
                     <div className="radio">
-                      <input id="Ավարտված" type="radio" className="radio2" value="Ավարտված" checked={status === "Ավարտված"}
-                        onChange={(e) => onValueChange(e)} onClick={() => setStatus("Ավարտված")}></input>
-                      <li className='li1' >Ավարտված</li>
+                    <li className='li1' >Ավարտված</li>
+                      <input id="Ավարտված" type="radio" className="radio2" value="Ավարտված" checked={statusid === 2}
+                        onChange={(e) => onValueChange(e)} onClick={() => setStatus(2)}></input>
+                      
                     </div>
                   </div>
 
@@ -407,13 +497,14 @@ function AddProgram() {
           </div>
           <div className="donor">
             <label className="donor_label">Դոնոր</label>
-            <input type="checkbox" id='donor' className="isDonor" value={isDonor} onClick={() => { setIsDonor(!isDonor) }} />
+            <input type="checkbox" id='donor' className="isDonor" value={isdonor} onClick={() => { setIsDonor(!isdonor) }} />
           </div>
 
           <div className="btn_popup">
-            <button className="cancel">Չեղարկել</button>
+            <button className="cancel" onClick={() => { handleClose() }}>Չեղարկել</button>
             <button className="save" onClick={addProject}>Հաստատել</button>
           </div>
+
         </Modal.Body>
       </Modal>
 

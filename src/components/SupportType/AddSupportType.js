@@ -26,8 +26,7 @@ function AddSupportType({ categoryType, setSuccessPage, setFailPage }) {
   });
 
   const handleSubmit = (evt) => {
-    console.log("object");
-    console.log(support_eng, support_arm, categoryid, categoryName);
+ 
     axios
       .post(`/api/addSupport`, {
         support_eng,

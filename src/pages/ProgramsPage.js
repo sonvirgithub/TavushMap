@@ -4,51 +4,40 @@ import axios from "axios";
 
 export const ProgramContext = React.createContext();
 function ProgramsPage({ showResults, setShowResults, setProgramId }) {
-  console.log(showResults, "showResults program page");
-  const [programs, setPrograms] = useState("");
+  const [programs, setPrograms] = useState([{"id":81,"programName_arm":"program1","manager":"manager1",
+  "budget":10000,"status":"ընթացիկ","support":[{"supports":[{"supportid":1},{"supportid":2}],"categoryid":24}],
+  }]);
+  const [array, setArray] = useState([]);
 
   const addProgram = (prog) => {
     programs.push(prog);
     setPrograms([...programs]);
   };
 
-  const editProgram = (prog) => {
-    programs.map((program) => {
-      if (program.id == prog.id) {
-        program.name_eng = prog.name_eng;
-        program.name_arm = prog.name_arm;
-        program.person = prog.person;
-
-        setPrograms([...programs]);
-      }
-    });
-  };
 
   const deleteProgram = (id) => {
     programs.map((program) => {
       if (program.id == id) {
         const index = programs.indexOf(program);
         programs.splice(index, 1);
-
         setPrograms([...programs]);
+
       }
     });
   };
 
-  //   console.log("object");
   useEffect(() => {
-    fetch("/api/programs")
+    fetch("/api/programsForAdmin")
       .then((res) => res.json())
-      .then((data) => {
-        console.log(data.data);
-        setPrograms(data.data);
+      .then((res) => {
+        console.log(res.data);
+        setPrograms(res.data);
       })
       .catch((err) => {
         console.log(err);
       });
   }, []);
 
-  console.log(programs, "prrograms");
   return (
     <div
       style={{
@@ -62,13 +51,13 @@ function ProgramsPage({ showResults, setShowResults, setProgramId }) {
           setPrograms,
           addProgram,
           deleteProgram,
-          editProgram,
         }}
       >
         <Program
           setProgramId={setProgramId}
           showResults={showResults}
           programs={programs}
+          setPrograms={setPrograms}
           setShowResults={setShowResults}
         />
       </ProgramContext.Provider>

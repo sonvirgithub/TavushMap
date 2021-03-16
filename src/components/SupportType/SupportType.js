@@ -10,7 +10,6 @@ function SupportType({
   setSuccessPage,
   setFailPage,
 }) {
-  console.log(supportTypes, "supportTypes");
   return (
     <div style={{ marginLeft: "328px" }}>
       <div className="org_title">

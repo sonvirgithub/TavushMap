@@ -9,7 +9,7 @@ function MoreInfoProgram({
   showResults,
   setShowResults,
 }) {
-  console.log(showResults);
+  // console.log(showResults);
 
   const onClick = () => {
     // setShowResults(!showResults);
