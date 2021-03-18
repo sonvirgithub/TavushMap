@@ -5,37 +5,48 @@ import AddProgram from "./AddProgram/AddProgram";
 import DeleteProgram from "./DeleteProgram";
 import MoreInfoProgram from "./MoreInfoProgram";
 import EditProgram from './EditProgram'
+import DatePicker from "react-datepicker";
+import "react-datepicker/dist/react-datepicker.css";
 
-function Program({ setProgramId, programs, setPrograms, showResults, setShowResults }) {
+function Program({ setProgramId, programs, showResults, setShowResults }) {
 
   const [item, setItem] = useState({})
   const [itemDelete, setItemDelete] = useState({})
+  const [itemMoreInfo, setItemMoreInfo] = useState({})
   const [editShow, setEditShow] = useState(false)
   const [deleteShow, setDeleteShow] = useState(false)
   const [isSelect, setIsSelect] = useState([])
-
-
-
+ 
   const handleShowEdit = (index) => {
-
+    
     if (programs[index].status === "ընթացիկ") {
-      programs[index].status =1
+      programs[index].status = 1
     }
     if (programs[index].status === "ավարտված") {
-      programs[index].status =2
+      programs[index].status = 2
     }
-   
-    setItem(programs[index])
-    
 
-    setEditShow(true)
+    const startDate = moment(programs[index].startDate).toDate()
+    const endDate = moment(programs[index].endDate).toDate()
+
+
+
     programs[index].support.map((item) => {
+
       item.supports.map((support) => {
         isSelect.push({
           supportid: support.supportid
         })
       })
     })
+
+    programs[index].startDate = startDate
+    programs[index].endDate = endDate
+    //  programs[index].support = isSelect
+    console.log("programindex", programs[index]);
+    setItem(programs[index])
+    setEditShow(true)
+
   }
 
   const handleShowDelete = (index) => {
@@ -43,6 +54,12 @@ function Program({ setProgramId, programs, setPrograms, showResults, setShowResu
     setDeleteShow(true)
   }
 
+  const handleShowMoreInfo = (index) => {
+    setItemMoreInfo(programs[index])
+    setShowResults(true)
+    setProgramId(programs[index].id)
+   
+  }
 
   return (
     <div
@@ -77,7 +94,9 @@ function Program({ setProgramId, programs, setPrograms, showResults, setShowResu
 
                   <tr key={prog.id}>
                     <td>{prog.programName_arm}</td>
-                    <td>{prog.support_arm}</td>
+                    <td>
+
+                    </td>
                     <td>{prog.budget}</td>
                     <td>{prog.status}</td>
                     <td>{prog.manager}</td>
@@ -101,6 +120,15 @@ function Program({ setProgramId, programs, setPrograms, showResults, setShowResu
                           src={require("../../img/remove.svg").default}
                         />
                       </div>
+                      <div style={{ marginLeft: "5px" }} onClick={() => {
+                        handleShowMoreInfo(index)
+
+                      }}>
+                        <img
+                          className="org_icon"
+                          src={require("../../img/eye.svg").default}
+                        />
+                      </div>
                     </td>
                   </tr>
                 );
@@ -113,13 +141,13 @@ function Program({ setProgramId, programs, setPrograms, showResults, setShowResu
           </tbody>
           <EditProgram prog={item} setProg={setItem} show={editShow} setShow={setEditShow} isSelect={isSelect} setIsSelect={setIsSelect} />
           <DeleteProgram prog={itemDelete} show={deleteShow} setShow={setDeleteShow} />
-          {/* <MoreInfoProgram
+          <MoreInfoProgram
                           setProgramId={setProgramId}
-                          prog={prog}
+                          prog={itemMoreInfo}
                           programs={programs}
                           showResults={showResults}
                           setShowResults={setShowResults}
-                        /> */}
+                        />
         </table>
       </div>
 

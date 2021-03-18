@@ -4,10 +4,9 @@ import axios from "axios";
 
 export const ProgramContext = React.createContext();
 function ProgramsPage({ showResults, setShowResults, setProgramId }) {
-  const [programs, setPrograms] = useState([{"id":81,"programName_arm":"program1","manager":"manager1",
-  "budget":10000,"status":"ընթացիկ","support":[{"supports":[{"supportid":1},{"supportid":2}],"categoryid":24}],
-  }]);
-  const [array, setArray] = useState([]);
+  const [programs, setPrograms] = useState([]);
+  const [suppPrograms, setSuppPrograms] = useState([])
+  const [suppProg, setSuppProg] = useState([])
 
   const addProgram = (prog) => {
     programs.push(prog);
@@ -32,10 +31,15 @@ function ProgramsPage({ showResults, setShowResults, setProgramId }) {
       .then((res) => {
         console.log(res.data);
         setPrograms(res.data);
+        
       })
       .catch((err) => {
         console.log(err);
       });
+
+     
+
+
   }, []);
 
   return (

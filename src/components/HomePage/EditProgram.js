@@ -1,35 +1,34 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext, useEffect, useRef } from "react";
 import { Modal, Button, Form } from "react-bootstrap";
 import axios from "axios";
 import { ProgramContext } from "../../pages/ProgramsPage";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
-
+import UseOutSideClick from "../HomePage/UseOutSideClick"
 
 function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
-
-  const programCont = useContext(ProgramContext);
-  const [id, setId] = useState("");
+ 
+  const selected = moment(prog.startDate).toDate()
 
   const [communities, setCommunities] = useState([])
   const [organizations, setOrganizations] = useState([])
-  const [categores, setCategores] = useState([{
-    "categoryid": 24, "category": "volortik",
-    "items": [{ "supportid": 1, "name": "support1" }, { "supportid": 2, "name": "support2" }]
-  }])
+  const [categores, setCategores] = useState([])
   const [language, setLanguage] = useState("arm")
-  const [start_date, setStartDate] = useState(new Date())
-  const [end_date, setEndDate] = useState(new Date())
-
+ 
   const [arrow_icon_city, setArrow_iconCity] = useState(true)
   const [arrow_icon_org, setArrow_iconOrg] = useState(true)
   const [arrow_icon_status, setArrow_iconStatus] = useState(true)
   const [arrow_icon_category, setArrow_iconCategory] = useState(true)
   const [checkedCategory, setCheckedCategory] = useState([])
   const [openCategory, setOpenCategory] = useState([])
-  const [categoryid_supportid, setCategoryid_Supportid] = useState([])
+  const ref = useRef();
 
-
+  UseOutSideClick(ref, () => {
+    if (arrow_icon_city) setArrow_iconCity(false);
+    if (arrow_icon_org) setArrow_iconOrg(false);
+    if (arrow_icon_status) setArrow_iconStatus(false);
+    if (arrow_icon_category) setArrow_iconCategory(false);
+  });
 
   useEffect(() => {
 
@@ -77,10 +76,11 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
       })
 
 
+
+
   }, []);
 
- 
-  console.log("prog.status",prog.status);
+
 
 
   const selectCommunity = (city) => {
@@ -97,7 +97,7 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
     } else {
       arr.splice(index, 1)
     }
-    setProg({ ...prog, community: arr })
+    setProg({ ...prog, community: JSON.stringify(arr) })
 
 
   }
@@ -139,8 +139,40 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
 
 
   const handleSubmit = (evt) => {
-    console.log("isselect", isSelect);
-    console.log("prog", prog);
+
+    console.log("program", prog);
+    const year = prog.startDate.getFullYear()
+    const month = prog.startDate.getMonth() + 1
+    const day = prog.startDate.getDate()
+    prog.startDate = `${year}-${month}-${day}`
+
+    const year1 = prog.endDate.getFullYear()
+    const month1 = prog.endDate.getMonth() + 1
+    const day1 = prog.endDate.getDate()
+    prog.endDate = `${year1}-${month1}-${day1}`
+    
+
+    axios
+      .put(`/api/editProgram`, {
+        prog
+      })
+      .then((res) => {
+        if (res.data.success) {
+
+          handleClose();
+          console.log("Կատարված է");
+        } else {
+          handleClose();
+
+        }
+      })
+      .catch((e) => {
+        handleClose();
+        console.log("error", e);
+      });
+
+
+
   };
 
   const selectSupport = (e, supportId, categoryId) => {
@@ -217,16 +249,16 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
 
             <div className='project_name'>
               <label className="cities">Համայնք</label>
-              <button className='btnSities' onClick={() => { setArrow_iconCity(!arrow_icon_city) }}>
+              <button className='btnSities' onClick={() => setArrow_iconCity(!arrow_icon_city)}>
                 <label className="label_city" >Համայնք </label>
 
               </button>
-              <img className="arrow_icon" src={require("./AdminIcons/arrow.svg").default} onClick={() => { setArrow_iconCity(!arrow_icon_city) }} />
+              <img className="arrow_icon" src={require("./AdminIcons/arrow.svg").default} onClick={() => setArrow_iconCity(!arrow_icon_city)} />
 
               {
-                arrow_icon_city == true ? (
+                arrow_icon_city && (
 
-                  <div className="NestedSelect">
+                  <div ref={ref} className="NestedSelect">
 
                     {communities.map((city) => (
                       <div className='list city' key={city.id}>
@@ -237,7 +269,7 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
                       </div>
                     ))}
                   </div>
-                ) : null
+                )
               }
             </div>
 
@@ -256,11 +288,17 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
               <div className="start">
                 <label className="start_date_label">Սկիզբ</label>
 
-                <DatePicker selected={start_date} onChange={date => setStartDate(date)} className="dateStart" closeOnScroll={true} />
+                <DatePicker
+                  selected={prog.startDate}
+                  startDate={prog.startDate}
+                  onChange={date => setProg({ ...prog, startDate: date })}
+
+                  className="dateStart"
+                  closeOnScroll={true} />
               </div>
               <div className="end">
                 <label className="end_date_label">Ավարտ</label>
-                <DatePicker selected={end_date} onChange={date => setEndDate(date)} className="dateEnd" closeOnScroll={true} />
+                <DatePicker selected={prog.endDate} startDate={prog.endDate} onChange={date => setProg({ ...prog, endDate: date })} className="dateEnd" closeOnScroll={true} />
               </div>
             </div>
 
@@ -289,14 +327,14 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
             {/* organizationi input-nery  */}
             <div className='project_name'>
               <label className="kazmakerp_arm">Կազմակերպություններ</label>
-              <button className='btnSities' onClick={() => { setArrow_iconOrg(!arrow_icon_org) }}>
+              <button className='btnSities' onClick={() => setArrow_iconOrg(!arrow_icon_org)}>
                 <label className="label_city" >Կազմակերպություն </label>
               </button>
-              <img className="arrow_icon" src={require("./AdminIcons/arrow.svg").default} onClick={() => { setArrow_iconOrg(!arrow_icon_org) }} />
+              <img className="arrow_icon" src={require("./AdminIcons/arrow.svg").default} onClick={() => setArrow_iconOrg(!arrow_icon_org)} />
 
               {
-                arrow_icon_org == true ? (
-                  <div className="NestedSelect">
+                arrow_icon_org && (
+                  <div ref={ref} className="NestedSelect">
                     {organizations.map((organization) => (
                       <div className='list city' key={organization.id}>
 
@@ -308,7 +346,7 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
                       </div>
                     ))}
                   </div>
-                ) : null
+                )
               }
             </div>
 
@@ -323,8 +361,8 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
               </button>
               <img className="arrow_icon" src={require("./AdminIcons/arrow.svg").default} onClick={() => { setArrow_iconCategory(!arrow_icon_category) }} />
               {
-                arrow_icon_category == true ? (
-                  <div className="nested">
+                arrow_icon_category && (
+                  <div ref={ref} className="nested">
                     {categores.map((categore) => (
 
                       <div className='list' key={categore.id}>
@@ -332,7 +370,7 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
                         <ul className='ul' >
 
                           <div className='supportList'>
-                            <input type="checkbox" id='check' className="checkbox" onClick={(e) => checkCategory(e, categore)}
+                            <input type="checkbox" id='check' className="checkbox"  onClick={(e) => checkCategory(e, categore)}
                             />
                           </div>
 
@@ -348,7 +386,7 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
                                   <li style={{
                                     backgroundColor: isSelect.some(item => item.supportid === support.supportid) ? '#A4C2D8' : '#FAFAFA',
 
-                                  }} className="li" onClick={(e) => selectSupport(e, support.supportid, categore.categoryid)}>
+                                  }} key={support.supportid} className="li" onClick={(e) => selectSupport(e, support.supportid, categore.categoryid)}>
                                     {support.name}
                                   </li>
                                 ))}
@@ -362,7 +400,7 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
                       </div>
                     ))}
                   </div>
-                ) : null
+                )
               }
             </div>
 
@@ -381,13 +419,13 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
             {/* status-i inputnery */}
             <div className="project_name">
               <label className="status">Կարգավիճակ</label>
-              <button className='btnSities' id='btnSelect' onClick={() => { setArrow_iconStatus(!arrow_icon_status) }}>
+              <button className='btnSities' id='btnSelect' onClick={() => setArrow_iconStatus(!arrow_icon_status)}>
                 <label className="label_city">Կարգավիճակ</label>
               </button>
-              <img className="arrow_icon" src={require("./AdminIcons/arrow.svg").default} onClick={() => { setArrow_iconStatus(!setArrow_iconStatus) }} />
+              <img className="arrow_icon" src={require("./AdminIcons/arrow.svg").default} onClick={() => setArrow_iconStatus(!arrow_icon_status)} />
               {
-                arrow_icon_status == true ? (
-                  <div className="select_status">
+                arrow_icon_status && (
+                  <div ref={ref} className="select_status">
 
                     <div className='list city'>
                       <div className="radio">
@@ -407,7 +445,7 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
                     </div>
 
                   </div>
-                ) : null
+                )
               }
             </div>
             <div className="donor">

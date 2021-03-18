@@ -1,10 +1,12 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect , useRef} from 'react'
 import { Route, useHistory } from 'react-router-dom';
 import './AddProgram.css'
 import { Modal, Form, } from 'react-bootstrap';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import axios from "axios";
+import "react-datepicker/dist/react-datepicker.css";
+import UseOutSideClick from "../UseOutSideClick"
 
 function AddProgram() {
 
@@ -43,10 +45,19 @@ function AddProgram() {
   const [checkedCategory, setCheckedCategory] = useState([])
   const [openCategory, setOpenCategory] = useState([])
 
+ 
+  const ref = useRef();
+
+  UseOutSideClick(ref, () => {
+    if (arrow_icon_city) setArrow_iconCity(false);
+    if (arrow_icon_org) setArrow_iconOrg(false);
+    if (arrow_icon_status) setArrow_iconStatus(false);
+    if (arrow_icon_category) setArrow_iconCategory(false);
+  });
 
 
   useEffect(() => {
-    
+
     fetch('/api/organizations', {
       method: 'POST',
       headers: {
@@ -54,7 +65,7 @@ function AddProgram() {
       },
       body: JSON.stringify({ language })
     })
-    
+
       .then(res => res.json())
       .then(data => {
         // console.log("organizations", data.data);
@@ -71,7 +82,7 @@ function AddProgram() {
       },
       body: JSON.stringify({ language })
     })
-    
+
       .then(res => res.json())
       .then(data => {
         // console.log("supporstList", data.data);
@@ -93,7 +104,7 @@ function AddProgram() {
       // })
       .then(res => res.json())
       .then(data => {
-        // console.log("supporstList", data.data);
+        console.log("supporstList", data.data);
         setCategores(data.data)
 
       }).catch(err => {
@@ -112,7 +123,7 @@ function AddProgram() {
 
     let body = {
       name_arm, name_eng, communityid, budget, start_date, end_date, manager_arm, manager_eng, contactPerson_arm, contactPerson_eng, organizationid,
-      categoryid_supportid, description_arm, description_eng, statusid, isdonor,language
+      categoryid_supportid, description_arm, description_eng, statusid, isdonor, language
     }
 
     console.log(name_arm, name_eng, communityid, budget, start_date, end_date, manager_arm, manager_eng, contactPerson_arm, contactPerson_eng, organizationid,
@@ -154,11 +165,9 @@ function AddProgram() {
   }
 
 
- 
+
 
   const selectSupport = (e, supportId, categoryId) => {
-
-    // console.log("Idaaaaaaa", id);
 
     if (isSelect.some(item => item.supportid === supportId)) {
 
@@ -168,7 +177,8 @@ function AddProgram() {
       isSelect.splice(index, 1)
 
       for (let i = 0; i < categoryid_supportid.length; i++) {
-        if (categoryid_supportid[i].supportid === supportId && categoryid_supportid[i].categoryid === categoryId) {
+        if (categoryid_supportid[i].supportid === supportId && 
+          categoryid_supportid[i].categoryid === categoryId) {
           categoryid_supportid.splice(i, 1)
         }
       }
@@ -232,25 +242,25 @@ function AddProgram() {
 
   const checkCategory = (e, category) => {
 
-    if (checkedCategory.some(item => item === category.id)) {
-      let index = checkedCategory.findIndex(item => item === category.id);
+    if (checkedCategory.some(item => item === category.categoryid)) {
+      let index = checkedCategory.findIndex(item => item === category.categoryid);
       checkedCategory.splice(index, 1)
       setCheckedCategory([...checkedCategory])
 
     } else {
-      checkedCategory.push(category.id)
+      checkedCategory.push(category.categoryid)
       setCheckedCategory([...checkedCategory])
     }
 
     console.log(checkedCategory);
-    if (checkedCategory.some(item => item === category.id)) {
+    if (checkedCategory.some(item => item === category.categoryid)) {
       for (let i = 0; i < category.items.length; i++) {
-        if (isSelect.some(item => item.Id === category.id && item.supportid === category.items[i].supportid)) {
+        if (isSelect.some(item => item.Id === category.categoryid && item.supportid === category.items[i].supportid)) {
 
         }
         else {
           isSelect.push({
-            Id: category.id,
+            Id: category.categoryid,
             supportid: category.items[i].supportid
           })
           categoryid_supportid.push({
@@ -261,9 +271,9 @@ function AddProgram() {
       }
     } else {
       for (let i = 0; i < category.items.length; i++) {
-        if (isSelect.some(item => item.Id === category.id && item.supportid === category.items[i].supportid)) {
+        if (isSelect.some(item => item.Id === category.categoryid && item.supportid === category.items[i].supportid)) {
 
-          let index = isSelect.findIndex(item => item.Id === category.id && item.supportid === category.items[i].supportid);
+          let index = isSelect.findIndex(item => item.Id === category.categoryid && item.supportid === category.items[i].supportid);
           isSelect.splice(index, 1)
           categoryid_supportid.splice(index, 1)
 
@@ -303,27 +313,27 @@ function AddProgram() {
 
           <div className='project_name'>
             <label className="cities">Համայնք</label>
-            <button className='btnSities' onClick={() => { setArrow_iconCity(!arrow_icon_city) }}>
+            <button className='btnSities' onClick={() => setArrow_iconCity(!arrow_icon_city)}>
               <label className="label_city" >Համայնք </label>
 
             </button>
-            <img className="arrow_icon" src={require("../AdminIcons/arrow.svg").default} onClick={() => { setArrow_iconCity(!arrow_icon_city) }} />
+            <img className="arrow_icon" src={require("../AdminIcons/arrow.svg").default} onClick={() => setArrow_iconCity(!arrow_icon_city)} />
 
             {
-              arrow_icon_city == true ? (
+              arrow_icon_city && (
 
-                <div className="NestedSelect">
+                <div ref={ref} className="NestedSelect">
 
                   {communities.map((city) => (
                     <div className='list city'>
                       <li style={{
                         backgroundColor: communityid.some(item => item === city.id) ?
                           '#A4C2D8' : '#FAFAFA'
-                      }} className='li1'  onClick={() => selectCommunity(city.id)} >{city.name}</li>
+                      }} className='li1' onClick={() => selectCommunity(city.id)} >{city.name}</li>
                     </div>
                   ))}
                 </div>
-              ) : null
+  ) 
             }
           </div>
 
@@ -376,16 +386,16 @@ function AddProgram() {
           {/* organizationi input-nery */}
           <div className='project_name'>
             <label className="kazmakerp_arm">Կազմակերպություններ</label>
-            <button className='btnSities' onClick={() => { setArrow_iconOrg(!arrow_icon_org) }}>
+            <button className='btnSities' onClick={() => setArrow_iconOrg(!arrow_icon_org)}>
               <label className="label_city" >Կազմակերպություն </label>
             </button>
-            <img className="arrow_icon" src={require("../AdminIcons/arrow.svg").default} onClick={() => { setArrow_iconOrg(!arrow_icon_org) }} />
+            <img className="arrow_icon" src={require("../AdminIcons/arrow.svg").default} onClick={() => setArrow_iconOrg(!arrow_icon_org)} />
 
             {
-              arrow_icon_org == true ? (
-                <div className="NestedSelect">
+              arrow_icon_org && (
+                <div ref={ref} className="NestedSelect">
                   {organizations.map((organization) => (
-                    <div className='list city'>
+                    <div className='list city' key={organization.id}>
 
                       <li className='li1' style={{
                         backgroundColor: organizationid.some(item => item === organization.id) ?
@@ -395,7 +405,7 @@ function AddProgram() {
                     </div>
                   ))}
                 </div>
-              ) : null
+              ) 
             }
           </div>
 
@@ -410,8 +420,8 @@ function AddProgram() {
             </button>
             <img className="arrow_icon" src={require("../AdminIcons/arrow.svg").default} onClick={() => { setArrow_iconCategory(!arrow_icon_category) }} />
             {
-              arrow_icon_category == true ? (
-                <div className="nested">
+              arrow_icon_category && (
+                <div ref={ref} className="nested">
                   {categores.map((categore) => (
 
                     <div className='list' >
@@ -435,7 +445,7 @@ function AddProgram() {
                                 <li style={{
                                   backgroundColor: isSelect.some(item => item.supportid === support.supportid) ? '#A4C2D8' : '#FAFAFA',
 
-                                }} className="li" onClick={(e) => selectSupport(e, support.supportid, categore.categoryid)}>
+                                }} key={support.supportid} className="li" onClick={(e) => selectSupport(e, support.supportid, categore.categoryid)}>
                                   {support.name}
                                 </li>
                               ))}
@@ -449,7 +459,7 @@ function AddProgram() {
                     </div>
                   ))}
                 </div>
-              ) : null
+              ) 
             }
           </div>
 
@@ -473,30 +483,32 @@ function AddProgram() {
             </button>
             <img className="arrow_icon" src={require("../AdminIcons/arrow.svg").default} onClick={() => { setArrow_iconStatus(!setArrow_iconStatus) }} />
             {
-              arrow_icon_status == true ? (
-                <div className="select_status">
+              arrow_icon_status && (
+                <div ref={ref} className="select_status">
 
                   <div className='list city'>
                     <div className="radio">
-                    <li className='li1' >Ընթացիկ</li>
-                      <input type="radio" id="Ընթացիկ" className="radio1" value="1" checked={statusid === 1}
-                        onChange={(e) => onValueChange(e)} onClick={() => setStatus(1)}></input>
-                      
+                      <li style={{
+                        backgroundColor: statusid === 1 ?
+                          '#A4C2D8' : '#FAFAFA'
+                      }} className='li1' onClick={() => setStatus(1)}>Ընթացիկ</li>
+
                     </div>
                     <div className="radio">
-                    <li className='li1' >Ավարտված</li>
-                      <input id="Ավարտված" type="radio" className="radio2" value="Ավարտված" checked={statusid === 2}
-                        onChange={(e) => onValueChange(e)} onClick={() => setStatus(2)}></input>
-                      
+                      <li className='li1' style={{
+                        backgroundColor: statusid === 2 ?
+                          '#A4C2D8' : '#FAFAFA'
+                      }} onClick={() => setStatus(2)}>Ավարտված</li>
+
                     </div>
                   </div>
 
                 </div>
-              ) : null
+              )
             }
           </div>
           <div className="donor">
-            <label className="donor_label">Դոնոր</label>
+            <label className="donor_label">Դոնոր խմբի անդամ է</label>
             <input type="checkbox" id='donor' className="isDonor" value={isdonor} onClick={() => { setIsDonor(!isdonor) }} />
           </div>
 

@@ -25,7 +25,7 @@ function Routes({
   isLoggedIn,
   showResults,
   setShowResults,
-  programsList,
+  // programsList,
   successPage,
   setSuccessPage,
   setFailPage,
@@ -40,7 +40,7 @@ function Routes({
           <MoreInfo
             setShowResults={setShowResults}
             programId={programId}
-            programsList={programsList}
+            // programsList={programsList}
           />
         ) : (
             <SideBar />
