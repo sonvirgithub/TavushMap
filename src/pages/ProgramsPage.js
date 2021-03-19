@@ -1,13 +1,10 @@
 import React, { useEffect, useState } from "react";
 import Program from "../components/HomePage/Program";
-import axios from "axios";
+
 
 export const ProgramContext = React.createContext();
-function ProgramsPage({ showResults, setShowResults, setProgramId }) {
+function ProgramsPage({ showResults, setShowResults, setProg }) {
   const [programs, setPrograms] = useState([]);
-  const [suppPrograms, setSuppPrograms] = useState([])
-  const [suppProg, setSuppProg] = useState([])
-
   const addProgram = (prog) => {
     programs.push(prog);
     setPrograms([...programs]);
@@ -29,17 +26,14 @@ function ProgramsPage({ showResults, setShowResults, setProgramId }) {
     fetch("/api/programsForAdmin")
       .then((res) => res.json())
       .then((res) => {
-        console.log(res.data);
+        console.log("aa", res.data);
         setPrograms(res.data);
-        
+
+
       })
       .catch((err) => {
         console.log(err);
       });
-
-     
-
-
   }, []);
 
   return (
@@ -58,7 +52,7 @@ function ProgramsPage({ showResults, setShowResults, setProgramId }) {
         }}
       >
         <Program
-          setProgramId={setProgramId}
+          setProg={setProg}
           showResults={showResults}
           programs={programs}
           setPrograms={setPrograms}

@@ -1,36 +1,33 @@
 import React, { useState, useEffect, useContext } from "react";
 import axios from "axios";
 import { Modal, Button } from "react-bootstrap";
-// import { toast } from "react-toastify";
+import { toast } from "react-toastify";
 // import "react-toastify/dist/ReactToastify.css";
 import { ProgramContext } from "../../pages/ProgramsPage";
 
-function DeleteProgram({ prog, show, setShow }) {
+function DeleteProgram({ id, show, setShow }) {
   const programCont = useContext(ProgramContext);
 
- // const [show, setShow] = useState(false);
-  const [id, setId] = useState("");
 
   const handleClose = () => setShow(false);
-  // const handleShow = () => setShow(true);
 
-  useEffect(() => {
-    setId(prog.id);
-  }, []);
 
-  const handleSubmit = (evt) => {
+
+  const handleSubmit = () => {
     console.log(id);
     axios
       .delete(`/api/deleteProgram/${id}`)
-      .then((response) => {
-        console.log(response);
-        if (response.data) {
-          programCont.deleteProgram(id);
-          //   toast.success("Կատարված է");
+      .then(res => {
+        if (res.data.success) {
+          toast.success("Ծրագիրը հեռացված է")
+          handleClose()
+
         } else {
-          //   toast.error(response.data.errorMessage);
+          toast.error(res.data.errorMessage)
         }
+
       })
+
       .catch((e) => {
         // toast.error("Կատարված չէ");
       });
@@ -50,7 +47,7 @@ function DeleteProgram({ prog, show, setShow }) {
           <Modal.Title>Համոզվա՞ծ եք</Modal.Title>
         </Modal.Header> */}
         <Modal.Body>
-          Դուք ցանկանում եք հեռացնել {prog.name_arm} ծրագիրը
+          Դուք ցանկանում եք հեռացնել  ծրագիրը
         </Modal.Body>
         <Modal.Footer>
           <Button variant="secondary" onClick={handleClose}>
@@ -60,7 +57,6 @@ function DeleteProgram({ prog, show, setShow }) {
             variant="primary"
             onClick={() => {
               handleSubmit();
-              handleClose();
             }}
           >
             Հաստատել

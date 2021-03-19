@@ -20,16 +20,16 @@ import SideBar from "./components/layout/SideBar/SideBar";
 import MoreInfo from "./components/HomePage/MoreInfo";
 
 function Routes({
-  programId,
-  setProgramId,
+  prog,
+  setProg,
   isLoggedIn,
   showResults,
   setShowResults,
-  // programsList,
   successPage,
   setSuccessPage,
   setFailPage,
 }) {
+
   // console.log(showResults, "showResults rout");
   if (!isLoggedIn) {
     // console.log(isLoggedIn);
@@ -39,12 +39,12 @@ function Routes({
         {showResults ? (
           <MoreInfo
             setShowResults={setShowResults}
-            programId={programId}
-            // programsList={programsList}
+            prog={prog}
+          // programsList={programsList}
           />
         ) : (
-            <SideBar />
-          )}
+          <SideBar />
+        )}
         <Switch>
           {/* <RouteWithLayout
             component={ProgramsPage}
@@ -60,7 +60,7 @@ function Routes({
             path="/program"
             render={() => (
               <ProgramsPage
-                setProgramId={setProgramId}
+                setProg={setProg}
                 showResults={showResults}
                 setShowResults={setShowResults}
               />

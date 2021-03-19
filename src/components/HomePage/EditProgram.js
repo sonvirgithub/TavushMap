@@ -56,6 +56,7 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
     })
       .then(res => res.json())
       .then(data => {
+        console.log("data.data",data.data);
         setCommunities(data.data)
       }).catch(err => {
         console.log(err);
@@ -77,15 +78,15 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
 
 
 
-
   }, []);
 
 
 
 
   const selectCommunity = (city) => {
-    let index = prog.community.findIndex(item => item.communityId == city.id);
+    let index = prog.community.findIndex(item => item.communityId === city.id);
     let arr = prog.community;
+  
 
     if (index < 0) {
       arr.push(
@@ -97,7 +98,7 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
     } else {
       arr.splice(index, 1)
     }
-    setProg({ ...prog, community: JSON.stringify(arr) })
+    setProg({ ...prog, community: arr })
 
 
   }
@@ -135,7 +136,10 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
     }
   }
 
-  const handleClose = () => setShow(false);
+  const handleClose = () => {
+    setShow(false)
+    
+  };
 
 
   const handleSubmit = (evt) => {
@@ -264,7 +268,7 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
                       <div className='list city' key={city.id}>
                         <li style={{
                           backgroundColor: prog.community.some(item => item.communityId === city.id) ?
-                            '#A4C2D8' : '#FAFAFA'
+                          '#A4C2D8' : '#FAFAFA'
                         }} className='li1' onClick={() => selectCommunity(city)} >{city.name}</li>
                       </div>
                     ))}
@@ -408,12 +412,12 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
             {/* discriptionneri input-nery */}
             <div className="project_name">
               <label className="project_name_label">Նկարագրություն (Հայերեն)</label>
-              <input className="description_input" placeholder="Հակիրճ նկարագրություն" value={prog.description_arm} onChange={e => setProg({ ...prog, description_arm: e.target.value, })} />
+              <textarea className="description_input" placeholder="Հակիրճ նկարագրություն" value={prog.description_arm} onChange={e => setProg({ ...prog, description_arm: e.target.value, })} />
 
             </div>
             <div className="project_name">
               <label className="project_name_label">Նկարագրություն (English)</label>
-              <input className="description_input" placeholder="Brief description" value={prog.description_eng} onChange={e => setProg({ ...prog, description_eng: e.target.value, })} />
+              <textarea className="description_input" placeholder="Brief description" value={prog.description_eng} onChange={e => setProg({ ...prog, description_eng: e.target.value, })} />
             </div>
 
             {/* status-i inputnery */}

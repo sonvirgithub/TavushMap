@@ -1,24 +1,25 @@
 import React, { useState, useEffect } from "react";
-import { Route, useHistory } from "react-router-dom";
-import { Modal, Form, Table } from "react-bootstrap";
 import AddProgram from "./AddProgram/AddProgram";
 import DeleteProgram from "./DeleteProgram";
-import MoreInfoProgram from "./MoreInfoProgram";
+import MoreInfo from "./MoreInfo";
 import EditProgram from './EditProgram'
-import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import "./Program.css"
 
-function Program({ setProgramId, programs, showResults, setShowResults }) {
+function Program({ programs, showResults, setShowResults, setProg }) {
 
   const [item, setItem] = useState({})
   const [itemDelete, setItemDelete] = useState({})
   const [itemMoreInfo, setItemMoreInfo] = useState({})
   const [editShow, setEditShow] = useState(false)
   const [deleteShow, setDeleteShow] = useState(false)
-  const [isSelect, setIsSelect] = useState([])
- 
+  // const [showResults, setShowResults] = useState([])
+  let [isSelect, setIsSelect] = useState([])
+
+
   const handleShowEdit = (index) => {
-    
+
+   
     if (programs[index].status === "ընթացիկ") {
       programs[index].status = 1
     }
@@ -29,8 +30,6 @@ function Program({ setProgramId, programs, showResults, setShowResults }) {
     const startDate = moment(programs[index].startDate).toDate()
     const endDate = moment(programs[index].endDate).toDate()
 
-
-
     programs[index].support.map((item) => {
 
       item.supports.map((support) => {
@@ -39,6 +38,7 @@ function Program({ setProgramId, programs, showResults, setShowResults }) {
         })
       })
     })
+    console.log("kkk");
 
     programs[index].startDate = startDate
     programs[index].endDate = endDate
@@ -49,17 +49,17 @@ function Program({ setProgramId, programs, showResults, setShowResults }) {
 
   }
 
-  const handleShowDelete = (index) => {
-    setItemDelete(programs[index])
+  const handleShowDelete = (id) => {
+    setItemDelete(id)
     setDeleteShow(true)
   }
 
   const handleShowMoreInfo = (index) => {
-    setItemMoreInfo(programs[index])
+    setProg(programs[index])
     setShowResults(true)
-    setProgramId(programs[index].id)
-   
   }
+
+  
 
   return (
     <div
@@ -76,12 +76,12 @@ function Program({ setProgramId, programs, showResults, setShowResults }) {
         <table style={{ width: "100%" }}>
           <thead>
             <tr>
-              <th>Ծրագրի անուն</th>
-              <th>Աջակցության տեսակ</th>
-              <th>Բյուջե</th>
-              <th>Կարգավիճակ</th>
-              <th>Ծրագրի ղեկավար</th>
-              <th></th>
+              <th style={{ width: "15%" }}>Ծրագրի անուն</th>
+              <th style={{ width: "15%" }}>Ոլորտ(ներ)</th>
+              <th style={{ width: "15%" }}>Բյուջե</th>
+              <th style={{ width: "15%" }}>Կարգավիճակ</th>
+              <th style={{ width: "15%" }}>Ծրագրի ղեկավար</th>
+              <th style={{ width: "25%" }}></th>
             </tr>
           </thead>
 
@@ -94,12 +94,19 @@ function Program({ setProgramId, programs, showResults, setShowResults }) {
 
                   <tr key={prog.id}>
                     <td>{prog.programName_arm}</td>
-                    <td>
-
+                    <td >
+                      <div className="tdSphere">
+                        {prog.support.map(item => {
+                          return item.category_arm + ', '
+                        })}
+                      </div>
                     </td>
+
                     <td>{prog.budget}</td>
-                    <td>{prog.status}</td>
-                    <td>{prog.manager}</td>
+                    <td>
+                      {prog.status}
+                    </td>
+                    <td>{prog.manager_arm}</td>
                     <td>
 
                       <div style={{ display: "flex" }}>
@@ -112,7 +119,7 @@ function Program({ setProgramId, programs, showResults, setShowResults }) {
                         </div>
                       </div>
                       <div style={{ marginLeft: "5px" }} onClick={() => {
-                        handleShowDelete(index);
+                        handleShowDelete(prog.id);
 
                       }}>
                         <img
@@ -140,14 +147,20 @@ function Program({ setProgramId, programs, showResults, setShowResults }) {
             )}
           </tbody>
           <EditProgram prog={item} setProg={setItem} show={editShow} setShow={setEditShow} isSelect={isSelect} setIsSelect={setIsSelect} />
-          <DeleteProgram prog={itemDelete} show={deleteShow} setShow={setDeleteShow} />
-          <MoreInfoProgram
-                          setProgramId={setProgramId}
-                          prog={itemMoreInfo}
-                          programs={programs}
-                          showResults={showResults}
-                          setShowResults={setShowResults}
-                        />
+          <DeleteProgram id={itemDelete} show={deleteShow} setShow={setDeleteShow} />
+
+          {/* {showResults ? (
+            <MoreInfo
+
+              prog={itemMoreInfo}
+
+              showResults={showResults}
+              setShowResults={setShowResults}
+            />
+          ) : (
+            <div></div>
+          )} */}
+
         </table>
       </div>
 

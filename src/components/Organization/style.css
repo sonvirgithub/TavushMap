@@ -8,14 +8,15 @@
   font-size: 26px;
   color: #858282;
 }
-.org_icon {
-  width: 24px;
-  height: 24px;
-  /* padding: 5px; */
-  margin-right: 5px;
-  margin-right: 12px;
-  cursor: pointer;
+
+  .org_icon {
+    width: 20px;
+    height: 20px;
+    margin-right: 5px;
+    margin-right: 12px;
+    cursor: pointer;
 }
+
 .button_add {
   border: none;
   background: none;

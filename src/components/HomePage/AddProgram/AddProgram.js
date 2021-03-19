@@ -1,4 +1,4 @@
-import React, { useState, useEffect , useRef} from 'react'
+import React, { useState, useEffect, useRef } from 'react'
 import { Route, useHistory } from 'react-router-dom';
 import './AddProgram.css'
 import { Modal, Form, } from 'react-bootstrap';
@@ -45,7 +45,7 @@ function AddProgram() {
   const [checkedCategory, setCheckedCategory] = useState([])
   const [openCategory, setOpenCategory] = useState([])
 
- 
+
   const ref = useRef();
 
   UseOutSideClick(ref, () => {
@@ -177,7 +177,7 @@ function AddProgram() {
       isSelect.splice(index, 1)
 
       for (let i = 0; i < categoryid_supportid.length; i++) {
-        if (categoryid_supportid[i].supportid === supportId && 
+        if (categoryid_supportid[i].supportid === supportId &&
           categoryid_supportid[i].categoryid === categoryId) {
           categoryid_supportid.splice(i, 1)
         }
@@ -333,7 +333,7 @@ function AddProgram() {
                     </div>
                   ))}
                 </div>
-  ) 
+              )
             }
           </div>
 
@@ -405,7 +405,7 @@ function AddProgram() {
                     </div>
                   ))}
                 </div>
-              ) 
+              )
             }
           </div>
 
@@ -459,7 +459,7 @@ function AddProgram() {
                     </div>
                   ))}
                 </div>
-              ) 
+              )
             }
           </div>
 
@@ -467,12 +467,12 @@ function AddProgram() {
           {/* discriptionneri input-nery */}
           <div className="project_name">
             <label className="project_name_label">Նկարագրություն (Հայերեն)</label>
-            <input className="description_input" placeholder="Հակիրճ նկարագրություն" value={description_arm} onChange={e => setDescription_arm(e.target.value)} />
+            <textarea className="description_input" placeholder="Հակիրճ նկարագրություն" value={description_arm} onChange={e => setDescription_arm(e.target.value)} />
 
           </div>
           <div className="project_name">
             <label className="project_name_label">Նկարագրություն (English)</label>
-            <input className="description_input" placeholder="Brief description" value={description_eng} onChange={e => setDescription_eng(e.target.value)} />
+            <textarea className="description_input" placeholder="Brief description" value={description_eng} onChange={e => setDescription_eng(e.target.value)} />
           </div>
 
           {/* status-i inputnery */}

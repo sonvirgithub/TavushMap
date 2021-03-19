@@ -10,10 +10,9 @@ import FailPage from "./pages/FailPage";
 
 function App({ token, ready, fetchUser, loading }) {
   const [showResults, setShowResults] = useState(false);
-  const [programsList, setProgramsList] = useState([]);
-  const [programId, setProgramId] = useState(null);
   const [successPage, setSuccessPage] = useState(false);
   const [failPage, setFailPage] = useState(false);
+  const [prog, setProg] = useState({})
   // console.log(showResults, "app results");
   // console.log(programId, "programId App js");
   useEffect(() => {
@@ -24,7 +23,7 @@ function App({ token, ready, fetchUser, loading }) {
   //   setSuccessPage(true);
   // }, [setSuccessPage]);
 
- 
+
 
   // if (!loading && !ready && !token) {
   //   return <p>Loading...</p>;
@@ -37,9 +36,8 @@ function App({ token, ready, fetchUser, loading }) {
       <Router>
         <Routes
           isLoggedIn={token}
-          programsList={programsList}
-          programId={programId}
-          setProgramId={setProgramId}
+          prog={prog}
+          setProg={setProg}
           showResults={showResults}
           setShowResults={setShowResults}
           successPage={successPage}
