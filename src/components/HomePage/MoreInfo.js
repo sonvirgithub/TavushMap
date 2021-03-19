@@ -12,7 +12,6 @@ function MoreInfo({ prog, showResults, setShowResults }) {
 
   useEffect(() => {
     supports2 = []
-    console.log(prog);
 
     prog.support.map((item) => {
       item.supports.map((support) => {
@@ -20,7 +19,6 @@ function MoreInfo({ prog, showResults, setShowResults }) {
       })
 
     })
-    console.log("more", supports2);
     setSupports2([...supports2])
   }, [prog])
 
@@ -36,7 +34,7 @@ function MoreInfo({ prog, showResults, setShowResults }) {
 
       <div style={{ padding: "30px" }} >
 
-        <div style={{ color: "#05558F", fontSize: "28px" }}>
+        <div style={{ color: "#05558F", fontSize: "28px", }}>
           {prog.programName_arm}
         </div>
 
@@ -69,7 +67,7 @@ function MoreInfo({ prog, showResults, setShowResults }) {
             className="org_icon"
             src={require("../../img/time.svg").default}
           />
-          {prog.startDate} - {prog.endDate}
+          {/* {prog.startDate} - {prog.endDate} */}
         </div>
 
         <div style={{ padding: "5px 0px", fontSize: "15px", display: "flex" }}>
@@ -77,7 +75,7 @@ function MoreInfo({ prog, showResults, setShowResults }) {
             className="org_icon"
             src={require("../../img/head name.svg").default}
           />
-          {prog.manager_arm}
+          {/* {prog.manager_arm} */}
         </div>
 
         <div style={{ padding: "5px 0px", fontSize: "15px", display: "flex" }}>
@@ -85,7 +83,7 @@ function MoreInfo({ prog, showResults, setShowResults }) {
             className="org_icon"
             src={require("../../img/contact.svg").default}
           />
-          {prog.contact_arm}
+          {/* {prog.contact_arm} */}
         </div>
 
         <div style={{ padding: "5px 0px", fontSize: "15px", display: "flex" }}>
@@ -93,9 +91,9 @@ function MoreInfo({ prog, showResults, setShowResults }) {
             className="org_icon"
             src={require("../../img/organization.svg").default}
           />
-          {prog.organization.map(item => {
+          {/* {prog.organization.map(item => {
             return item.organizationName_arm + ', '
-          })}
+          })} */}
 
         </div>
 
@@ -122,13 +120,13 @@ function MoreInfo({ prog, showResults, setShowResults }) {
 
 
 
-        <div style={{ padding: "5px 0px", fontSize: "15px", display: "flex" }}>
+        <div className="desc" style={{ padding: "5px 0px", fontSize: "15px", display: "flex"}}>
 
           <img
             className="org_icon"
             src={require("../../img/description.svg").default}
           />
-          <div style={{ maxWidth: "220px" }}>
+          <div >
             {prog.description_arm}
 
           </div>
@@ -152,7 +150,7 @@ function MoreInfo({ prog, showResults, setShowResults }) {
             className="org_icon"
             src={require("../../img/donor.svg").default}
           />
-          Դոնոր խմբի անդամ <b>{prog.isDonor ? 'է' : 'չէ'}</b>
+          {/* Դոնոր խմբի անդամ <b>{prog.isDonor ? 'է' : 'չէ'}</b> */}
         </div>
       </div>
 

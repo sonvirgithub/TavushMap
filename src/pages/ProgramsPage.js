@@ -4,7 +4,8 @@ import Program from "../components/HomePage/Program";
 
 export const ProgramContext = React.createContext();
 function ProgramsPage({ showResults, setShowResults, setProg }) {
-  const [programs, setPrograms] = useState([]);
+  const [programs, setPrograms] = useState([])
+
   const addProgram = (prog) => {
     programs.push(prog);
     setPrograms([...programs]);
@@ -26,13 +27,12 @@ function ProgramsPage({ showResults, setShowResults, setProg }) {
     fetch("/api/programsForAdmin")
       .then((res) => res.json())
       .then((res) => {
-        console.log("aa", res.data);
         setPrograms(res.data);
 
 
       })
       .catch((err) => {
-        console.log(err);
+        // console.log(err);
       });
   }, []);
 

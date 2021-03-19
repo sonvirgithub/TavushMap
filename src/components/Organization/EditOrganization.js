@@ -33,7 +33,6 @@ function EditOrganization({ org, setSuccessPage, setFailPage }) {
         person,
       })
       .then((response) => {
-        console.log(response);
         if (response.data.success) {
           const org = {
             id: id,
@@ -44,16 +43,13 @@ function EditOrganization({ org, setSuccessPage, setFailPage }) {
           handleClose();
           organizationCont.editOrganization(org);
           setSuccessPage(true);
-          console.log("Կատարված է");
         } else {
           handleClose();
           setFailPage(true);
-          console.log(response.data.errorMessage);
         }
       })
       .catch((e) => {
         handleClose();
-        console.log("error");
       });
   };
 

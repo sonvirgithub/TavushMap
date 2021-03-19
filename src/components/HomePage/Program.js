@@ -19,7 +19,7 @@ function Program({ programs, showResults, setShowResults, setProg }) {
 
   const handleShowEdit = (index) => {
 
-   
+
     if (programs[index].status === "ընթացիկ") {
       programs[index].status = 1
     }
@@ -38,12 +38,10 @@ function Program({ programs, showResults, setShowResults, setProg }) {
         })
       })
     })
-    console.log("kkk");
 
     programs[index].startDate = startDate
     programs[index].endDate = endDate
     //  programs[index].support = isSelect
-    console.log("programindex", programs[index]);
     setItem(programs[index])
     setEditShow(true)
 
@@ -59,7 +57,7 @@ function Program({ programs, showResults, setShowResults, setProg }) {
     setShowResults(true)
   }
 
-  
+
 
   return (
     <div
@@ -108,33 +106,37 @@ function Program({ programs, showResults, setShowResults, setProg }) {
                     </td>
                     <td>{prog.manager_arm}</td>
                     <td>
-
                       <div style={{ display: "flex" }}>
-
-                        <div variant="primary" onClick={() => {
-                          handleShowEdit(index);
+                        <div style={{ marginLeft: "10px", width: "30px",marginRight: "10px" }} onClick={() => {
+                          handleShowMoreInfo(index)
 
                         }}>
-                          <img className="org_icon" src={require("../../img/edit.svg").default} />
+                          <img
+                          style={{ width: "25px" }}
+                            className="org_icon"
+                            src={require("../../img/eye.svg").default}
+                          />
                         </div>
-                      </div>
-                      <div style={{ marginLeft: "5px" }} onClick={() => {
-                        handleShowDelete(prog.id);
+                        <div style={{ display: "flex" }}>
 
-                      }}>
-                        <img
-                          className="org_icon"
-                          src={require("../../img/remove.svg").default}
-                        />
-                      </div>
-                      <div style={{ marginLeft: "5px" }} onClick={() => {
-                        handleShowMoreInfo(index)
+                          <div variant="primary" onClick={() => {
+                            handleShowEdit(index);
 
-                      }}>
-                        <img
-                          className="org_icon"
-                          src={require("../../img/eye.svg").default}
-                        />
+                          }}>
+                            <img className="org_icon" src={require("../../img/edit.svg").default} />
+                          </div>
+                        </div>
+                        <div style={{ marginLeft: "5px" }} onClick={() => {
+                          handleShowDelete(prog.id);
+
+                        }}>
+                          <img
+                           style={{ width: "17px" }}
+                            className="org_icon"
+                            src={require("../../img/remove.svg").default}
+                          />
+                        </div>
+
                       </div>
                     </td>
                   </tr>

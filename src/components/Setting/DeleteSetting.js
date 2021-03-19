@@ -18,11 +18,9 @@ function DeleteSetting({ set, setSuccessPage, setFailPage }) {
   }, []);
 
   const handleSubmit = (evt) => {
-    console.log(id);
     axios
       .delete(`api/deleteUser/${id}`)
       .then((response) => {
-        console.log(response);
         if (response.data.success) {
           settingCont.deleteUser(id);
           setSuccessPage(true);

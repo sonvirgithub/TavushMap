@@ -19,11 +19,9 @@ function DeleteCategory({ cat, setSuccessPage, setFailPage }) {
   }, []);
 
   const handleSubmit = (evt) => {
-    console.log(id);
     axios
       .delete(`api/deleteCategory/${id}`)
       .then((response) => {
-        console.log(response);
         if (response.data.success) {
           categoryCont.deleteCategory(id);
           setSuccessPage(true);

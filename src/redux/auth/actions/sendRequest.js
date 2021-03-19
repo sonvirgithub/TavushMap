@@ -6,7 +6,7 @@ export default async function sendRequest(url) {
 
   // console.log(response.data.success);
   if (!response.data.success) {
-    if (window.location.pathname !== "/login") {
+    if (window.location.pathname !== "/admin/login") {
       axios
         .get(`/logout`)
         .then((res) => {

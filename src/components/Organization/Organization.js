@@ -13,7 +13,6 @@ function Organization({
   successPage,
   setFailPage,
 }) {
-  console.log(organizations, "organizations");
   return (
     <div style={{ marginLeft: "328px" }}>
       <div className="org_title">

@@ -22,18 +22,14 @@ function DeleteSupportType({ supType, setSuccessPage, setFailPage }) {
     axios
       .delete(`api/deleteSupport/${id}`)
       .then((response) => {
-        console.log(response);
         if (response.data.success) {
           supportCont.deleteSupport(id);
           setSuccessPage(true);
-          console.log("Կատարված է");
         } else {
-          console.log(response.data.errorMessage);
           setFailPage(true);
         }
       })
       .catch((e) => {
-        console.log("Կատարված չէ");
       });
   };
 

@@ -41,10 +41,9 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
     })
       .then(res => res.json())
       .then(data => {
-        console.log(data);
         setOrganizations(data.data)
       }).catch(err => {
-        console.log(err);
+        // console.log(err);
       })
 
     fetch('/api/communities', {
@@ -56,10 +55,9 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
     })
       .then(res => res.json())
       .then(data => {
-        console.log("data.data",data.data);
         setCommunities(data.data)
       }).catch(err => {
-        console.log(err);
+        // console.log(err);
       })
 
     fetch('/api/supportsList', {
@@ -73,7 +71,7 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
       .then(data => {
         setCategores(data.data)
       }).catch(err => {
-        console.log(err);
+        // console.log(err);
       })
 
 
@@ -144,7 +142,6 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
 
   const handleSubmit = (evt) => {
 
-    console.log("program", prog);
     const year = prog.startDate.getFullYear()
     const month = prog.startDate.getMonth() + 1
     const day = prog.startDate.getDate()
@@ -164,7 +161,7 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
         if (res.data.success) {
 
           handleClose();
-          console.log("Կատարված է");
+          // console.log("Կատարված է");
         } else {
           handleClose();
 
@@ -172,7 +169,7 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
       })
       .catch((e) => {
         handleClose();
-        console.log("error", e);
+        // console.log("error", e);
       });
 
 

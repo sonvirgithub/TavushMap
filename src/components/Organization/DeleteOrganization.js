@@ -19,11 +19,9 @@ function DeleteOrganization({ org, setSuccessPage, setFailPage }) {
   }, []);
 
   const handleSubmit = (evt) => {
-    console.log(id);
     axios
       .delete(`api/deleteOrganization/${id}`)
       .then((response) => {
-        console.log(response);
         if (response.data.success) {
           organizationCont.deleteOrganization(id);
           setSuccessPage(true);

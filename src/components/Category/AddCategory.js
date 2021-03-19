@@ -15,15 +15,13 @@ function AddCategory({ setSuccessPage, setFailPage }) {
   // const [person, setPerson] = useState("");
 
   const handleSubmit = (evt) => {
-    console.log("object");
-    console.log(category_eng, category_arm);
+   
     axios
       .post(`/api/addCategory`, {
         category_eng,
         category_arm,
       })
       .then((response) => {
-        console.log(response);
         if (response.data.success) {
           const cat = {
             id: response.data.id,
@@ -33,15 +31,12 @@ function AddCategory({ setSuccessPage, setFailPage }) {
           categoryCont.addCategory(cat);
           setSuccessPage(true);
           handleClose();
-          console.log("Կատարված է");
         } else {
           handleClose();
-          console.log("Կատարված չէ");
           setFailPage(true);
         }
       })
       .catch((e) => {
-        console.log("error");
         handleClose();
       });
   };

@@ -16,8 +16,7 @@ function AddSetting({ setSuccessPage, setFailPage }) {
   const [password, setPassword] = useState("");
 
   const handleSubmit = (evt) => {
-    console.log("object");
-    console.log(firstName, lastName, email, password);
+   
     axios
       .post(`/api/addUser`, {
         firstName,
@@ -26,7 +25,6 @@ function AddSetting({ setSuccessPage, setFailPage }) {
         password,
       })
       .then((response) => {
-        console.log(response);
         if (response.data.success) {
           const user = {
             id: response.data.id,
@@ -38,15 +36,12 @@ function AddSetting({ setSuccessPage, setFailPage }) {
           settingCont.addUser(user);
           setSuccessPage(true);
           handleClose();
-          console.log("Կատարված է");
         } else {
           handleClose();
-          console.log("Կատարված չէ");
           setFailPage(true);
         }
       })
       .catch((e) => {
-        console.log("error");
         handleClose();
       });
   };

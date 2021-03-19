@@ -4,7 +4,6 @@ import axios from "axios";
 import { SettingContext } from "../../pages/SettingPage";
 
 function EditSetting({ set, setSuccessPage, setFailPage }) {
-  console.log(set, "set");
   const settingCont = useContext(SettingContext);
   const [show, setShow] = useState(false);
   const [id, setId] = useState("");
@@ -24,7 +23,6 @@ function EditSetting({ set, setSuccessPage, setFailPage }) {
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
   const handleSubmit = (evt) => {
-    console.log(id, firstName, lastName);
     axios
       .put(`/api/editUserInfo`, {
         id,
@@ -32,7 +30,6 @@ function EditSetting({ set, setSuccessPage, setFailPage }) {
         lastName,
       })
       .then((response) => {
-        console.log(response);
         if (response.data.success) {
           const user = {
             id: id,
@@ -42,16 +39,13 @@ function EditSetting({ set, setSuccessPage, setFailPage }) {
           handleClose();
           settingCont.editUser(user);
           setSuccessPage(true);
-          console.log("Կատարված է");
         } else {
           handleClose();
           setFailPage(true);
-          console.log(response.data.errorMessage);
         }
       })
       .catch((e) => {
         handleClose();
-        console.log("error");
       });
   };
 

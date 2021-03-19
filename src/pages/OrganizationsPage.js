@@ -37,15 +37,12 @@ function OrganizationsPage({ setSuccessPage, successPage, setFailPage }) {
   //   console.log("object");
   useEffect(() => {
     const fetchData = async () => {
-      console.log("object1");
       const result = await axios("api/organizations");
-      console.log(result);
       setOrganizations(result.data.data);
     };
 
     fetchData();
   }, []);
-  console.log(organizations, "organizationsorganizations");
   return (
     <div
       style={{

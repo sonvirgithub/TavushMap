@@ -59,7 +59,6 @@ function EditSupportType({
           handleClose();
           supportCont.editSupport(sup);
           setSuccessPage(true);
-          console.log("Կատարված է");
         } else {
           handleClose();
           setFailPage(true);
@@ -67,7 +66,6 @@ function EditSupportType({
       })
       .catch((e) => {
         handleClose();
-        console.log("error");
       });
   };
 

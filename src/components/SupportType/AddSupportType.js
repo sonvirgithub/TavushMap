@@ -4,7 +4,6 @@ import axios from "axios";
 import { SupportContext } from "../../pages/SupportTypesPage";
 
 function AddSupportType({ categoryType, setSuccessPage, setFailPage }) {
-  console.log(categoryType, "categoryType");
 
   const supportCont = useContext(SupportContext);
 
@@ -34,7 +33,6 @@ function AddSupportType({ categoryType, setSuccessPage, setFailPage }) {
         categoryid,
       })
       .then((response) => {
-        console.log(response);
         if (response.data.success) {
           const sup = {
             supportid: response.data.id,
@@ -45,15 +43,12 @@ function AddSupportType({ categoryType, setSuccessPage, setFailPage }) {
           supportCont.addSupport(sup);
           setSuccessPage(true);
           handleClose();
-          console.log("Կատարված է");
         } else {
           handleClose();
           setFailPage(true);
-          console.log("Կատարված չէ");
         }
       })
       .catch((e) => {
-        console.log("error");
         handleClose();
       });
   };

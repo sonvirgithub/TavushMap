@@ -14,7 +14,6 @@ function DeleteProgram({ id, show, setShow }) {
 
 
   const handleSubmit = () => {
-    console.log(id);
     axios
       .delete(`/api/deleteProgram/${id}`)
       .then(res => {

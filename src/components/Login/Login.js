@@ -34,16 +34,15 @@ function Login() {
             headers
         });
 
-        console.log(res.status);
+        
         if (res.status == 200) {
             // console.log(res.json());
             //let data = await res.json()
 
            // console.log(data);
-           console.log("aaaaaaa");
 
-            //history.push('/program')
-            window.location.reload()
+            history.push('/admin/program')
+            //window.location.reload()
         } else {
 
             setIncorrect(false)
@@ -58,7 +57,6 @@ function Login() {
     }
 
     function passwordVisible() {
-        console.log("click");
         if (eyeVisible == "password") {
             setEyeVisible("text")
         }

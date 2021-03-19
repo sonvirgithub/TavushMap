@@ -35,9 +35,7 @@ function CategoriesPage({ setSuccessPage, setFailPage }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log("object1");
       const result = await axios("/api/categories");
-      console.log(result, "result");
       setCategories(result.data.data);
     };
 

@@ -57,7 +57,7 @@ function Routes({
           /> */}
           <Route
             exact
-            path="/program"
+            path="/admin/program"
             render={() => (
               <ProgramsPage
                 setProg={setProg}
@@ -68,7 +68,7 @@ function Routes({
           />
           <Route
             exact
-            path="/organization"
+            path="/admin/organization"
             render={() => (
               <OrganizationsPage
                 setSuccessPage={setSuccessPage}
@@ -79,7 +79,7 @@ function Routes({
           />
           <Route
             exact
-            path="/category"
+            path="/admin/category"
             render={() => (
               <CategoriesPage
                 setSuccessPage={setSuccessPage}
@@ -90,7 +90,7 @@ function Routes({
           />
           <Route
             exact
-            path="/supportType"
+            path="/admin/supportType"
             render={() => (
               <SupportTypesPage
                 setSuccessPage={setSuccessPage}
@@ -100,7 +100,7 @@ function Routes({
           />
           <Route
             exact
-            path="/settings"
+            path="/admin/settings"
             render={() => (
               <SettingPage
                 setSuccessPage={setSuccessPage}
@@ -133,7 +133,7 @@ function Routes({
             path="/settings"
           /> */}
 
-          <Redirect to="/program" />
+          <Redirect to="/admin/program" />
         </Switch>
       </>
     );
@@ -142,7 +142,7 @@ function Routes({
 
     return (
       <Switch>
-        <Route exact path="/login" render={() => <Login />} />
+        <Route exact path="/admin/login" render={() => <Login />} />
         {/* <RouteWithLayout
           component={Login}
           exact
@@ -150,7 +150,7 @@ function Routes({
           path="/login"
         /> */}
 
-        <Redirect to="/login" />
+        <Redirect to="/admin/login" />
       </Switch>
     );
   }

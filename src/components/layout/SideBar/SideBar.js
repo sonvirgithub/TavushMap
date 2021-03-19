@@ -25,7 +25,6 @@ function Sidebar() {
   ]);
 
   async function createProgress() {
-    console.log("createProgress");
 
     let body = {
       nameArm,
@@ -48,7 +47,6 @@ function Sidebar() {
     });
     if (res.status == 200) {
       let data = await res.json();
-      console.log(data);
     }
 
     // const history = useHistory();
@@ -67,10 +65,9 @@ function Sidebar() {
 
             history.push("/login")
             window.location.reload()
-            // console.log(await res.json());
 
         } else {
-            console.log("data chka")
+            // console.log("data chka")
 
         }
         // window.location.reload()
@@ -83,15 +80,13 @@ function Sidebar() {
     <div className="sideBar">
       <div className="properties">
         <div
-        //  className="div_projects"
         >
           <img
             src={require("./AdminIcons/programm.svg").default}
             className="icon_program"
-            // className="icon"
           />
           <NavLink
-            to="/program"
+            to="/admin/program"
             className="btn_projects div_projects"
             activeClassName="activeclass"
           >
@@ -100,10 +95,9 @@ function Sidebar() {
           </NavLink>
         </div>
         <div
-        // className="div_projects"
         >
           <NavLink
-            to="/organization"
+            to="/admin/organization"
             className="btn_projects div_projects"
             activeClassName="activeclass"
           >
@@ -115,10 +109,9 @@ function Sidebar() {
           </NavLink>
         </div>
         <div
-        // className="div_projects"
         >
           <NavLink
-            to="/category"
+            to="/admin/category"
             className="btn_projects div_projects"
             activeClassName="activeclass"
           >
@@ -133,7 +126,7 @@ function Sidebar() {
         //  className="div_projects"
         >
           <NavLink
-            to="/supportType"
+            to="/admin/supportType"
             className="btn_projects div_projects"
             activeClassName="activeclass"
           >
@@ -148,7 +141,7 @@ function Sidebar() {
         //  className="div_projects"
         >
           <NavLink
-            to="/settings"
+            to="/admin/settings"
             className="btn_projects div_projects"
             activeClassName="activeclass"
           >

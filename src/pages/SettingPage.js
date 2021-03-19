@@ -36,9 +36,7 @@ function SettingPage({ setSuccessPage, setFailPage }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      console.log("object1");
       const result = await axios("/api/settings");
-      console.log(result, "result");
       setSettings(result.data.data);
     };
 

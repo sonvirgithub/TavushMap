@@ -72,7 +72,7 @@ function AddProgram() {
         setOrganizations(data.data)
 
       }).catch(err => {
-        console.log(err);
+        // console.log(err);
       })
 
     fetch('/api/communities', {
@@ -85,11 +85,10 @@ function AddProgram() {
 
       .then(res => res.json())
       .then(data => {
-        // console.log("supporstList", data.data);
         setCommunities(data.data)
 
       }).catch(err => {
-        console.log(err);
+        // console.log(err);
       })
 
     fetch('/api/supportsList', {
@@ -99,16 +98,13 @@ function AddProgram() {
       },
       body: JSON.stringify({ language })
     })
-      // .then(res => {
-      //   console.log("res", res);
-      // })
+
       .then(res => res.json())
       .then(data => {
-        console.log("supporstList", data.data);
         setCategores(data.data)
 
       }).catch(err => {
-        console.log(err);
+        // console.log(err);
       })
 
 
@@ -126,8 +122,8 @@ function AddProgram() {
       categoryid_supportid, description_arm, description_eng, statusid, isdonor, language
     }
 
-    console.log(name_arm, name_eng, communityid, budget, start_date, end_date, manager_arm, manager_eng, contactPerson_arm, contactPerson_eng, organizationid,
-      categoryid_supportid, description_arm, description_eng, statusid, isdonor);
+    // console.log(name_arm, name_eng, communityid, budget, start_date, end_date, manager_arm, manager_eng, contactPerson_arm, contactPerson_eng, organizationid,
+    //   categoryid_supportid, description_arm, description_eng, statusid, isdonor);
 
     body = JSON.stringify(body)
     const headers = {}
@@ -138,13 +134,11 @@ function AddProgram() {
       headers
     });
 
-    console.log(res);
     if (res.status == 200) {
-      console.log(res);
       handleClose()
 
     } else {
-      console.log(res);
+      // console.log(res);
     }
 
     setName_arm("")
@@ -173,7 +167,6 @@ function AddProgram() {
 
 
       let index = isSelect.findIndex(item => item.supportid === supportId);
-      // console.log("index", index);
       isSelect.splice(index, 1)
 
       for (let i = 0; i < categoryid_supportid.length; i++) {
@@ -182,7 +175,6 @@ function AddProgram() {
           categoryid_supportid.splice(i, 1)
         }
       }
-      // console.log("array hanec", array);
     }
     else {
       isSelect.push({ supportid: supportId })
@@ -190,16 +182,13 @@ function AddProgram() {
         categoryid: categoryId,
         supportid: supportId
       })
-      // console.log("array avelacrec", array);
 
     }
     setIsSelect([...isSelect])
-    // console.log("isSelect1", isSelect);
 
   }
 
   const openCategores = (id) => {
-    console.log(id);
     if (openCategory.some(item => item === id)) {
       let index = openCategory.findIndex(item => item === id);
       openCategory.splice(index, 1)
@@ -252,7 +241,6 @@ function AddProgram() {
       setCheckedCategory([...checkedCategory])
     }
 
-    console.log(checkedCategory);
     if (checkedCategory.some(item => item === category.categoryid)) {
       for (let i = 0; i < category.items.length; i++) {
         if (isSelect.some(item => item.Id === category.categoryid && item.supportid === category.items[i].supportid)) {
@@ -283,8 +271,6 @@ function AddProgram() {
         }
       }
     }
-    console.log("isselect", isSelect);
-    console.log("array", categoryid_supportid);
 
   }
 

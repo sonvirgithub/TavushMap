@@ -30,7 +30,6 @@ function EditCategory({ cat, setSuccessPage, setFailPage }) {
         category_arm,
       })
       .then((response) => {
-        console.log(response);
         if (response.data.success) {
           const cat = {
             id: id,
@@ -40,16 +39,13 @@ function EditCategory({ cat, setSuccessPage, setFailPage }) {
           handleClose();
           categoryCont.editCategory(cat);
           setSuccessPage(true);
-          console.log("Կատարված է");
         } else {
           handleClose();
           setFailPage(true);
-          console.log(response.data.errorMessage);
         }
       })
       .catch((e) => {
         handleClose();
-        console.log("error");
       });
   };
 

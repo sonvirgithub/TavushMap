@@ -17,8 +17,6 @@ function AddOrganization({ successPage, setSuccessPage, setFailPage }) {
   const [person, setPerson] = useState("");
 
   const handleSubmit = (evt) => {
-    console.log("object");
-    console.log(nameArm, nameEng, person);
     axios
       .post(`api/addOrganization`, {
         nameArm,
@@ -27,7 +25,6 @@ function AddOrganization({ successPage, setSuccessPage, setFailPage }) {
         person,
       })
       .then((response) => {
-        console.log(response);
         if (response.data.success) {
           const org = {
             id: response.data.id,
@@ -40,15 +37,12 @@ function AddOrganization({ successPage, setSuccessPage, setFailPage }) {
           setSuccessPage(true);
           // setSuccessPage(successPage);
           handleClose();
-          console.log("Կատարված է");
         } else {
           handleClose();
           setFailPage(true);
-          console.log("Կատարված չէ");
         }
       })
       .catch((e) => {
-        console.log("error");
         handleClose();
       });
   };

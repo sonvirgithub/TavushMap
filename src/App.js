@@ -13,8 +13,7 @@ function App({ token, ready, fetchUser, loading }) {
   const [successPage, setSuccessPage] = useState(false);
   const [failPage, setFailPage] = useState(false);
   const [prog, setProg] = useState({})
-  // console.log(showResults, "app results");
-  // console.log(programId, "programId App js");
+
   useEffect(() => {
     fetchUser();
   }, []);

@@ -5,7 +5,6 @@ import DeleteCategory from "./DeleteCategory";
 import EditCategory from "./EditCategory";
 
 function Organization({ categories, setSuccessPage, setFailPage }) {
-  console.log(categories, "categories");
   return (
     <div style={{ marginLeft: "328px" }}>
       <div className="org_title">
