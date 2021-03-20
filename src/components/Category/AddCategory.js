@@ -50,17 +50,17 @@ function AddCategory({ setSuccessPage, setFailPage }) {
         </button>
       </div>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} style={{ textAlign:"center" }}>
         <Modal.Body>
           <Form.Group onSubmit={handleSubmit}>
-            <FormLabel>Ոլորտի անվանումը (Հայերեն)</FormLabel>
+            <FormLabel style={{ display:"flex" }}>Ոլորտի անվանումը (Հայերեն)</FormLabel>
             <Form.Control
               type="text"
               placeholder="Ոլորտի անվանումը"
               onChange={(e) => setCategoryArm(e.target.value)}
             />
             <br />
-            <FormLabel>Ոլորտի անվանումը (Enlglish)</FormLabel>
+            <FormLabel style={{ display:"flex" }}>Ոլորտի անվանումը (Enlglish)</FormLabel>
 
             <Form.Control
               type="text"

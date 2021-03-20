@@ -327,9 +327,9 @@ function AddProgram() {
           <div className="project_name">
             <label className="budge_name">Բյուջե</label>
             <input className="budge_input" placeholder="10 000" value={budget} onChange={e => setBudge(e.target.value)} />
-            <Form.Control as="select" className="usd_input">
-              <option >USD</option>
-            </Form.Control>
+            <div className="usd_input">
+              USD
+            </div>
           </div>
 
           {/* date-eri inputnery */}

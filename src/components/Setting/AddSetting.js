@@ -55,17 +55,17 @@ function AddSetting({ setSuccessPage, setFailPage }) {
         </button>
       </div>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} style={{ textAlign:"center" }}>
         <Modal.Body>
           <Form.Group onSubmit={handleSubmit}>
-            <FormLabel>Անուն</FormLabel>
+            <FormLabel style={{ display:"flex" }}>Անուն</FormLabel>
             <Form.Control
               type="text"
               placeholder="Անուն"
               onChange={(e) => setFirstName(e.target.value)}
             />
             <br />
-            <FormLabel>Ազգանուն</FormLabel>
+            <FormLabel style={{ display:"flex" }}>Ազգանուն</FormLabel>
 
             <Form.Control
               type="text"
@@ -73,7 +73,7 @@ function AddSetting({ setSuccessPage, setFailPage }) {
               onChange={(e) => setLastName(e.target.value)}
             />
             <br />
-            <FormLabel>Էլ․ հասցե</FormLabel>
+            <FormLabel style={{ display:"flex" }}>Էլ․ հասցե</FormLabel>
 
             <Form.Control
               type="email"
@@ -81,7 +81,7 @@ function AddSetting({ setSuccessPage, setFailPage }) {
               onChange={(e) => setEmail(e.target.value)}
             />
             <br />
-            <FormLabel>Գաղտնաբառ</FormLabel>
+            <FormLabel style={{ display:"flex" }}>Գաղտնաբառ</FormLabel>
 
             <Form.Control
               type="password"

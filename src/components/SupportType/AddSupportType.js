@@ -62,10 +62,10 @@ function AddSupportType({ categoryType, setSuccessPage, setFailPage }) {
         </button>
       </div>
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} style={{ textAlign:"center" }}>
         <Modal.Body>
           <Form.Group onSubmit={handleSubmit}>
-            <Form.Label>Ոլորտ</Form.Label>
+            <Form.Label style={{ display:"flex" }}>Ոլորտ</Form.Label>
             <Form.Control
               as="select"
               onChange={(e) => setCategoryId(e.target.value)}
@@ -86,14 +86,14 @@ function AddSupportType({ categoryType, setSuccessPage, setFailPage }) {
               )}
             </Form.Control>
 
-            <FormLabel>Աջակցության տեսակ (Հայերեն)</FormLabel>
+            <FormLabel style={{ display:"flex" }}>Աջակցության տեսակ (Հայերեն)</FormLabel>
             <Form.Control
               type="text"
               placeholder="Աջակցության տեսակ "
               onChange={(e) => setSupportArm(e.target.value)}
             />
             <br />
-            <FormLabel>Աջակցության տեսակ (Enlglish)</FormLabel>
+            <FormLabel style={{ display:"flex" }}>Աջակցության տեսակ (Enlglish)</FormLabel>
 
             <Form.Control
               type="text"

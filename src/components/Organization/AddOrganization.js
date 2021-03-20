@@ -21,7 +21,6 @@ function AddOrganization({ successPage, setSuccessPage, setFailPage }) {
       .post(`api/addOrganization`, {
         nameArm,
         nameEng,
-
         person,
       })
       .then((response) => {
@@ -67,20 +66,20 @@ function AddOrganization({ successPage, setSuccessPage, setFailPage }) {
           Ավելացնել կազմակերպություն
         </Button> */}
 
-      <Modal show={show} onHide={handleClose}>
+      <Modal show={show} onHide={handleClose} style={{ textAlign:"center" }}>
         {/* <Modal.Header> */}
         {/* <Modal.Title>Ավելացնել կազմակերպություն</Modal.Title> */}
         {/* </Modal.Header> */}
         <Modal.Body>
           <Form.Group onSubmit={handleSubmit}>
-            <FormLabel>Կազմակերպության անվանումը (Հայերեն)</FormLabel>
+            <FormLabel style={{ display:"flex" }}>Կազմակերպության անվանումը (Հայերեն)</FormLabel>
             <Form.Control
               type="text"
               placeholder="Կազմակերպության անվանումը"
               onChange={(e) => setNameArm(e.target.value)}
             />
             <br />
-            <FormLabel>Կազմակերպության անվանումը (Enlglish)</FormLabel>
+            <FormLabel style={{ display:"flex" }}>Կազմակերպության անվանումը (Enlglish)</FormLabel>
 
             <Form.Control
               type="text"
@@ -89,7 +88,7 @@ function AddOrganization({ successPage, setSuccessPage, setFailPage }) {
               //   className={error}
             />
             <br />
-            <FormLabel>Կոնտակտ անձ</FormLabel>
+            <FormLabel style={{ display:"flex" }}>Կոնտակտ անձ</FormLabel>
 
             <Form.Control
               type="text"
