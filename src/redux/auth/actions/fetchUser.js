@@ -9,7 +9,7 @@ import {
 export const fetchUser = () => {
   return (dispatch) => {
     dispatch(fetchUserRequest());
-    sendRequest(`/token`)
+    sendRequest(`/api/token`)
       .then((data) => {
         dispatch(fetchUserSuccess(data));
       })

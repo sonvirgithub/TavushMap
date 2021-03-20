@@ -28,7 +28,7 @@ function AddProgram() {
   const [manager_eng, setManager_eng] = useState("")
   const [contactPerson_arm, setContactPerson_arm] = useState("")
   const [contactPerson_eng, setContactPerson_eng] = useState("")
-  const [organizationid, setOrganization] = useState([])
+  const [organizationid, setOrganization] = useState([2,3])
   const [description_arm, setDescription_arm] = useState("")
   const [description_eng, setDescription_eng] = useState("")
   const [statusid, setStatus] = useState("")
@@ -310,8 +310,8 @@ function AddProgram() {
 
                 <div ref={ref} className="NestedSelect">
 
-                  {communities.map((city) => (
-                    <div className='list city'>
+                  {communities.map((city,index) => (
+                    <div className='list city' key={index}>
                       <li style={{
                         backgroundColor: communityid.some(item => item === city.id) ?
                           '#A4C2D8' : '#FAFAFA'
@@ -326,7 +326,7 @@ function AddProgram() {
           {/* budget-i inputnery */}
           <div className="project_name">
             <label className="budge_name">Բյուջե</label>
-            <input className="budge_input" placeholder="10 000" value={budget} onChange={e => setBudge(e.target.value)} />
+            <input  className="budge_input" placeholder="10 000"  onChange={e => setBudge(e.target.value)} />
             <div className="usd_input">
               USD
             </div>
@@ -408,9 +408,9 @@ function AddProgram() {
             {
               arrow_icon_category && (
                 <div ref={ref} className="nested">
-                  {categores.map((categore) => (
+                  {categores.map((categore,index) => (
 
-                    <div className='list' >
+                    <div className='list' key={index} >
 
                       <ul className='ul' >
 

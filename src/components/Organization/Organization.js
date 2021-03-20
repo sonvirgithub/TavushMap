@@ -53,7 +53,7 @@ function Organization({
             organizations.map((org, index) => {
               return (
                 <tr key={org.id}>
-                  <td>{org.name_arm}</td>
+                  <td>{org.name}</td>
                   <td>{org.name_eng}</td>
                   <td>{org.person}</td>
                   {/* <td>{org.name_eng}</td> */}

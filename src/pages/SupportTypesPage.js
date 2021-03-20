@@ -50,7 +50,7 @@ function SupportTypesPage({ setSuccessPage, setFailPage }) {
 
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios("api/supports");
+      const result = await axios("/api/supports");
      
       setSupportTypes(result.data.data);
       const catresult = await axios("/api/categories");

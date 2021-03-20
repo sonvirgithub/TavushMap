@@ -10,6 +10,7 @@ function SupportType({
   setSuccessPage,
   setFailPage,
 }) {
+  console.log("log",supportTypes);
   return (
     <div style={{ marginLeft: "328px" }}>
       <div className="org_title">
@@ -48,7 +49,7 @@ function SupportType({
           {supportTypes.length > 0 ? (
             supportTypes.map((supType, index) => {
               return (
-                <tr key={supType.id}>
+                <tr key={index}>
                   <td>{supType.category_arm}</td>
                   {/* <td>{supType.category_eng}</td> */}
                   <td>{supType.support_arm}</td>

@@ -5,6 +5,7 @@ import axios from "axios";
 export const OrganizationContext = React.createContext();
 function OrganizationsPage({ setSuccessPage, successPage, setFailPage }) {
   const [organizations, setOrganizations] = useState("");
+  const [language, setLanguage] = useState("arm")
 
   const addOrganization = (org) => {
     organizations.push(org);
@@ -37,7 +38,8 @@ function OrganizationsPage({ setSuccessPage, successPage, setFailPage }) {
   //   console.log("object");
   useEffect(() => {
     const fetchData = async () => {
-      const result = await axios("api/organizations");
+      const result = await axios("/api/organizations");
+      console.log("res",result);
       setOrganizations(result.data.data);
     };
 

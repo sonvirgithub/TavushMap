@@ -28,7 +28,7 @@ function Login() {
         body = JSON.stringify(body)
         const headers = {}
         headers["Content-Type"] = "application/json"
-        const res = await fetch('/login', {
+        const res = await fetch('/api/login', {
             method: 'POST',
             body,
             headers
@@ -41,8 +41,9 @@ function Login() {
 
            // console.log(data);
 
-            history.push('/admin/program')
-            //window.location.reload()
+           // history.push('/admin/program')
+            window.location.reload()
+
         } else {
 
             setIncorrect(false)
@@ -94,8 +95,8 @@ function Login() {
                     <input type={eyeVisible}   className={changeColorEmailInput} placeholder="գաղտնաբառ " value={password} onChange={e => setPassword(e.target.value)} onFocus={(e) => e.target.placeholder = ""}
                         onBlur={(e) => e.target.placeholder = "գաղտնաբառ"} />
                     {(eyeVisible == "password") ?
-                        <i class="fa fa-eye-slash" onClick={passwordVisible}></i>
-                        : <i class="fa fa-eye" onClick={passwordVisible}></i>
+                        <i className="fa fa-eye-slash" onClick={passwordVisible}></i>
+                        : <i className="fa fa-eye" onClick={passwordVisible}></i>
                     }
                 </div>
 

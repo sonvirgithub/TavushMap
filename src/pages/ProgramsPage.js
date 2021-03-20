@@ -27,6 +27,7 @@ function ProgramsPage({ showResults, setShowResults, setProg }) {
     fetch("/api/programsForAdmin")
       .then((res) => res.json())
       .then((res) => {
+        console.log("pr",res.data);
         setPrograms(res.data);
 
 

@@ -18,7 +18,7 @@ function AddOrganization({ successPage, setSuccessPage, setFailPage }) {
 
   const handleSubmit = (evt) => {
     axios
-      .post(`api/addOrganization`, {
+      .post(`/api/addOrganization`, {
         nameArm,
         nameEng,
         person,

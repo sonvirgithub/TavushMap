@@ -67,7 +67,7 @@ function MoreInfo({ prog, showResults, setShowResults }) {
             className="org_icon"
             src={require("../../img/time.svg").default}
           />
-          {/* {prog.startDate} - {prog.endDate} */}
+          {prog.startDate} - {prog.endDate}
         </div>
 
         <div style={{ padding: "5px 0px", fontSize: "15px", display: "flex" }}>
@@ -75,7 +75,7 @@ function MoreInfo({ prog, showResults, setShowResults }) {
             className="org_icon"
             src={require("../../img/head name.svg").default}
           />
-          {/* {prog.manager_arm} */}
+          {prog.manager_arm}
         </div>
 
         <div style={{ padding: "5px 0px", fontSize: "15px", display: "flex" }}>
@@ -83,7 +83,7 @@ function MoreInfo({ prog, showResults, setShowResults }) {
             className="org_icon"
             src={require("../../img/contact.svg").default}
           />
-          {/* {prog.contact_arm} */}
+          {prog.contact_arm}
         </div>
 
         <div style={{ padding: "5px 0px", fontSize: "15px", display: "flex" }}>
@@ -91,9 +91,9 @@ function MoreInfo({ prog, showResults, setShowResults }) {
             className="org_icon"
             src={require("../../img/organization.svg").default}
           />
-          {/* {prog.organization.map(item => {
+          {prog.organization.map(item => {
             return item.organizationName_arm + ', '
-          })} */}
+          })}
 
         </div>
 
@@ -150,7 +150,7 @@ function MoreInfo({ prog, showResults, setShowResults }) {
             className="org_icon"
             src={require("../../img/donor.svg").default}
           />
-          {/* Դոնոր խմբի անդամ <b>{prog.isDonor ? 'է' : 'չէ'}</b> */}
+          Դոնոր խմբի անդամ <b>{prog.isDonor ? 'է' : 'չէ'}</b>
         </div>
       </div>
 

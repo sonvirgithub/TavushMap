@@ -172,7 +172,7 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
         // console.log("error", e);
       });
 
-
+     
 
   };
 
@@ -306,23 +306,23 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
             {/* xekavari input-nery */}
             <div className="project_name">
               <label className="project_name_label">Ծրագրի ղեկավար (Հայերեն)</label>
-              <input className="project_name_input" placeholder="Անուն, Ազգանուն" value={prog.manager_arm} onChange={e => setProg({ ...prog, manager_arm: e.target.value, })} />
+              <input type="text" className="project_name_input" placeholder="Անուն, Ազգանուն" value={prog.manager_arm} onChange={e => setProg({ ...prog, manager_arm: e.target.value, })} />
 
             </div>
             <div className="project_name">
               <label className="project_name_label">Ծրագրի ղեկավար (English)</label>
-              <input className="project_name_input" placeholder="Fistname, Lastname" value={prog.manager_eng} onChange={e => setProg({ ...prog, manager_eng: e.target.value, })} />
+              <input type="text" className="project_name_input" placeholder="Fistname, Lastname" value={prog.manager_eng} onChange={e => setProg({ ...prog, manager_eng: e.target.value, })} />
             </div>
 
             {/* contactPerson-i input-nery  */}
             <div className="project_name">
               <label className="project_name_label">Կոնտակտ անձ (Հայերեն)</label>
-              <input className="project_name_input" placeholder="Անուն, Ազգանուն" value={prog.contact_arm} onChange={e => setProg({ ...prog, contact_arm: e.target.value, })} />
+              <input type="text" className="project_name_input" placeholder="Անուն, Ազգանուն" value={prog.contact_arm} onChange={e => setProg({ ...prog, contact_arm: e.target.value, })} />
 
             </div>
             <div className="project_name">
               <label className="project_name_label">Կոնտակտ անձ (Անգլերեն)</label>
-              <input className="project_name_input" placeholder="Fistname, Lastname" value={prog.contact_eng} onChange={e => setProg({ ...prog, contact_eng: e.target.value, })} />
+              <input type="text" className="project_name_input" placeholder="Fistname, Lastname" value={prog.contact_eng} onChange={e => setProg({ ...prog, contact_eng: e.target.value, })} />
             </div>
 
             {/* organizationi input-nery  */}
@@ -364,14 +364,14 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
               {
                 arrow_icon_category && (
                   <div ref={ref} className="nested">
-                    {categores.map((categore) => (
+                    {categores.map((categore,index) => (
 
-                      <div className='list' key={categore.id}>
+                      <div className='list' key={index}>
 
                         <ul className='ul' >
 
                           <div className='supportList'>
-                            <input type="checkbox" id='check' className="checkbox"  onClick={(e) => checkCategory(e, categore)}
+                            <input type="checkbox"  className="checkbox"  onClick={(e) => checkCategory(e, categore)}
                             />
                           </div>
 
@@ -383,11 +383,11 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
                               <div className="support_types" >
 
 
-                                {categore.items.map(support => (
+                                {categore.items.map(support,index => (
                                   <li style={{
                                     backgroundColor: isSelect.some(item => item.supportid === support.supportid) ? '#A4C2D8' : '#FAFAFA',
 
-                                  }} key={support.supportid} className="li" onClick={(e) => selectSupport(e, support.supportid, categore.categoryid)}>
+                                  }} key={index} className="li" onClick={(e) => selectSupport(e, support.supportid, categore.categoryid)}>
                                     {support.name}
                                   </li>
                                 ))}
@@ -428,7 +428,7 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
                 arrow_icon_status && (
                   <div ref={ref} className="select_status">
 
-                    <div className='list city'>
+                    <div className='list city' >
                       <div className="radio">
 
                         <li style={{
@@ -451,7 +451,7 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
             </div>
             <div className="donor">
               <label className="donor_label">Դոնոր խմբի անդամ է</label>
-              <input type="checkbox" id='donor' className="isDonor" value={prog.isDonor} checked={prog.isDonor} onClick={() => setProg({ ...prog, isDonor: !prog.isDonor, })} />
+              <input type="checkbox" id='donor' className="isDonor" value={prog.isDonor} defaultChecked={prog.isDonor} onClick={() => setProg({ ...prog, isDonor: !prog.isDonor, })} />
             </div>
 
             <div className="btn_popup">

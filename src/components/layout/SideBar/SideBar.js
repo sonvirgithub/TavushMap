@@ -55,7 +55,7 @@ function Sidebar() {
 
         const headers = {}
         headers["Content-Type"] = "application/json"
-        const res = await fetch('/logout', {
+        const res = await fetch('/api/logout', {
             method:
                 "GET",
             headers
@@ -63,7 +63,7 @@ function Sidebar() {
       
         if (res.status == 200) {
 
-            history.push("/login")
+            //history.push("/admin/login")
             window.location.reload()
 
         } else {

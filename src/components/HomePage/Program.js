@@ -93,7 +93,7 @@ function Program({ programs, showResults, setShowResults, setProg }) {
                   <tr key={prog.id}>
                     <td>{prog.programName_arm}</td>
                     <td >
-                      <div className="tdSphere">
+                      <div className="tdSphere" >
                         {prog.support.map(item => {
                           return item.category_arm + ', '
                         })}
