@@ -50,9 +50,9 @@ function AddCategory({ setSuccessPage, setFailPage }) {
         </button>
       </div>
 
-      <Modal show={show} onHide={handleClose} style={{ textAlign:"center" }}>
+      <Modal show={show} onHide={handleClose} style={{ display:"none" }}>
         <Modal.Body>
-          <Form.Group onSubmit={handleSubmit}>
+          <Form.Group onSubmit={handleSubmit} style={{  display:"inline-block"  }}>
             <FormLabel style={{ display:"flex" }}>Ոլորտի անվանումը (Հայերեն)</FormLabel>
             <Form.Control
               type="text"

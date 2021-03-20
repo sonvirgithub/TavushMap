@@ -61,7 +61,7 @@ function EditSetting({ set, setSuccessPage, setFailPage }) {
         <img className="org_icon" src={require("../../img/edit.svg").default} />
       </div>
 
-      <Modal show={show} onHide={handleClose} animation={false}>
+      <Modal show={show} onHide={handleClose} animation={false} style={{  display:"none"  }}>
         {/* <Modal.Header closeButton> */}
         {/* <Modal.Title>Փոխել անունը</Modal.Title> */}
         {/* </Modal.Header> */}
@@ -72,15 +72,15 @@ function EditSetting({ set, setSuccessPage, setFailPage }) {
               Փոխել անունը
             </span>
           </div>
-          <Form.Group onSubmit={handleSubmit}>
-            <FormLabel>Անուն</FormLabel>
+          <Form.Group onSubmit={handleSubmit} style={{  display:"inline-block"  }}>
+            <FormLabel style={{  display:"flex"  }}>Անուն</FormLabel>
             <Form.Control
               type="text"
               value={firstName}
               onChange={(e) => setFirstName(e.target.value)}
             />
             <br />
-            <FormLabel>Ազգանուն</FormLabel>
+            <FormLabel style={{  display:"flex"  }}>Ազգանուն</FormLabel>
 
             <Form.Control
               type="text"

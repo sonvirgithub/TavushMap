@@ -66,12 +66,12 @@ function AddOrganization({ successPage, setSuccessPage, setFailPage }) {
           Ավելացնել կազմակերպություն
         </Button> */}
 
-      <Modal show={show} onHide={handleClose} style={{ textAlign:"center" }}>
+      <Modal show={show} onHide={handleClose} style={{  display:"none"  }}>
         {/* <Modal.Header> */}
         {/* <Modal.Title>Ավելացնել կազմակերպություն</Modal.Title> */}
         {/* </Modal.Header> */}
         <Modal.Body>
-          <Form.Group onSubmit={handleSubmit}>
+          <Form.Group onSubmit={handleSubmit} style={{  display:"inline-block"  }}>
             <FormLabel style={{ display:"flex" }}>Կազմակերպության անվանումը (Հայերեն)</FormLabel>
             <Form.Control
               type="text"

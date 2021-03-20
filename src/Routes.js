@@ -31,7 +31,7 @@ function Routes({
 }) {
 
   // console.log(showResults, "showResults rout");
-  if (isLoggedIn) {
+  if (!isLoggedIn) {
     // console.log(isLoggedIn);
     return (
       <>

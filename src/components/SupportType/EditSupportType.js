@@ -81,13 +81,13 @@ function EditSupportType({
         <img className="org_icon" src={require("../../img/edit.svg").default} />
       </div>
 
-      <Modal show={show} onHide={handleClose} animation={false}>
+      <Modal show={show} onHide={handleClose} animation={false} style={{  display:"none"  }}>
         {/* <Modal.Header closeButton>
           <Modal.Title>Խմբագրել</Modal.Title>
         </Modal.Header> */}
         <Modal.Body>
-          <Form.Group onSubmit={handleSubmit}>
-            <Form.Label>Ոլորտ</Form.Label>
+          <Form.Group onSubmit={handleSubmit} style={{  display:"inline-block"  }}>
+            <Form.Label style={{  display:"flex"  }}>Ոլորտ</Form.Label>
             <Form.Control
               as="select"
               onChange={(e) => setCategoryIdNew(Number(e.target.value))}
@@ -107,7 +107,7 @@ function EditSupportType({
                 </option>
               )}
             </Form.Control>
-            <Form.Label> Կազմակերպության անվանումը (Հայերեն)</Form.Label>
+            <Form.Label style={{  display:"flex"  }}> Կազմակերպության անվանումը (Հայերեն)</Form.Label>
             <Form.Control
               type="text"
               placeholder=""
@@ -115,7 +115,7 @@ function EditSupportType({
               onChange={(e) => setSupportArm(e.target.value)}
             />
             <br />
-            <Form.Label>Կազմակերպության անվանումը ( Enlglish)</Form.Label>
+            <Form.Label style={{  display:"flex"  }}>Կազմակերպության անվանումը ( Enlglish)</Form.Label>
             <Form.Control
               type="text"
               placeholder=""

@@ -62,9 +62,9 @@ function AddSupportType({ categoryType, setSuccessPage, setFailPage }) {
         </button>
       </div>
 
-      <Modal show={show} onHide={handleClose} style={{ textAlign:"center" }}>
+      <Modal show={show} onHide={handleClose} style={{ display:"none" }}>
         <Modal.Body>
-          <Form.Group onSubmit={handleSubmit}>
+          <Form.Group onSubmit={handleSubmit} style={{  display:"inline-block"  }}>
             <Form.Label style={{ display:"flex" }}>Ոլորտ</Form.Label>
             <Form.Control
               as="select"

@@ -61,20 +61,20 @@ function EditCategory({ cat, setSuccessPage, setFailPage }) {
         <img className="org_icon" src={require("../../img/edit.svg").default} />
       </div>
 
-      <Modal show={show} onHide={handleClose} animation={false}>
+      <Modal show={show} onHide={handleClose} animation={false} style={{  display:"none"  }}>
         {/* <Modal.Header closeButton>
           <Modal.Title>Խմբագրել</Modal.Title>
         </Modal.Header> */}
         <Modal.Body>
-          <Form.Group onSubmit={handleSubmit}>
-            <FormLabel>Ոլորտի անվանումը (Հայերեն)</FormLabel>
+          <Form.Group onSubmit={handleSubmit} style={{  display:"inline-block"  }}>
+            <FormLabel style={{  display:"flex"  }}>Ոլորտի անվանումը (Հայերեն)</FormLabel>
             <Form.Control
               type="text"
               value={category_arm}
               onChange={(e) => setCategoryArm(e.target.value)}
             />
             <br />
-            <FormLabel>Ոլորտի անվանումը (Enlglish)</FormLabel>
+            <FormLabel style={{  display:"flex"  }}>Ոլորտի անվանումը (Enlglish)</FormLabel>
 
             <Form.Control
               type="text"
