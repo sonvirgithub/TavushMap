@@ -3,53 +3,53 @@ import { Route, useHistory, NavLink } from "react-router-dom";
 import "./SideBar.css";
 
 function Sidebar() {
-  const [nameArm, setNameArm] = useState("");
-  const [nameEng, setNameEng] = useState("");
-  const [startDate, setStartDate] = useState("");
-  const [endDate, setEndDate] = useState("");
-  const [cityArm, setCityArm] = useState("");
-  const [cityEng, setCityEng] = useState("");
-  const [responsiblePersonArm, setResponsiblePersonArm] = useState("");
-  const [responsiblePersonEng, setResponsiblePersonEng] = useState("");
-  const [contactPersonArm, setContactPersonArm] = useState("");
-  const [contactPersonEng, setContactPersonEng] = useState("");
-  const [categoryArm, setCategoryArm] = useState([
-    "category1",
-    "category2",
-    "category3",
-  ]);
-  const [support_typeArm, setSupportArm] = useState([
-    "support_type 1",
-    "support_type 2",
-    "support_type 3",
-  ]);
+  // const [nameArm, setNameArm] = useState("");
+  // const [nameEng, setNameEng] = useState("");
+  // const [startDate, setStartDate] = useState("");
+  // const [endDate, setEndDate] = useState("");
+  // const [cityArm, setCityArm] = useState("");
+  // const [cityEng, setCityEng] = useState("");
+  // const [responsiblePersonArm, setResponsiblePersonArm] = useState("");
+  // const [responsiblePersonEng, setResponsiblePersonEng] = useState("");
+  // const [contactPersonArm, setContactPersonArm] = useState("");
+  // const [contactPersonEng, setContactPersonEng] = useState("");
+  // const [categoryArm, setCategoryArm] = useState([
+  //   "category1",
+  //   "category2",
+  //   "category3",
+  // ]);
+  // const [support_typeArm, setSupportArm] = useState([
+  //   "support_type 1",
+  //   "support_type 2",
+  //   "support_type 3",
+  // ]);
 
-  async function createProgress() {
+  // async function createProgress() {
 
-    let body = {
-      nameArm,
-      startDate,
-      endDate,
-      cityArm,
-      responsiblePersonArm,
-      contactPersonArm,
-      categoryArm,
-      support_typeArm,
-    };
+  //   let body = {
+  //     nameArm,
+  //     startDate,
+  //     endDate,
+  //     cityArm,
+  //     responsiblePersonArm,
+  //     contactPersonArm,
+  //     categoryArm,
+  //     support_typeArm,
+  //   };
 
-    body = JSON.stringify(body);
-    const headers = {};
-    headers["Content-Type"] = "application/json";
-    const res = await fetch("/createProject", {
-      method: "POST",
-      body,
-      headers,
-    });
-    if (res.status == 200) {
-      let data = await res.json();
-    }
+  //   body = JSON.stringify(body);
+  //   const headers = {};
+  //   headers["Content-Type"] = "application/json";
+  //   const res = await fetch("/createProject", {
+  //     method: "POST",
+  //     body,
+  //     headers,
+  //   });
+  //   if (res.status == 200) {
+  //     let data = await res.json();
+  //   }
 
-    // const history = useHistory();
+    const history = useHistory();
 
     async function log_out() {
 
@@ -63,8 +63,8 @@ function Sidebar() {
       
         if (res.status == 200) {
 
-            //history.push("/admin/login")
-            window.location.reload()
+            history.push("/admin/login")
+           window.location.reload()
 
         } else {
             // console.log("data chka")
@@ -74,7 +74,7 @@ function Sidebar() {
 
     }
     // window.location.reload()
-  }
+  
 
   return (
     <div className="sideBar">
@@ -157,7 +157,7 @@ function Sidebar() {
       <div className="logout">
         <button
           className="btn_logout"
-          //  onClick={log_out}
+           onClick={log_out}
         >
           Դուրս գալ{" "}
           <img

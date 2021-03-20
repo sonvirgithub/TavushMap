@@ -8,7 +8,7 @@ export default async function sendRequest(url) {
   if (!response.data.success) {
     if (window.location.pathname !== "/admin/login") {
       axios
-        .get(`/logout`)
+        .get(`/api/logout`)
         .then((res) => {
           if (res.data.success) {
             toast.error(res.data);

@@ -41,7 +41,7 @@ function Login() {
 
            // console.log(data);
 
-           // history.push('/admin/program')
+           history.push('/admin/program')
             window.location.reload()
 
         } else {
