@@ -5,6 +5,8 @@ import MoreInfo from "./MoreInfo";
 import EditProgram from './EditProgram'
 import "react-datepicker/dist/react-datepicker.css";
 import "./Program.css"
+import moment from 'moment'
+
 
 function Program({ programs, showResults, setShowResults, setProg }) {
 

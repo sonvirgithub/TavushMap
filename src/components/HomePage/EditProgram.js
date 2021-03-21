@@ -5,6 +5,7 @@ import { ProgramContext } from "../../pages/ProgramsPage";
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import UseOutSideClick from "../HomePage/UseOutSideClick"
+import moment from 'moment'
 
 function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
  
@@ -383,7 +384,7 @@ function EditProgram({ prog, setProg, show, setShow, isSelect, setIsSelect }) {
                               <div className="support_types" >
 
 
-                                {categore.items.map(support,index => (
+                                {categore.items.map((support,index) => (
                                   <li style={{
                                     backgroundColor: isSelect.some(item => item.supportid === support.supportid) ? '#A4C2D8' : '#FAFAFA',
 
